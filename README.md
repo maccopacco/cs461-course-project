@@ -3,31 +3,32 @@ KU - CS461 - Course Proj - Brichan &amp; Dreher\
 Was vaguely following [this tutorial](https://www.youtube.com/watch?v=hQAHSlTtcmY)
 
 ## To run
+<details><summary>Click to expand</summary>
 Run `amplify pull`
 
-Select `AWS access keys`
+Select `AWS access keys`\
 Enter your `accessKeyId` and `secretAccessKey`
-### Region
+#### Region
 
 Chose `us-east-2` region
 
-### Which app are you working on?
+#### Which app are you working on?
 Select `cs461courseproject`
-### Pick a backend environment
+#### Pick a backend environment
 Select `dev`
-### Choose your default editor
+#### Choose your default editor
 Select your default editor
-### Choose the type of app that you're building
+#### Choose the type of app that you're building
 Select `javascript`
-### What javascript framework are you using
+#### What javascript framework are you using
 Select `react`
-### 'Source Directory Path' through 'Start Command'
+#### 'Source Directory Path' through 'Start Command'
 Use default (just hit enter)
-### Do you plan on moidfying this backend?
+#### Do you plan on moidfying this backend?
 Y
 Then, run `amplify pull` one more time
 
-
+</details>
 
 ### Available Scripts
 
