@@ -1,5 +1,7 @@
 # cs461-course-project
-KU - CS461 - Course Proj - Brichan &amp; Dreher
+KU - CS461 - Course Proj - Brichan &amp; Dreher\
+Was vaguely following [this tutorial](https://www.youtube.com/watch?v=hQAHSlTtcmY)
+
 
 
 ### Available Scripts
