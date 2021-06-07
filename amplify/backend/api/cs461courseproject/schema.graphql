@@ -1,4 +1,74 @@
 type Item @model {
     id: ID!
     name: String!
+
+}
+
+type School_User @model {
+    id: ID!
+    first_name: String!
+    last_anme: String!
+    email: String!
+    passwrd: String!
+}
+
+type Student @model {
+    school_user: School_User! @connection
+    id: ID!
+}
+
+type Instructor @model {
+    school_user: School_User! @connection
+    id: ID!
+}
+
+type Registrar @model {
+    school_user: School_User! @connection
+    id: ID!
+}
+
+type Department @model {
+    id: ID!
+    name: String!
+    department_head: Instructor
+}
+
+type Course @model {
+    id: ID!
+    section: Int!
+    name: String!
+    credit_hours: Int!
+    department: Department!
+    instructor: Instructor!
+}
+
+type Course_Report @model {
+    id: ID!
+    student: Student! @connection
+    course_name: String!
+    course_section: Int!
+    instructor: Instructor! @connection
+    year: Int!
+    attempts: Int!
+    final_grade: Float!
+}
+
+type Enroll_Request @model {
+    id: ID!
+    course: Course! @connection
+    school_user: School_User! @connection
+    is_enrolling: Boolean!
+}
+
+type Delete_Course_Request @model {
+    id: ID!
+    course: Course! @connection
+    head_instructor: Instructor! @connection
+}
+
+type Create_Course_Request @model {
+    id: ID!
+    course_name: String!
+    course_section: Int!
+    head_instructor: Instructor! @connection
 }
