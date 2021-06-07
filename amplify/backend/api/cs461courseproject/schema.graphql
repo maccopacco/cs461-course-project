@@ -1,0 +1,4 @@
+type Item @model {
+    id: ID!
+    name: String!
+}
