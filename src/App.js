@@ -1,8 +1,13 @@
 import {TodoList} from "./TodoList";
 import {useEffect, useRef, useState} from "react";
 
+import Amplify, {graphqlOperation} from 'aws-amplify'
+import {listComments} from './graphql/queries'
+
 const {v4: uuidv4} = require('uuid');
 const LOCAL_STORAGE_KEY = 'todoApp.todos'
+
+
 
 function App() {
 
@@ -29,11 +34,26 @@ function App() {
         <>
             <TodoList todos={todos} toggleTodo={toggleTodo}/>
             <input ref={todoNameRef} type="text"/>
-            <button onClick={handleAddTodo}>Add todo</button>
-            <button onClick={handleClearTodos}>Clear Completed Todos todo</button>
+            <div>
+                <button onClick={handleAddTodo}>Add todo</button>
+            </div>
+            <div>
+                <button onClick={handleClearTodos}>Clear Completed Todos todo</button>
+            </div>
+            <button onClick={test}>Test button</button>
             <div>0 left to do</div>
         </>
     )
+
+    async function test() {
+        try {
+            const data = await Amplify.API.graphql(graphqlOperation(listComments))
+            const todos = data.data.listComments.items
+            console.log(`items: ${todos}`)
+        } catch (err) {
+            console.log(`Error fetching data: ${err}`)
+        }
+    }
 
     function handleClearTodos() {
         setTodos(todos.filter(todo => !todo.complete))

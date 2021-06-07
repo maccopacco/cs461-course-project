@@ -1,0 +1,5 @@
+{
+  "AppSyncApiName": "cs461courseproject",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false
+}
