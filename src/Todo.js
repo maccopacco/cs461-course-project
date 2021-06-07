@@ -2,12 +2,11 @@ import {Component} from "react";
 
 export default class Todo extends Component {
 
-
     render() {
-        const {todo, toggleTodo} = this.props
+        const {todo, onToggleTodo} = this.props
 
         function onCheckBoxChange() {
-            toggleTodo(todo.id)
+            onToggleTodo(todo.id)
         }
 
         return <div>

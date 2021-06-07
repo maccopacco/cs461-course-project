@@ -5,11 +5,10 @@ import Todo from './Todo.js'
 export class TodoList extends Component {
 
     render() {
-        const {todos, toggleTodo} = this.props
-        return (
-            todos.map(todo => {
-                return <Todo key={todo.id} todo={todo} toggleTodo = {toggleTodo}/>
-            })
-        )
+        const {todos, onToggleTodo} = this.props
+        return todos.map(singleTodo => {
+            return <Todo key={singleTodo.id} todo={singleTodo} onToggleTodo= {onToggleTodo}/>
+        })
     }
+
 }
