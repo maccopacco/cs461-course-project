@@ -36,7 +36,7 @@ export const onCreateSchoolUser = /* GraphQL */ `
     onCreateSchoolUser {
       id
       first_name
-      last_anme
+      last_name
       email
       passwrd
       createdAt
@@ -49,7 +49,7 @@ export const onUpdateSchoolUser = /* GraphQL */ `
     onUpdateSchoolUser {
       id
       first_name
-      last_anme
+      last_name
       email
       passwrd
       createdAt
@@ -62,7 +62,7 @@ export const onDeleteSchoolUser = /* GraphQL */ `
     onDeleteSchoolUser {
       id
       first_name
-      last_anme
+      last_name
       email
       passwrd
       createdAt
@@ -76,7 +76,7 @@ export const onCreateStudent = /* GraphQL */ `
       school_user {
         id
         first_name
-        last_anme
+        last_name
         email
         passwrd
         createdAt
@@ -94,7 +94,7 @@ export const onUpdateStudent = /* GraphQL */ `
       school_user {
         id
         first_name
-        last_anme
+        last_name
         email
         passwrd
         createdAt
@@ -112,7 +112,7 @@ export const onDeleteStudent = /* GraphQL */ `
       school_user {
         id
         first_name
-        last_anme
+        last_name
         email
         passwrd
         createdAt
@@ -130,7 +130,7 @@ export const onCreateInstructor = /* GraphQL */ `
       school_user {
         id
         first_name
-        last_anme
+        last_name
         email
         passwrd
         createdAt
@@ -148,7 +148,7 @@ export const onUpdateInstructor = /* GraphQL */ `
       school_user {
         id
         first_name
-        last_anme
+        last_name
         email
         passwrd
         createdAt
@@ -166,7 +166,7 @@ export const onDeleteInstructor = /* GraphQL */ `
       school_user {
         id
         first_name
-        last_anme
+        last_name
         email
         passwrd
         createdAt
@@ -184,7 +184,7 @@ export const onCreateRegistrar = /* GraphQL */ `
       school_user {
         id
         first_name
-        last_anme
+        last_name
         email
         passwrd
         createdAt
@@ -202,7 +202,7 @@ export const onUpdateRegistrar = /* GraphQL */ `
       school_user {
         id
         first_name
-        last_anme
+        last_name
         email
         passwrd
         createdAt
@@ -220,7 +220,7 @@ export const onDeleteRegistrar = /* GraphQL */ `
       school_user {
         id
         first_name
-        last_anme
+        last_name
         email
         passwrd
         createdAt
@@ -433,7 +433,7 @@ export const onCreateEnrollRequest = /* GraphQL */ `
       school_user {
         id
         first_name
-        last_anme
+        last_name
         email
         passwrd
         createdAt
@@ -460,7 +460,7 @@ export const onUpdateEnrollRequest = /* GraphQL */ `
       school_user {
         id
         first_name
-        last_anme
+        last_name
         email
         passwrd
         createdAt
@@ -487,7 +487,7 @@ export const onDeleteEnrollRequest = /* GraphQL */ `
       school_user {
         id
         first_name
-        last_anme
+        last_name
         email
         passwrd
         createdAt

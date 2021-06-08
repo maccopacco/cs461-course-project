@@ -1,13 +1,12 @@
 type Item @model {
     id: ID!
     name: String!
-
 }
 
 type SchoolUser @model {
     id: ID!
     first_name: String!
-    last_anme: String!
+    last_name: String!
     email: String!
     passwrd: String!
 }

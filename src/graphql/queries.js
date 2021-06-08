@@ -33,7 +33,7 @@ export const getSchoolUser = /* GraphQL */ `
     getSchoolUser(id: $id) {
       id
       first_name
-      last_anme
+      last_name
       email
       passwrd
       createdAt
@@ -51,7 +51,7 @@ export const listSchoolUsers = /* GraphQL */ `
       items {
         id
         first_name
-        last_anme
+        last_name
         email
         passwrd
         createdAt
@@ -67,7 +67,7 @@ export const getStudent = /* GraphQL */ `
       school_user {
         id
         first_name
-        last_anme
+        last_name
         email
         passwrd
         createdAt
@@ -101,7 +101,7 @@ export const getInstructor = /* GraphQL */ `
       school_user {
         id
         first_name
-        last_anme
+        last_name
         email
         passwrd
         createdAt
@@ -135,7 +135,7 @@ export const getRegistrar = /* GraphQL */ `
       school_user {
         id
         first_name
-        last_anme
+        last_name
         email
         passwrd
         createdAt
@@ -297,7 +297,7 @@ export const getEnrollRequest = /* GraphQL */ `
       school_user {
         id
         first_name
-        last_anme
+        last_name
         email
         passwrd
         createdAt
