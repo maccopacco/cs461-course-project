@@ -28,9 +28,9 @@ export const listItems = /* GraphQL */ `
     }
   }
 `;
-export const getSchool_User = /* GraphQL */ `
-  query GetSchool_User($id: ID!) {
-    getSchool_User(id: $id) {
+export const getSchoolUser = /* GraphQL */ `
+  query GetSchoolUser($id: ID!) {
+    getSchoolUser(id: $id) {
       id
       first_name
       last_anme
@@ -41,13 +41,13 @@ export const getSchool_User = /* GraphQL */ `
     }
   }
 `;
-export const listSchool_Users = /* GraphQL */ `
-  query ListSchool_Users(
-    $filter: ModelSchool_UserFilterInput
+export const listSchoolUsers = /* GraphQL */ `
+  query ListSchoolUsers(
+    $filter: ModelSchoolUserFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    listSchool_Users(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    listSchoolUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
         first_name
@@ -237,9 +237,9 @@ export const listCourses = /* GraphQL */ `
     }
   }
 `;
-export const getCourse_Report = /* GraphQL */ `
-  query GetCourse_Report($id: ID!) {
-    getCourse_Report(id: $id) {
+export const getCourseReport = /* GraphQL */ `
+  query GetCourseReport($id: ID!) {
+    getCourseReport(id: $id) {
       id
       student {
         id
@@ -261,13 +261,13 @@ export const getCourse_Report = /* GraphQL */ `
     }
   }
 `;
-export const listCourse_Reports = /* GraphQL */ `
-  query ListCourse_Reports(
-    $filter: ModelCourse_ReportFilterInput
+export const listCourseReports = /* GraphQL */ `
+  query ListCourseReports(
+    $filter: ModelCourseReportFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    listCourse_Reports(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    listCourseReports(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
         course_name
@@ -282,9 +282,9 @@ export const listCourse_Reports = /* GraphQL */ `
     }
   }
 `;
-export const getEnroll_Request = /* GraphQL */ `
-  query GetEnroll_Request($id: ID!) {
-    getEnroll_Request(id: $id) {
+export const getEnrollRequest = /* GraphQL */ `
+  query GetEnrollRequest($id: ID!) {
+    getEnrollRequest(id: $id) {
       id
       course {
         id
@@ -309,13 +309,13 @@ export const getEnroll_Request = /* GraphQL */ `
     }
   }
 `;
-export const listEnroll_Requests = /* GraphQL */ `
-  query ListEnroll_Requests(
-    $filter: ModelEnroll_RequestFilterInput
+export const listEnrollRequests = /* GraphQL */ `
+  query ListEnrollRequests(
+    $filter: ModelEnrollRequestFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    listEnroll_Requests(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    listEnrollRequests(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
         is_enrolling
@@ -326,9 +326,9 @@ export const listEnroll_Requests = /* GraphQL */ `
     }
   }
 `;
-export const getDelete_Course_Request = /* GraphQL */ `
-  query GetDelete_Course_Request($id: ID!) {
-    getDelete_Course_Request(id: $id) {
+export const getDeleteCourseRequest = /* GraphQL */ `
+  query GetDeleteCourseRequest($id: ID!) {
+    getDeleteCourseRequest(id: $id) {
       id
       course {
         id
@@ -348,13 +348,13 @@ export const getDelete_Course_Request = /* GraphQL */ `
     }
   }
 `;
-export const listDelete_Course_Requests = /* GraphQL */ `
-  query ListDelete_Course_Requests(
-    $filter: ModelDelete_Course_RequestFilterInput
+export const listDeleteCourseRequests = /* GraphQL */ `
+  query ListDeleteCourseRequests(
+    $filter: ModelDeleteCourseRequestFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    listDelete_Course_Requests(
+    listDeleteCourseRequests(
       filter: $filter
       limit: $limit
       nextToken: $nextToken
@@ -368,9 +368,9 @@ export const listDelete_Course_Requests = /* GraphQL */ `
     }
   }
 `;
-export const getCreate_Course_Request = /* GraphQL */ `
-  query GetCreate_Course_Request($id: ID!) {
-    getCreate_Course_Request(id: $id) {
+export const getCreateCourseRequest = /* GraphQL */ `
+  query GetCreateCourseRequest($id: ID!) {
+    getCreateCourseRequest(id: $id) {
       id
       course_name
       course_section
@@ -384,13 +384,13 @@ export const getCreate_Course_Request = /* GraphQL */ `
     }
   }
 `;
-export const listCreate_Course_Requests = /* GraphQL */ `
-  query ListCreate_Course_Requests(
-    $filter: ModelCreate_Course_RequestFilterInput
+export const listCreateCourseRequests = /* GraphQL */ `
+  query ListCreateCourseRequests(
+    $filter: ModelCreateCourseRequestFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    listCreate_Course_Requests(
+    listCreateCourseRequests(
       filter: $filter
       limit: $limit
       nextToken: $nextToken

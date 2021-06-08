@@ -31,9 +31,9 @@ export const onDeleteItem = /* GraphQL */ `
     }
   }
 `;
-export const onCreateSchool_User = /* GraphQL */ `
-  subscription OnCreateSchool_User {
-    onCreateSchool_User {
+export const onCreateSchoolUser = /* GraphQL */ `
+  subscription OnCreateSchoolUser {
+    onCreateSchoolUser {
       id
       first_name
       last_anme
@@ -44,9 +44,9 @@ export const onCreateSchool_User = /* GraphQL */ `
     }
   }
 `;
-export const onUpdateSchool_User = /* GraphQL */ `
-  subscription OnUpdateSchool_User {
-    onUpdateSchool_User {
+export const onUpdateSchoolUser = /* GraphQL */ `
+  subscription OnUpdateSchoolUser {
+    onUpdateSchoolUser {
       id
       first_name
       last_anme
@@ -57,9 +57,9 @@ export const onUpdateSchool_User = /* GraphQL */ `
     }
   }
 `;
-export const onDeleteSchool_User = /* GraphQL */ `
-  subscription OnDeleteSchool_User {
-    onDeleteSchool_User {
+export const onDeleteSchoolUser = /* GraphQL */ `
+  subscription OnDeleteSchoolUser {
+    onDeleteSchoolUser {
       id
       first_name
       last_anme
@@ -346,9 +346,9 @@ export const onDeleteCourse = /* GraphQL */ `
     }
   }
 `;
-export const onCreateCourse_Report = /* GraphQL */ `
-  subscription OnCreateCourse_Report {
-    onCreateCourse_Report {
+export const onCreateCourseReport = /* GraphQL */ `
+  subscription OnCreateCourseReport {
+    onCreateCourseReport {
       id
       student {
         id
@@ -370,9 +370,9 @@ export const onCreateCourse_Report = /* GraphQL */ `
     }
   }
 `;
-export const onUpdateCourse_Report = /* GraphQL */ `
-  subscription OnUpdateCourse_Report {
-    onUpdateCourse_Report {
+export const onUpdateCourseReport = /* GraphQL */ `
+  subscription OnUpdateCourseReport {
+    onUpdateCourseReport {
       id
       student {
         id
@@ -394,9 +394,9 @@ export const onUpdateCourse_Report = /* GraphQL */ `
     }
   }
 `;
-export const onDeleteCourse_Report = /* GraphQL */ `
-  subscription OnDeleteCourse_Report {
-    onDeleteCourse_Report {
+export const onDeleteCourseReport = /* GraphQL */ `
+  subscription OnDeleteCourseReport {
+    onDeleteCourseReport {
       id
       student {
         id
@@ -418,9 +418,9 @@ export const onDeleteCourse_Report = /* GraphQL */ `
     }
   }
 `;
-export const onCreateEnroll_Request = /* GraphQL */ `
-  subscription OnCreateEnroll_Request {
-    onCreateEnroll_Request {
+export const onCreateEnrollRequest = /* GraphQL */ `
+  subscription OnCreateEnrollRequest {
+    onCreateEnrollRequest {
       id
       course {
         id
@@ -445,9 +445,9 @@ export const onCreateEnroll_Request = /* GraphQL */ `
     }
   }
 `;
-export const onUpdateEnroll_Request = /* GraphQL */ `
-  subscription OnUpdateEnroll_Request {
-    onUpdateEnroll_Request {
+export const onUpdateEnrollRequest = /* GraphQL */ `
+  subscription OnUpdateEnrollRequest {
+    onUpdateEnrollRequest {
       id
       course {
         id
@@ -472,9 +472,9 @@ export const onUpdateEnroll_Request = /* GraphQL */ `
     }
   }
 `;
-export const onDeleteEnroll_Request = /* GraphQL */ `
-  subscription OnDeleteEnroll_Request {
-    onDeleteEnroll_Request {
+export const onDeleteEnrollRequest = /* GraphQL */ `
+  subscription OnDeleteEnrollRequest {
+    onDeleteEnrollRequest {
       id
       course {
         id
@@ -499,9 +499,9 @@ export const onDeleteEnroll_Request = /* GraphQL */ `
     }
   }
 `;
-export const onCreateDelete_Course_Request = /* GraphQL */ `
-  subscription OnCreateDelete_Course_Request {
-    onCreateDelete_Course_Request {
+export const onCreateDeleteCourseRequest = /* GraphQL */ `
+  subscription OnCreateDeleteCourseRequest {
+    onCreateDeleteCourseRequest {
       id
       course {
         id
@@ -521,9 +521,9 @@ export const onCreateDelete_Course_Request = /* GraphQL */ `
     }
   }
 `;
-export const onUpdateDelete_Course_Request = /* GraphQL */ `
-  subscription OnUpdateDelete_Course_Request {
-    onUpdateDelete_Course_Request {
+export const onUpdateDeleteCourseRequest = /* GraphQL */ `
+  subscription OnUpdateDeleteCourseRequest {
+    onUpdateDeleteCourseRequest {
       id
       course {
         id
@@ -543,9 +543,9 @@ export const onUpdateDelete_Course_Request = /* GraphQL */ `
     }
   }
 `;
-export const onDeleteDelete_Course_Request = /* GraphQL */ `
-  subscription OnDeleteDelete_Course_Request {
-    onDeleteDelete_Course_Request {
+export const onDeleteDeleteCourseRequest = /* GraphQL */ `
+  subscription OnDeleteDeleteCourseRequest {
+    onDeleteDeleteCourseRequest {
       id
       course {
         id
@@ -565,9 +565,9 @@ export const onDeleteDelete_Course_Request = /* GraphQL */ `
     }
   }
 `;
-export const onCreateCreate_Course_Request = /* GraphQL */ `
-  subscription OnCreateCreate_Course_Request {
-    onCreateCreate_Course_Request {
+export const onCreateCreateCourseRequest = /* GraphQL */ `
+  subscription OnCreateCreateCourseRequest {
+    onCreateCreateCourseRequest {
       id
       course_name
       course_section
@@ -581,9 +581,9 @@ export const onCreateCreate_Course_Request = /* GraphQL */ `
     }
   }
 `;
-export const onUpdateCreate_Course_Request = /* GraphQL */ `
-  subscription OnUpdateCreate_Course_Request {
-    onUpdateCreate_Course_Request {
+export const onUpdateCreateCourseRequest = /* GraphQL */ `
+  subscription OnUpdateCreateCourseRequest {
+    onUpdateCreateCourseRequest {
       id
       course_name
       course_section
@@ -597,9 +597,9 @@ export const onUpdateCreate_Course_Request = /* GraphQL */ `
     }
   }
 `;
-export const onDeleteCreate_Course_Request = /* GraphQL */ `
-  subscription OnDeleteCreate_Course_Request {
-    onDeleteCreate_Course_Request {
+export const onDeleteCreateCourseRequest = /* GraphQL */ `
+  subscription OnDeleteCreateCourseRequest {
+    onDeleteCreateCourseRequest {
       id
       course_name
       course_section

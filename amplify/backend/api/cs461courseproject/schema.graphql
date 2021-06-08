@@ -4,7 +4,7 @@ type Item @model {
 
 }
 
-type School_User @model {
+type SchoolUser @model {
     id: ID!
     first_name: String!
     last_anme: String!
@@ -13,17 +13,17 @@ type School_User @model {
 }
 
 type Student @model {
-    school_user: School_User! @connection
+    school_user: SchoolUser! @connection
     id: ID!
 }
 
 type Instructor @model {
-    school_user: School_User! @connection
+    school_user: SchoolUser! @connection
     id: ID!
 }
 
 type Registrar @model {
-    school_user: School_User! @connection
+    school_user: SchoolUser! @connection
     id: ID!
 }
 
@@ -42,7 +42,7 @@ type Course @model {
     instructor: Instructor!
 }
 
-type Course_Report @model {
+type CourseReport @model {
     id: ID!
     student: Student! @connection
     course_name: String!
@@ -53,20 +53,20 @@ type Course_Report @model {
     final_grade: Float!
 }
 
-type Enroll_Request @model {
+type EnrollRequest @model {
     id: ID!
     course: Course! @connection
-    school_user: School_User! @connection
+    school_user: SchoolUser! @connection
     is_enrolling: Boolean!
 }
 
-type Delete_Course_Request @model {
+type DeleteCourseRequest @model {
     id: ID!
     course: Course! @connection
     head_instructor: Instructor! @connection
 }
 
-type Create_Course_Request @model {
+type CreateCourseRequest @model {
     id: ID!
     course_name: String!
     course_section: Int!

@@ -11,5 +11,18 @@
       "StackId": "arn:aws:cloudformation:us-east-2:844767673143:stack/amplify-cs461courseproject-dev-181715/1ec18c00-c7de-11eb-a61a-0265b0cf9604",
       "AmplifyAppId": "d3tctqefnzyam1"
     }
+  },
+  "main": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-cs461courseproject-main-214639-authRole",
+      "UnauthRoleArn": "arn:aws:iam::844767673143:role/amplify-cs461courseproject-main-214639-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::844767673143:role/amplify-cs461courseproject-main-214639-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-cs461courseproject-main-214639-deployment",
+      "UnauthRoleName": "amplify-cs461courseproject-main-214639-unauthRole",
+      "StackName": "amplify-cs461courseproject-main-214639",
+      "StackId": "arn:aws:cloudformation:us-east-2:844767673143:stack/amplify-cs461courseproject-main-214639/5f82f9f0-c7fb-11eb-bba6-0634d5bc354c",
+      "AmplifyAppId": "d3tctqefnzyam1"
+    }
   }
 }

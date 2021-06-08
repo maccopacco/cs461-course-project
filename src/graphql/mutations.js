@@ -40,12 +40,12 @@ export const deleteItem = /* GraphQL */ `
     }
   }
 `;
-export const createSchool_User = /* GraphQL */ `
-  mutation CreateSchool_User(
-    $input: CreateSchool_UserInput!
-    $condition: ModelSchool_UserConditionInput
+export const createSchoolUser = /* GraphQL */ `
+  mutation CreateSchoolUser(
+    $input: CreateSchoolUserInput!
+    $condition: ModelSchoolUserConditionInput
   ) {
-    createSchool_User(input: $input, condition: $condition) {
+    createSchoolUser(input: $input, condition: $condition) {
       id
       first_name
       last_anme
@@ -56,12 +56,12 @@ export const createSchool_User = /* GraphQL */ `
     }
   }
 `;
-export const updateSchool_User = /* GraphQL */ `
-  mutation UpdateSchool_User(
-    $input: UpdateSchool_UserInput!
-    $condition: ModelSchool_UserConditionInput
+export const updateSchoolUser = /* GraphQL */ `
+  mutation UpdateSchoolUser(
+    $input: UpdateSchoolUserInput!
+    $condition: ModelSchoolUserConditionInput
   ) {
-    updateSchool_User(input: $input, condition: $condition) {
+    updateSchoolUser(input: $input, condition: $condition) {
       id
       first_name
       last_anme
@@ -72,12 +72,12 @@ export const updateSchool_User = /* GraphQL */ `
     }
   }
 `;
-export const deleteSchool_User = /* GraphQL */ `
-  mutation DeleteSchool_User(
-    $input: DeleteSchool_UserInput!
-    $condition: ModelSchool_UserConditionInput
+export const deleteSchoolUser = /* GraphQL */ `
+  mutation DeleteSchoolUser(
+    $input: DeleteSchoolUserInput!
+    $condition: ModelSchoolUserConditionInput
   ) {
-    deleteSchool_User(input: $input, condition: $condition) {
+    deleteSchoolUser(input: $input, condition: $condition) {
       id
       first_name
       last_anme
@@ -409,12 +409,12 @@ export const deleteCourse = /* GraphQL */ `
     }
   }
 `;
-export const createCourse_Report = /* GraphQL */ `
-  mutation CreateCourse_Report(
-    $input: CreateCourse_ReportInput!
-    $condition: ModelCourse_ReportConditionInput
+export const createCourseReport = /* GraphQL */ `
+  mutation CreateCourseReport(
+    $input: CreateCourseReportInput!
+    $condition: ModelCourseReportConditionInput
   ) {
-    createCourse_Report(input: $input, condition: $condition) {
+    createCourseReport(input: $input, condition: $condition) {
       id
       student {
         id
@@ -436,12 +436,12 @@ export const createCourse_Report = /* GraphQL */ `
     }
   }
 `;
-export const updateCourse_Report = /* GraphQL */ `
-  mutation UpdateCourse_Report(
-    $input: UpdateCourse_ReportInput!
-    $condition: ModelCourse_ReportConditionInput
+export const updateCourseReport = /* GraphQL */ `
+  mutation UpdateCourseReport(
+    $input: UpdateCourseReportInput!
+    $condition: ModelCourseReportConditionInput
   ) {
-    updateCourse_Report(input: $input, condition: $condition) {
+    updateCourseReport(input: $input, condition: $condition) {
       id
       student {
         id
@@ -463,12 +463,12 @@ export const updateCourse_Report = /* GraphQL */ `
     }
   }
 `;
-export const deleteCourse_Report = /* GraphQL */ `
-  mutation DeleteCourse_Report(
-    $input: DeleteCourse_ReportInput!
-    $condition: ModelCourse_ReportConditionInput
+export const deleteCourseReport = /* GraphQL */ `
+  mutation DeleteCourseReport(
+    $input: DeleteCourseReportInput!
+    $condition: ModelCourseReportConditionInput
   ) {
-    deleteCourse_Report(input: $input, condition: $condition) {
+    deleteCourseReport(input: $input, condition: $condition) {
       id
       student {
         id
@@ -490,12 +490,12 @@ export const deleteCourse_Report = /* GraphQL */ `
     }
   }
 `;
-export const createEnroll_Request = /* GraphQL */ `
-  mutation CreateEnroll_Request(
-    $input: CreateEnroll_RequestInput!
-    $condition: ModelEnroll_RequestConditionInput
+export const createEnrollRequest = /* GraphQL */ `
+  mutation CreateEnrollRequest(
+    $input: CreateEnrollRequestInput!
+    $condition: ModelEnrollRequestConditionInput
   ) {
-    createEnroll_Request(input: $input, condition: $condition) {
+    createEnrollRequest(input: $input, condition: $condition) {
       id
       course {
         id
@@ -520,12 +520,12 @@ export const createEnroll_Request = /* GraphQL */ `
     }
   }
 `;
-export const updateEnroll_Request = /* GraphQL */ `
-  mutation UpdateEnroll_Request(
-    $input: UpdateEnroll_RequestInput!
-    $condition: ModelEnroll_RequestConditionInput
+export const updateEnrollRequest = /* GraphQL */ `
+  mutation UpdateEnrollRequest(
+    $input: UpdateEnrollRequestInput!
+    $condition: ModelEnrollRequestConditionInput
   ) {
-    updateEnroll_Request(input: $input, condition: $condition) {
+    updateEnrollRequest(input: $input, condition: $condition) {
       id
       course {
         id
@@ -550,12 +550,12 @@ export const updateEnroll_Request = /* GraphQL */ `
     }
   }
 `;
-export const deleteEnroll_Request = /* GraphQL */ `
-  mutation DeleteEnroll_Request(
-    $input: DeleteEnroll_RequestInput!
-    $condition: ModelEnroll_RequestConditionInput
+export const deleteEnrollRequest = /* GraphQL */ `
+  mutation DeleteEnrollRequest(
+    $input: DeleteEnrollRequestInput!
+    $condition: ModelEnrollRequestConditionInput
   ) {
-    deleteEnroll_Request(input: $input, condition: $condition) {
+    deleteEnrollRequest(input: $input, condition: $condition) {
       id
       course {
         id
@@ -580,12 +580,12 @@ export const deleteEnroll_Request = /* GraphQL */ `
     }
   }
 `;
-export const createDelete_Course_Request = /* GraphQL */ `
-  mutation CreateDelete_Course_Request(
-    $input: CreateDelete_Course_RequestInput!
-    $condition: ModelDelete_Course_RequestConditionInput
+export const createDeleteCourseRequest = /* GraphQL */ `
+  mutation CreateDeleteCourseRequest(
+    $input: CreateDeleteCourseRequestInput!
+    $condition: ModelDeleteCourseRequestConditionInput
   ) {
-    createDelete_Course_Request(input: $input, condition: $condition) {
+    createDeleteCourseRequest(input: $input, condition: $condition) {
       id
       course {
         id
@@ -605,12 +605,12 @@ export const createDelete_Course_Request = /* GraphQL */ `
     }
   }
 `;
-export const updateDelete_Course_Request = /* GraphQL */ `
-  mutation UpdateDelete_Course_Request(
-    $input: UpdateDelete_Course_RequestInput!
-    $condition: ModelDelete_Course_RequestConditionInput
+export const updateDeleteCourseRequest = /* GraphQL */ `
+  mutation UpdateDeleteCourseRequest(
+    $input: UpdateDeleteCourseRequestInput!
+    $condition: ModelDeleteCourseRequestConditionInput
   ) {
-    updateDelete_Course_Request(input: $input, condition: $condition) {
+    updateDeleteCourseRequest(input: $input, condition: $condition) {
       id
       course {
         id
@@ -630,12 +630,12 @@ export const updateDelete_Course_Request = /* GraphQL */ `
     }
   }
 `;
-export const deleteDelete_Course_Request = /* GraphQL */ `
-  mutation DeleteDelete_Course_Request(
-    $input: DeleteDelete_Course_RequestInput!
-    $condition: ModelDelete_Course_RequestConditionInput
+export const deleteDeleteCourseRequest = /* GraphQL */ `
+  mutation DeleteDeleteCourseRequest(
+    $input: DeleteDeleteCourseRequestInput!
+    $condition: ModelDeleteCourseRequestConditionInput
   ) {
-    deleteDelete_Course_Request(input: $input, condition: $condition) {
+    deleteDeleteCourseRequest(input: $input, condition: $condition) {
       id
       course {
         id
@@ -655,12 +655,12 @@ export const deleteDelete_Course_Request = /* GraphQL */ `
     }
   }
 `;
-export const createCreate_Course_Request = /* GraphQL */ `
-  mutation CreateCreate_Course_Request(
-    $input: CreateCreate_Course_RequestInput!
-    $condition: ModelCreate_Course_RequestConditionInput
+export const createCreateCourseRequest = /* GraphQL */ `
+  mutation CreateCreateCourseRequest(
+    $input: CreateCreateCourseRequestInput!
+    $condition: ModelCreateCourseRequestConditionInput
   ) {
-    createCreate_Course_Request(input: $input, condition: $condition) {
+    createCreateCourseRequest(input: $input, condition: $condition) {
       id
       course_name
       course_section
@@ -674,12 +674,12 @@ export const createCreate_Course_Request = /* GraphQL */ `
     }
   }
 `;
-export const updateCreate_Course_Request = /* GraphQL */ `
-  mutation UpdateCreate_Course_Request(
-    $input: UpdateCreate_Course_RequestInput!
-    $condition: ModelCreate_Course_RequestConditionInput
+export const updateCreateCourseRequest = /* GraphQL */ `
+  mutation UpdateCreateCourseRequest(
+    $input: UpdateCreateCourseRequestInput!
+    $condition: ModelCreateCourseRequestConditionInput
   ) {
-    updateCreate_Course_Request(input: $input, condition: $condition) {
+    updateCreateCourseRequest(input: $input, condition: $condition) {
       id
       course_name
       course_section
@@ -693,12 +693,12 @@ export const updateCreate_Course_Request = /* GraphQL */ `
     }
   }
 `;
-export const deleteCreate_Course_Request = /* GraphQL */ `
-  mutation DeleteCreate_Course_Request(
-    $input: DeleteCreate_Course_RequestInput!
-    $condition: ModelCreate_Course_RequestConditionInput
+export const deleteCreateCourseRequest = /* GraphQL */ `
+  mutation DeleteCreateCourseRequest(
+    $input: DeleteCreateCourseRequestInput!
+    $condition: ModelCreateCourseRequestConditionInput
   ) {
-    deleteCreate_Course_Request(input: $input, condition: $condition) {
+    deleteCreateCourseRequest(input: $input, condition: $condition) {
       id
       course_name
       course_section
