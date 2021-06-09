@@ -3,11 +3,11 @@ import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import {graphqlOperation} from "@aws-amplify/api-graphql";
 import {API} from "@aws-amplify/api";
-import {dataToUsers, userFullName} from "./Utilities";
-import {MINIMUM_EMAIL_LENGTH, MINIMUM_PASSWORD_LENGTH} from "./Constants";
+import {dataToUsers, userFullName} from "../Utilities";
+import {MINIMUM_EMAIL_LENGTH, MINIMUM_PASSWORD_LENGTH} from "../Constants";
 import {toast} from "react-toastify";
-import {createSchoolUser, deleteSchoolUser} from "./graphql/mutations";
-import {listSchoolUsersNoPassword} from "./graphql/my_queries";
+import {createSchoolUser, deleteSchoolUser} from "../../graphql/mutations";
+import {listSchoolUsersNoPassword} from "../../graphql/my_queries";
 
 
 export default class Signin extends Component {
