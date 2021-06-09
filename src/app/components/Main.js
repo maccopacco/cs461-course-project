@@ -20,7 +20,7 @@ export default class Main extends Component {
                     </Signin>
                 </div>
                 <div>
-                    <DataPage user={this.state.user} className='datapage'/>
+                    <DataPage user={this.state.user}/>
                 </div>
             </div>
         </>

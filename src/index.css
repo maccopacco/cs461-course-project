@@ -10,6 +10,15 @@ body {
     margin: 1%;
 }
 
+.sideBySide {
+    display: flex;
+}
+
+.sideBySide > div {
+    margin: 1%;
+}
+
+
 .verticalGroup * {
     display: block;
     margin: 5%;
@@ -30,7 +39,7 @@ body {
 }
 
 .datapage {
-
+    width: 95%;
 }
 
 code {
