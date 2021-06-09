@@ -6,7 +6,6 @@ import {API} from "@aws-amplify/api";
 import {dataToUsers, userFullName} from "./Utilities";
 import {MINIMUM_EMAIL_LENGTH, MINIMUM_PASSWORD_LENGTH} from "./Constants";
 import {toast} from "react-toastify";
-import {listSchoolUsers} from "./graphql/queries";
 import {createSchoolUser, deleteSchoolUser} from "./graphql/mutations";
 import {listSchoolUsersNoPassword} from "./graphql/my_queries";
 
@@ -15,18 +14,17 @@ export default class Signin extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {user: null, signedIn: false}
         this.onSignin = this.onSignin.bind(this)
         this.closePopup = React.createRef()
     }
 
     hasUser() {
-        return this.state.user != null
+        return this.props.user != null
     }
 
     render() {
         return <>
-            <p>{this.hasUser() ? userFullName(this.state.user) : "Noone signed in" }</p>
+            <p>{this.hasUser() ? userFullName(this.props.user) : "Noone signed in" }</p>
             <div>
                 <Popup
                     ref={this.closePopup} trigger={
@@ -109,7 +107,6 @@ export default class Signin extends Component {
             if (l <= 0) {
                 toast.error("Invalid email")
             } else if (l === 1) {
-                console.log('just 1 guy')
                 API.graphql(graphqlOperation(listSchoolUsersNoPassword, {
                     filter: {
                         email: {
@@ -141,12 +138,12 @@ export default class Signin extends Component {
     }
 
     onSignin(user) {
-        this.setState({user: user})
+        this.props.setUser(user)
         this.closePopup.current.close()
     }
 
     debugDeleteUser() {
-        API.graphql(graphqlOperation(listSchoolUsers))
+        API.graphql(graphqlOperation(listSchoolUsersNoPassword))
             .then(function (data) {
                 const users = dataToUsers(data)
                 console.log("Users", users)
