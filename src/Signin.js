@@ -8,6 +8,7 @@ import {MINIMUM_EMAIL_LENGTH, MINIMUM_PASSWORD_LENGTH} from "./Constants";
 import {toast} from "react-toastify";
 import {listSchoolUsers} from "./graphql/queries";
 import {createSchoolUser, deleteSchoolUser} from "./graphql/mutations";
+import {listSchoolUsersNoPassword} from "./graphql/my_queries";
 
 
 export default class Signin extends Component {
@@ -25,7 +26,7 @@ export default class Signin extends Component {
 
     render() {
         return <>
-            <p>{this.state.user == null ? "Noone signed in" : userFullName(this.state.user)}</p>
+            <p>{this.hasUser() ? userFullName(this.state.user) : "Noone signed in" }</p>
             <div>
                 <Popup
                     ref={this.closePopup} trigger={
@@ -87,39 +88,56 @@ export default class Signin extends Component {
     onTrySignin(email, password, onSignin) {
         console.log('Calling onTrySignin')
 
+        const bad = () => toast.error("Cannot get users right now... try again later")
+
         if (this.checkTooShort(email, "Email", MINIMUM_EMAIL_LENGTH))
             return
         if (this.checkTooShort(password, "Password", MINIMUM_PASSWORD_LENGTH))
             return
 
-        API.graphql(graphqlOperation(listSchoolUsers, {
+        //listSchoolUsersNoPassword
+        API.graphql(graphqlOperation(listSchoolUsersNoPassword, {
             filter: {
                 email: {
                     eq: email
                 }
             }
         })).then(function (data) {
-                const users = dataToUsers(data)
-                const l = users.length
-                console.log(`Amount of users with email: ${l}`)
-                if (l <= 0) {
-                    toast.error("Bad email")
-                    return
-                } else if (l === 1) {
-                    let user = users[0];
-                    if (user.passwrd === password) {
+            const users = dataToUsers(data)
+            const l = users.length
+            console.log(`Amount of users with email: ${l}`)
+            if (l <= 0) {
+                toast.error("Invalid email")
+            } else if (l === 1) {
+                console.log('just 1 guy')
+                API.graphql(graphqlOperation(listSchoolUsersNoPassword, {
+                    filter: {
+                        email: {
+                            eq: email
+                        },
+                        passwrd: {
+                            eq: password
+                        }
+                    }
+                })).then(function (data) {
+                    const user = dataToUsers(data)[0]
+                    if (user) {
                         onSignin(user)
                     } else {
-                        toast.error(`Wrong password`)
+                        toast.error("Invalid password")
                     }
-                } else if (l > 1) {
-                    toast.error("Too many users for email!")
-                }
+                }).catch(function(error) {
+                    bad()
+                    console.error("Inner query with passwrd", error)
+                })
+            } else if (l > 1) {
+                toast.error("Too many users for email!")
             }
-        ).catch(function (err) {
-            toast.error("Cannot get users right now... try again later")
+        }).catch(function (err) {
+            bad()
             console.error(`Could not get users: `, err)
         })
+
     }
 
     onSignin(user) {
