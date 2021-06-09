@@ -78,16 +78,6 @@ export const onCreateDepartment = /* GraphQL */ `
     onCreateDepartment {
       id
       name
-      department_head {
-        id
-        first_name
-        last_name
-        email
-        passwrd
-        user_type
-        createdAt
-        updatedAt
-      }
       createdAt
       updatedAt
     }
@@ -98,7 +88,32 @@ export const onUpdateDepartment = /* GraphQL */ `
     onUpdateDepartment {
       id
       name
-      department_head {
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteDepartment = /* GraphQL */ `
+  subscription OnDeleteDepartment {
+    onDeleteDepartment {
+      id
+      name
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateDepartmentHead = /* GraphQL */ `
+  subscription OnCreateDepartmentHead {
+    onCreateDepartmentHead {
+      id
+      department {
+        id
+        name
+        createdAt
+        updatedAt
+      }
+      head {
         id
         first_name
         last_name
@@ -113,12 +128,42 @@ export const onUpdateDepartment = /* GraphQL */ `
     }
   }
 `;
-export const onDeleteDepartment = /* GraphQL */ `
-  subscription OnDeleteDepartment {
-    onDeleteDepartment {
+export const onUpdateDepartmentHead = /* GraphQL */ `
+  subscription OnUpdateDepartmentHead {
+    onUpdateDepartmentHead {
       id
-      name
-      department_head {
+      department {
+        id
+        name
+        createdAt
+        updatedAt
+      }
+      head {
+        id
+        first_name
+        last_name
+        email
+        passwrd
+        user_type
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteDepartmentHead = /* GraphQL */ `
+  subscription OnDeleteDepartmentHead {
+    onDeleteDepartmentHead {
+      id
+      department {
+        id
+        name
+        createdAt
+        updatedAt
+      }
+      head {
         id
         first_name
         last_name
@@ -328,6 +373,22 @@ export const onCreateEnrollRequest = /* GraphQL */ `
         section
         name
         credit_hours
+        department {
+          id
+          name
+          createdAt
+          updatedAt
+        }
+        instructor {
+          id
+          first_name
+          last_name
+          email
+          passwrd
+          user_type
+          createdAt
+          updatedAt
+        }
         createdAt
         updatedAt
       }
@@ -356,6 +417,22 @@ export const onUpdateEnrollRequest = /* GraphQL */ `
         section
         name
         credit_hours
+        department {
+          id
+          name
+          createdAt
+          updatedAt
+        }
+        instructor {
+          id
+          first_name
+          last_name
+          email
+          passwrd
+          user_type
+          createdAt
+          updatedAt
+        }
         createdAt
         updatedAt
       }
@@ -384,6 +461,22 @@ export const onDeleteEnrollRequest = /* GraphQL */ `
         section
         name
         credit_hours
+        department {
+          id
+          name
+          createdAt
+          updatedAt
+        }
+        instructor {
+          id
+          first_name
+          last_name
+          email
+          passwrd
+          user_type
+          createdAt
+          updatedAt
+        }
         createdAt
         updatedAt
       }
@@ -412,6 +505,22 @@ export const onCreateDeleteCourseRequest = /* GraphQL */ `
         section
         name
         credit_hours
+        department {
+          id
+          name
+          createdAt
+          updatedAt
+        }
+        instructor {
+          id
+          first_name
+          last_name
+          email
+          passwrd
+          user_type
+          createdAt
+          updatedAt
+        }
         createdAt
         updatedAt
       }
@@ -439,6 +548,22 @@ export const onUpdateDeleteCourseRequest = /* GraphQL */ `
         section
         name
         credit_hours
+        department {
+          id
+          name
+          createdAt
+          updatedAt
+        }
+        instructor {
+          id
+          first_name
+          last_name
+          email
+          passwrd
+          user_type
+          createdAt
+          updatedAt
+        }
         createdAt
         updatedAt
       }
@@ -466,6 +591,22 @@ export const onDeleteDeleteCourseRequest = /* GraphQL */ `
         section
         name
         credit_hours
+        department {
+          id
+          name
+          createdAt
+          updatedAt
+        }
+        instructor {
+          id
+          first_name
+          last_name
+          email
+          passwrd
+          user_type
+          createdAt
+          updatedAt
+        }
         createdAt
         updatedAt
       }

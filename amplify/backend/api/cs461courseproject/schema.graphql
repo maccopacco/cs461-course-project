@@ -19,7 +19,14 @@ type SchoolUser @model {
 type Department @model {
     id: ID!
     name: String!
-    department_head: SchoolUser @connection
+}
+
+type DepartmentHead @model {
+    id: ID!
+    department: Department! @connection
+    head: SchoolUser! @connection
+#    department: String
+#    head: String
 }
 
 type Course @model {

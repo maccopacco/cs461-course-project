@@ -68,16 +68,6 @@ export const getDepartment = /* GraphQL */ `
     getDepartment(id: $id) {
       id
       name
-      department_head {
-        id
-        first_name
-        last_name
-        email
-        passwrd
-        user_type
-        createdAt
-        updatedAt
-      }
       createdAt
       updatedAt
     }
@@ -93,6 +83,63 @@ export const listDepartments = /* GraphQL */ `
       items {
         id
         name
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getDepartmentHead = /* GraphQL */ `
+  query GetDepartmentHead($id: ID!) {
+    getDepartmentHead(id: $id) {
+      id
+      department {
+        id
+        name
+        createdAt
+        updatedAt
+      }
+      head {
+        id
+        first_name
+        last_name
+        email
+        passwrd
+        user_type
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listDepartmentHeads = /* GraphQL */ `
+  query ListDepartmentHeads(
+    $filter: ModelDepartmentHeadFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listDepartmentHeads(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        department {
+          id
+          name
+          createdAt
+          updatedAt
+        }
+        head {
+          id
+          first_name
+          last_name
+          email
+          passwrd
+          user_type
+          createdAt
+          updatedAt
+        }
         createdAt
         updatedAt
       }
@@ -140,6 +187,22 @@ export const listCourses = /* GraphQL */ `
         section
         name
         credit_hours
+        department {
+          id
+          name
+          createdAt
+          updatedAt
+        }
+        instructor {
+          id
+          first_name
+          last_name
+          email
+          passwrd
+          user_type
+          createdAt
+          updatedAt
+        }
         createdAt
         updatedAt
       }
@@ -190,8 +253,28 @@ export const listCourseReports = /* GraphQL */ `
     listCourseReports(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
+        student {
+          id
+          first_name
+          last_name
+          email
+          passwrd
+          user_type
+          createdAt
+          updatedAt
+        }
         course_name
         course_section
+        instructor {
+          id
+          first_name
+          last_name
+          email
+          passwrd
+          user_type
+          createdAt
+          updatedAt
+        }
         year
         attempts
         final_grade
@@ -211,6 +294,22 @@ export const getEnrollRequest = /* GraphQL */ `
         section
         name
         credit_hours
+        department {
+          id
+          name
+          createdAt
+          updatedAt
+        }
+        instructor {
+          id
+          first_name
+          last_name
+          email
+          passwrd
+          user_type
+          createdAt
+          updatedAt
+        }
         createdAt
         updatedAt
       }
@@ -239,6 +338,40 @@ export const listEnrollRequests = /* GraphQL */ `
     listEnrollRequests(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
+        course {
+          id
+          section
+          name
+          credit_hours
+          department {
+            id
+            name
+            createdAt
+            updatedAt
+          }
+          instructor {
+            id
+            first_name
+            last_name
+            email
+            passwrd
+            user_type
+            createdAt
+            updatedAt
+          }
+          createdAt
+          updatedAt
+        }
+        school_user {
+          id
+          first_name
+          last_name
+          email
+          passwrd
+          user_type
+          createdAt
+          updatedAt
+        }
         is_enrolling
         createdAt
         updatedAt
@@ -256,6 +389,22 @@ export const getDeleteCourseRequest = /* GraphQL */ `
         section
         name
         credit_hours
+        department {
+          id
+          name
+          createdAt
+          updatedAt
+        }
+        instructor {
+          id
+          first_name
+          last_name
+          email
+          passwrd
+          user_type
+          createdAt
+          updatedAt
+        }
         createdAt
         updatedAt
       }
@@ -287,6 +436,40 @@ export const listDeleteCourseRequests = /* GraphQL */ `
     ) {
       items {
         id
+        course {
+          id
+          section
+          name
+          credit_hours
+          department {
+            id
+            name
+            createdAt
+            updatedAt
+          }
+          instructor {
+            id
+            first_name
+            last_name
+            email
+            passwrd
+            user_type
+            createdAt
+            updatedAt
+          }
+          createdAt
+          updatedAt
+        }
+        head_instructor {
+          id
+          first_name
+          last_name
+          email
+          passwrd
+          user_type
+          createdAt
+          updatedAt
+        }
         createdAt
         updatedAt
       }
@@ -330,6 +513,16 @@ export const listCreateCourseRequests = /* GraphQL */ `
         id
         course_name
         course_section
+        head_instructor {
+          id
+          first_name
+          last_name
+          email
+          passwrd
+          user_type
+          createdAt
+          updatedAt
+        }
         createdAt
         updatedAt
       }
