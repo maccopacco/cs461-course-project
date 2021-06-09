@@ -24,22 +24,19 @@ export default class Signin extends Component {
 
     render() {
         return <>
-            <p>{this.hasUser() ? userFullName(this.props.user) : "Noone signed in" }</p>
-            <div>
-                <Popup
-                    ref={this.closePopup} trigger={
+            <p>{this.hasUser() ? userFullName(this.props.user) : "Noone signed in"}</p>
+            <div className='verticalGroup'>
+                <Popup className='vertical'
+                       ref={this.closePopup} trigger={
                     <button>
                         {"Sign " + (this.hasUser() ? "out" : "in")}
                     </button>
                 } position="right center"
-                    onOpen={e => this.onSigninClick()}>
+                       onOpen={e => this.onSigninClick()}>
                     {this.getSignInDialog()}
                 </Popup>
-            </div>
-            <div>
+
                 <button onClick={() => this.debugCreateUser()}>Create user</button>
-            </div>
-            <div>
                 <button onClick={() => this.debugDeleteUser()}>Delete</button>
             </div>
         </>
@@ -123,7 +120,7 @@ export default class Signin extends Component {
                     } else {
                         toast.error("Invalid password")
                     }
-                }).catch(function(error) {
+                }).catch(function (error) {
                     bad()
                     console.error("Inner query with passwrd", error)
                 })
