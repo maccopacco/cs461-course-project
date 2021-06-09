@@ -5,7 +5,7 @@ import {graphqlOperation} from "@aws-amplify/api-graphql";
 import {API} from "@aws-amplify/api";
 import {toast} from "react-toastify";
 import {ActionIcon} from "./ActionIcon";
-import {createSchoolUser, updateSchoolUser} from "../../graphql/mutations";
+import {createSchoolUser, deleteSchoolUser, updateSchoolUser} from "../../graphql/mutations";
 import {getRandomInt} from "../Utilities";
 import Popup from "reactjs-popup";
 
@@ -81,8 +81,12 @@ export default class DataPage extends Component {
                     case RegistrarOptions.EDIT_USERS:
                         return [{
                             icon: () => <ActionIcon text="Rst Pswd"/>,
-                            tooltip: "Save user",
+                            tooltip: "Reset password",
                             onClick: (event, rowData) => this.createNewPassword(rowData, this)
+                        }, {
+                            icon: () => <ActionIcon text="Del"/>,
+                            tooltip: "Delete user",
+                            onClick: (event, rowData) => this.deleteUser(rowData,this)
                         }]
                 }
                 break;
@@ -91,6 +95,22 @@ export default class DataPage extends Component {
         }
         return []
     }
+
+    deleteUser(rowData, context) {
+        API.graphql(graphqlOperation(deleteSchoolUser, {
+            input: {
+                id: rowData.id
+            }
+        })).then(function(){
+            toast.info("User deleted")
+            context.registrarShowUsers(context)
+        }).catch(function(error) {
+            const m = "Could not delete user"
+            toast.error(m)
+            console.error(m, error)
+        })
+    }
+
 
     createNewPassword(rowData, context) {
         const randomPassword = this.createPassword()
@@ -101,8 +121,7 @@ export default class DataPage extends Component {
             }
         })).then(function () {
             context.registrarShowUsers(context)
-            toast.info('updated')
-            console.log('updated')
+            alert(`Password updated: ${randomPassword}`)
         }).catch(function (error) {
             let m = 'Cannot update password';
             toast.error(m)
@@ -207,14 +226,14 @@ export default class DataPage extends Component {
                 user_type: user_type,
                 passwrd: this.createPassword()
             }
-        })).then(function(data) {
+        })).then(function (data) {
             const user = data.data.createSchoolUser
             console.log('New user:', user)
             context.registrarShowUsers(context)
             alert(`Password is ${user.passwrd}`)
-        }).catch(function(error) {
+        }).catch(function (error) {
             const m = "Could not generate user"
-            console.error(m,error)
+            console.error(m, error)
             toast.error(m)
         })
     }
