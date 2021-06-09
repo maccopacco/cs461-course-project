@@ -51,6 +51,7 @@ export const createSchoolUser = /* GraphQL */ `
       last_name
       email
       passwrd
+      user_type
       createdAt
       updatedAt
     }
@@ -67,6 +68,7 @@ export const updateSchoolUser = /* GraphQL */ `
       last_name
       email
       passwrd
+      user_type
       createdAt
       updatedAt
     }
@@ -83,195 +85,7 @@ export const deleteSchoolUser = /* GraphQL */ `
       last_name
       email
       passwrd
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const createStudent = /* GraphQL */ `
-  mutation CreateStudent(
-    $input: CreateStudentInput!
-    $condition: ModelStudentConditionInput
-  ) {
-    createStudent(input: $input, condition: $condition) {
-      school_user {
-        id
-        first_name
-        last_name
-        email
-        passwrd
-        createdAt
-        updatedAt
-      }
-      id
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const updateStudent = /* GraphQL */ `
-  mutation UpdateStudent(
-    $input: UpdateStudentInput!
-    $condition: ModelStudentConditionInput
-  ) {
-    updateStudent(input: $input, condition: $condition) {
-      school_user {
-        id
-        first_name
-        last_name
-        email
-        passwrd
-        createdAt
-        updatedAt
-      }
-      id
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const deleteStudent = /* GraphQL */ `
-  mutation DeleteStudent(
-    $input: DeleteStudentInput!
-    $condition: ModelStudentConditionInput
-  ) {
-    deleteStudent(input: $input, condition: $condition) {
-      school_user {
-        id
-        first_name
-        last_name
-        email
-        passwrd
-        createdAt
-        updatedAt
-      }
-      id
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const createInstructor = /* GraphQL */ `
-  mutation CreateInstructor(
-    $input: CreateInstructorInput!
-    $condition: ModelInstructorConditionInput
-  ) {
-    createInstructor(input: $input, condition: $condition) {
-      school_user {
-        id
-        first_name
-        last_name
-        email
-        passwrd
-        createdAt
-        updatedAt
-      }
-      id
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const updateInstructor = /* GraphQL */ `
-  mutation UpdateInstructor(
-    $input: UpdateInstructorInput!
-    $condition: ModelInstructorConditionInput
-  ) {
-    updateInstructor(input: $input, condition: $condition) {
-      school_user {
-        id
-        first_name
-        last_name
-        email
-        passwrd
-        createdAt
-        updatedAt
-      }
-      id
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const deleteInstructor = /* GraphQL */ `
-  mutation DeleteInstructor(
-    $input: DeleteInstructorInput!
-    $condition: ModelInstructorConditionInput
-  ) {
-    deleteInstructor(input: $input, condition: $condition) {
-      school_user {
-        id
-        first_name
-        last_name
-        email
-        passwrd
-        createdAt
-        updatedAt
-      }
-      id
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const createRegistrar = /* GraphQL */ `
-  mutation CreateRegistrar(
-    $input: CreateRegistrarInput!
-    $condition: ModelRegistrarConditionInput
-  ) {
-    createRegistrar(input: $input, condition: $condition) {
-      school_user {
-        id
-        first_name
-        last_name
-        email
-        passwrd
-        createdAt
-        updatedAt
-      }
-      id
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const updateRegistrar = /* GraphQL */ `
-  mutation UpdateRegistrar(
-    $input: UpdateRegistrarInput!
-    $condition: ModelRegistrarConditionInput
-  ) {
-    updateRegistrar(input: $input, condition: $condition) {
-      school_user {
-        id
-        first_name
-        last_name
-        email
-        passwrd
-        createdAt
-        updatedAt
-      }
-      id
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const deleteRegistrar = /* GraphQL */ `
-  mutation DeleteRegistrar(
-    $input: DeleteRegistrarInput!
-    $condition: ModelRegistrarConditionInput
-  ) {
-    deleteRegistrar(input: $input, condition: $condition) {
-      school_user {
-        id
-        first_name
-        last_name
-        email
-        passwrd
-        createdAt
-        updatedAt
-      }
-      id
+      user_type
       createdAt
       updatedAt
     }
@@ -287,6 +101,11 @@ export const createDepartment = /* GraphQL */ `
       name
       department_head {
         id
+        first_name
+        last_name
+        email
+        passwrd
+        user_type
         createdAt
         updatedAt
       }
@@ -305,6 +124,11 @@ export const updateDepartment = /* GraphQL */ `
       name
       department_head {
         id
+        first_name
+        last_name
+        email
+        passwrd
+        user_type
         createdAt
         updatedAt
       }
@@ -323,6 +147,11 @@ export const deleteDepartment = /* GraphQL */ `
       name
       department_head {
         id
+        first_name
+        last_name
+        email
+        passwrd
+        user_type
         createdAt
         updatedAt
       }
@@ -349,6 +178,11 @@ export const createCourse = /* GraphQL */ `
       }
       instructor {
         id
+        first_name
+        last_name
+        email
+        passwrd
+        user_type
         createdAt
         updatedAt
       }
@@ -375,6 +209,11 @@ export const updateCourse = /* GraphQL */ `
       }
       instructor {
         id
+        first_name
+        last_name
+        email
+        passwrd
+        user_type
         createdAt
         updatedAt
       }
@@ -401,6 +240,11 @@ export const deleteCourse = /* GraphQL */ `
       }
       instructor {
         id
+        first_name
+        last_name
+        email
+        passwrd
+        user_type
         createdAt
         updatedAt
       }
@@ -418,6 +262,11 @@ export const createCourseReport = /* GraphQL */ `
       id
       student {
         id
+        first_name
+        last_name
+        email
+        passwrd
+        user_type
         createdAt
         updatedAt
       }
@@ -425,6 +274,11 @@ export const createCourseReport = /* GraphQL */ `
       course_section
       instructor {
         id
+        first_name
+        last_name
+        email
+        passwrd
+        user_type
         createdAt
         updatedAt
       }
@@ -445,6 +299,11 @@ export const updateCourseReport = /* GraphQL */ `
       id
       student {
         id
+        first_name
+        last_name
+        email
+        passwrd
+        user_type
         createdAt
         updatedAt
       }
@@ -452,6 +311,11 @@ export const updateCourseReport = /* GraphQL */ `
       course_section
       instructor {
         id
+        first_name
+        last_name
+        email
+        passwrd
+        user_type
         createdAt
         updatedAt
       }
@@ -472,6 +336,11 @@ export const deleteCourseReport = /* GraphQL */ `
       id
       student {
         id
+        first_name
+        last_name
+        email
+        passwrd
+        user_type
         createdAt
         updatedAt
       }
@@ -479,6 +348,11 @@ export const deleteCourseReport = /* GraphQL */ `
       course_section
       instructor {
         id
+        first_name
+        last_name
+        email
+        passwrd
+        user_type
         createdAt
         updatedAt
       }
@@ -511,6 +385,7 @@ export const createEnrollRequest = /* GraphQL */ `
         last_name
         email
         passwrd
+        user_type
         createdAt
         updatedAt
       }
@@ -541,6 +416,7 @@ export const updateEnrollRequest = /* GraphQL */ `
         last_name
         email
         passwrd
+        user_type
         createdAt
         updatedAt
       }
@@ -571,6 +447,7 @@ export const deleteEnrollRequest = /* GraphQL */ `
         last_name
         email
         passwrd
+        user_type
         createdAt
         updatedAt
       }
@@ -597,6 +474,11 @@ export const createDeleteCourseRequest = /* GraphQL */ `
       }
       head_instructor {
         id
+        first_name
+        last_name
+        email
+        passwrd
+        user_type
         createdAt
         updatedAt
       }
@@ -622,6 +504,11 @@ export const updateDeleteCourseRequest = /* GraphQL */ `
       }
       head_instructor {
         id
+        first_name
+        last_name
+        email
+        passwrd
+        user_type
         createdAt
         updatedAt
       }
@@ -647,6 +534,11 @@ export const deleteDeleteCourseRequest = /* GraphQL */ `
       }
       head_instructor {
         id
+        first_name
+        last_name
+        email
+        passwrd
+        user_type
         createdAt
         updatedAt
       }
@@ -666,6 +558,11 @@ export const createCreateCourseRequest = /* GraphQL */ `
       course_section
       head_instructor {
         id
+        first_name
+        last_name
+        email
+        passwrd
+        user_type
         createdAt
         updatedAt
       }
@@ -685,6 +582,11 @@ export const updateCreateCourseRequest = /* GraphQL */ `
       course_section
       head_instructor {
         id
+        first_name
+        last_name
+        email
+        passwrd
+        user_type
         createdAt
         updatedAt
       }
@@ -704,6 +606,11 @@ export const deleteCreateCourseRequest = /* GraphQL */ `
       course_section
       head_instructor {
         id
+        first_name
+        last_name
+        email
+        passwrd
+        user_type
         createdAt
         updatedAt
       }

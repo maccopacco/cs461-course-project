@@ -36,6 +36,7 @@ export const getSchoolUser = /* GraphQL */ `
       last_name
       email
       passwrd
+      user_type
       createdAt
       updatedAt
     }
@@ -54,108 +55,7 @@ export const listSchoolUsers = /* GraphQL */ `
         last_name
         email
         passwrd
-        createdAt
-        updatedAt
-      }
-      nextToken
-    }
-  }
-`;
-export const getStudent = /* GraphQL */ `
-  query GetStudent($id: ID!) {
-    getStudent(id: $id) {
-      school_user {
-        id
-        first_name
-        last_name
-        email
-        passwrd
-        createdAt
-        updatedAt
-      }
-      id
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const listStudents = /* GraphQL */ `
-  query ListStudents(
-    $filter: ModelStudentFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listStudents(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        createdAt
-        updatedAt
-      }
-      nextToken
-    }
-  }
-`;
-export const getInstructor = /* GraphQL */ `
-  query GetInstructor($id: ID!) {
-    getInstructor(id: $id) {
-      school_user {
-        id
-        first_name
-        last_name
-        email
-        passwrd
-        createdAt
-        updatedAt
-      }
-      id
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const listInstructors = /* GraphQL */ `
-  query ListInstructors(
-    $filter: ModelInstructorFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listInstructors(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        createdAt
-        updatedAt
-      }
-      nextToken
-    }
-  }
-`;
-export const getRegistrar = /* GraphQL */ `
-  query GetRegistrar($id: ID!) {
-    getRegistrar(id: $id) {
-      school_user {
-        id
-        first_name
-        last_name
-        email
-        passwrd
-        createdAt
-        updatedAt
-      }
-      id
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const listRegistrars = /* GraphQL */ `
-  query ListRegistrars(
-    $filter: ModelRegistrarFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listRegistrars(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
+        user_type
         createdAt
         updatedAt
       }
@@ -170,6 +70,11 @@ export const getDepartment = /* GraphQL */ `
       name
       department_head {
         id
+        first_name
+        last_name
+        email
+        passwrd
+        user_type
         createdAt
         updatedAt
       }
@@ -210,6 +115,11 @@ export const getCourse = /* GraphQL */ `
       }
       instructor {
         id
+        first_name
+        last_name
+        email
+        passwrd
+        user_type
         createdAt
         updatedAt
       }
@@ -243,6 +153,11 @@ export const getCourseReport = /* GraphQL */ `
       id
       student {
         id
+        first_name
+        last_name
+        email
+        passwrd
+        user_type
         createdAt
         updatedAt
       }
@@ -250,6 +165,11 @@ export const getCourseReport = /* GraphQL */ `
       course_section
       instructor {
         id
+        first_name
+        last_name
+        email
+        passwrd
+        user_type
         createdAt
         updatedAt
       }
@@ -300,6 +220,7 @@ export const getEnrollRequest = /* GraphQL */ `
         last_name
         email
         passwrd
+        user_type
         createdAt
         updatedAt
       }
@@ -340,6 +261,11 @@ export const getDeleteCourseRequest = /* GraphQL */ `
       }
       head_instructor {
         id
+        first_name
+        last_name
+        email
+        passwrd
+        user_type
         createdAt
         updatedAt
       }
@@ -376,6 +302,11 @@ export const getCreateCourseRequest = /* GraphQL */ `
       course_section
       head_instructor {
         id
+        first_name
+        last_name
+        email
+        passwrd
+        user_type
         createdAt
         updatedAt
       }

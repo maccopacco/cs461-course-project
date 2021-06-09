@@ -3,33 +3,23 @@ type Item @model {
     name: String!
 }
 
+enum UserType {
+    STUDENT, INSTRUCTOR, REGISTRAR
+}
+
 type SchoolUser @model {
     id: ID!
     first_name: String!
     last_name: String!
     email: String!
     passwrd: String!
-}
-
-type Student @model {
-    school_user: SchoolUser! @connection
-    id: ID!
-}
-
-type Instructor @model {
-    school_user: SchoolUser! @connection
-    id: ID!
-}
-
-type Registrar @model {
-    school_user: SchoolUser! @connection
-    id: ID!
+    user_type: UserType!
 }
 
 type Department @model {
     id: ID!
     name: String!
-    department_head: Instructor
+    department_head: SchoolUser @connection
 }
 
 type Course @model {
@@ -38,15 +28,15 @@ type Course @model {
     name: String!
     credit_hours: Int!
     department: Department!
-    instructor: Instructor!
+    instructor: SchoolUser!
 }
 
 type CourseReport @model {
     id: ID!
-    student: Student! @connection
+    student: SchoolUser! @connection
     course_name: String!
     course_section: Int!
-    instructor: Instructor! @connection
+    instructor: SchoolUser! @connection
     year: Int!
     attempts: Int!
     final_grade: Float!
@@ -62,12 +52,12 @@ type EnrollRequest @model {
 type DeleteCourseRequest @model {
     id: ID!
     course: Course! @connection
-    head_instructor: Instructor! @connection
+    head_instructor: SchoolUser! @connection
 }
 
 type CreateCourseRequest @model {
     id: ID!
     course_name: String!
     course_section: Int!
-    head_instructor: Instructor! @connection
+    head_instructor: SchoolUser! @connection
 }

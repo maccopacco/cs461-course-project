@@ -7,7 +7,7 @@ import {dataToUsers, userFullName} from "../Utilities";
 import {MINIMUM_EMAIL_LENGTH, MINIMUM_PASSWORD_LENGTH} from "../Constants";
 import {toast} from "react-toastify";
 import {createSchoolUser, deleteSchoolUser} from "../../graphql/mutations";
-import {listSchoolUsersNoPassword} from "../../graphql/my_queries";
+import {listSchoolUsers} from "../../graphql/queries";
 
 
 export default class Signin extends Component {
@@ -38,6 +38,7 @@ export default class Signin extends Component {
 
                 <button onClick={() => this.debugCreateUser()}>Create user</button>
                 <button onClick={() => this.debugDeleteUser()}>Delete</button>
+                <button onClick={() => this.debugGetUsers()}>Get users</button>
             </div>
         </>
     }
@@ -91,7 +92,7 @@ export default class Signin extends Component {
             return
 
         //listSchoolUsersNoPassword
-        API.graphql(graphqlOperation(listSchoolUsersNoPassword, {
+        API.graphql(graphqlOperation(listSchoolUsers, {
             filter: {
                 email: {
                     eq: email
@@ -104,7 +105,7 @@ export default class Signin extends Component {
             if (l <= 0) {
                 toast.error("Invalid email")
             } else if (l === 1) {
-                API.graphql(graphqlOperation(listSchoolUsersNoPassword, {
+                API.graphql(graphqlOperation(listSchoolUsers, {
                     filter: {
                         email: {
                             eq: email
@@ -140,23 +141,32 @@ export default class Signin extends Component {
     }
 
     debugDeleteUser() {
-        API.graphql(graphqlOperation(listSchoolUsersNoPassword))
+        API.graphql(graphqlOperation(listSchoolUsers))
             .then(function (data) {
                 const users = dataToUsers(data)
-                console.log("Users", users)
+                console.log('users', users)
                 for (let user of users) {
                     API.graphql(graphqlOperation(deleteSchoolUser, {
                         input: {
                             id: user.id
                         }
-                    })).then(() => console.log("Bye")).catch((err) => console.error("Not bye", err))
+                    })).then(() => console.log('bye user'))
+                        .catch((err) => console.error('not bye user', err))
                 }
-            }).catch(function (err) {
-            toast.error("Bye")
-            console.error("Nah", err)
-        })
+            })
+            .catch(function (err) {
+                console.error('could not delete school users', err)
+            })
     }
 
+    debugGetUsers() {
+        API.graphql(graphqlOperation(listSchoolUsers))
+            .then(function (data) {
+                const users = dataToUsers(data)
+                console.log('got users', users)
+            })
+            .catch((error) => console.error('Could not get school users', error))
+    }
 
     debugCreateUser() {
         API.graphql(graphqlOperation(createSchoolUser, {
@@ -164,9 +174,12 @@ export default class Signin extends Component {
                 first_name: "Max",
                 last_name: "Dreher",
                 email: "dreh4899@kettering.edu",
-                passwrd: "not secure"
+                passwrd: "not secure",
+                user_type: "STUDENT"
             }
-        })).then(() => toast.info("New user created"))
+        })).then(function (data) {
+            toast.info('New user saved')
+        })
             .catch(function (err) {
                 toast.error("Could not save user")
                 console.error("Could not save user", err)

@@ -8,11 +8,15 @@ export default class Main extends Component {
         this.state = {user: null}
     }
 
+    async setUser(newUser) {
+        this.setState({user: newUser})
+    }
+
     render() {
         return <>
             <div className='mainItem'>
                 <div className='signinBox'>
-                    <Signin user={this.state.user} setUser={(user) => this.setState({user: user})}>
+                    <Signin user={this.state.user} setUser={(user) => this.setUser(user)}>
                     </Signin>
                 </div>
                 <div>
