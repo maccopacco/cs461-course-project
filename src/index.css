@@ -24,6 +24,11 @@ body {
     margin: 5%;
 }
 
+.actionTextSize {
+    font-size: 15px;
+    color: RED;
+}
+
 .mainItem > div {
     border: lightgray 5px solid;
     padding: 5px;

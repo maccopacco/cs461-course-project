@@ -37,7 +37,7 @@ export default class Signin extends Component {
                 </Popup>
 
                 <button onClick={() => this.debugCreateUser()}>Create user</button>
-                <button onClick={() => this.debugDeleteUser()}>Delete</button>
+                <button onClick={() => this.debugDeleteUser()}>Delete user</button>
                 <button onClick={() => this.debugGetUsers()}>Get users</button>
             </div>
         </>
@@ -175,7 +175,7 @@ export default class Signin extends Component {
                 last_name: "Dreher",
                 email: "dreh4899@kettering.edu",
                 passwrd: "not secure",
-                user_type: "STUDENT"
+                user_type: "REGISTRAR"
             }
         })).then(function (data) {
             toast.info('New user saved')

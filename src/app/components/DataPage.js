@@ -1,9 +1,12 @@
 import {Component} from "react";
 import MaterialTable from "material-table";
+import {listSchoolUsers} from "../../graphql/queries";
 import {graphqlOperation} from "@aws-amplify/api-graphql";
-import {createDepartment, createDepartmentHead, deleteDepartment, deleteDepartmentHead} from "../../graphql/mutations";
 import {API} from "@aws-amplify/api";
-import {listDepartmentHeads, listDepartments} from "../../graphql/queries";
+import {toast} from "react-toastify";
+import {ActionIcon} from "./ActionIcon";
+import {updateSchoolUser} from "../../graphql/mutations";
+import {getRandomInt} from "../Utilities";
 
 
 //Enums for different views (like showing classes, previous course reports, blah blah blah)
@@ -15,35 +18,95 @@ const InstructorOptions = {
     DEFAULT_OPTION: 0
 }
 const RegistrarOptions = {
-    DEFAULT_OPTION: 0
+    EDIT_USERS: 0
 }
 
 export default class DataPage extends Component {
 
-
     constructor(props) {
         super(props);
         this.state = {
-            data: [],
+            data: [{value: "yes"}],
             studentOption: StudentOptions.SHOW_CLASSES,
             instructorOption: InstructorOptions.DEFAULT_OPTION,
-            RegistrarOptions: RegistrarOptions.DEFAULT_OPTION
+            registrarOptions: RegistrarOptions.EDIT_USERS
         }
     }
 
     /**
-     * Coverts usertype, and current option to list of column values
+     * Coverts usertype and current option to list of column values
      * @returns {{field: string, title: string}[]|*[]}
      */
     getColumnsForType() {
         switch (this.userType()) {
-            case "Student":
+            case "Student": {
                 switch (this.state.studentOption) {
                     case StudentOptions.SHOW_CLASSES:
-                        return [{title: "Class Name", field: 'className'}]
                 }
+                break;
+            }
+            case "Registrar": {
+                switch (this.state.registrarOptions) {
+                    case RegistrarOptions.EDIT_USERS:
+                        return [{title: 'User Type', field: 'user_type'},
+                            {title: 'ID', field: 'id'},
+                            {title: 'Email', field: 'email'},
+                            {title: 'First Name', field: 'first_name'},
+                            {title: 'Last Name', field: 'last_name'},
+                            // {title: 'Password', field: 'passwrd'}
+                        ]
+                }
+                break;
+            }
         }
         return []
+    }
+
+    /**
+     * Converts usertype and current option to list of actions that can be clicked for each row
+     * @returns {{onClick: (function(*, *): void), icon: (function()), tooltip: string}[]|*[]}
+     */
+    getActionsForType() {
+        switch (this.userType()) {
+            case "Student": {
+                switch (this.state.studentOption) {
+                    case StudentOptions.SHOW_CLASSES:
+                        return []
+                }
+                break;
+            }
+            case "Registrar": {
+                switch (this.state.registrarOptions) {
+                    case RegistrarOptions.EDIT_USERS:
+                        return [{
+                            icon: () => <ActionIcon text="Rst Pswd"/>,
+                            tooltip: "Save user",
+                            onClick: (event, rowData) => this.createNewPassword(rowData, this)
+                        }]
+                }
+                break;
+            }
+
+        }
+        return []
+    }
+
+    createNewPassword(rowData, context) {
+        const randomPassword = getRandomInt(100_000_000).toString()
+        API.graphql(graphqlOperation(updateSchoolUser, {
+            input: {
+                id: rowData.id,
+                passwrd: randomPassword
+            }
+        })).then(function () {
+            context.registrarShowUsers(context)
+            toast.info('updated')
+            console.log('updated')
+        }).catch(function (error) {
+            let m = 'Cannot update password';
+            toast.error(m)
+            console.error(m, error)
+        })
     }
 
     /**
@@ -64,108 +127,45 @@ export default class DataPage extends Component {
      * Gets buttons that are shown for each user type
      */
     buttonsForType() {
-        const here = this
         let buttons = []
+        const here = this
         switch (this.userType()) {
             case "Student": {
-                buttons = [
-                    {
-                        title: "Show classes", onClick: function () {
-                            here.setState({studentOption: StudentOptions.SHOW_CLASSES})
-                        }
-                    },
-                    {
-                        title: "Show course reports", onClick: function () {
-                            here.setState({studentOption: StudentOptions.SHOW_COURSE_REPORTS})
-                        }
-                    }, {
-                        title: "Create Department", onClick: function () {
-                            here.createDepartment()
-                        }
-                    }, {
-                        title: "Show departments", onClick: function () {
-                            here.showDepartments()
-                        }
-                    }, {
-                        title: "Delete departments", onClick: function () {
-                            here.deleteDepartments()
-                        },
-                    }, {
-                        title: "Delete heads", onClick: function() {
-                            here.deleteHeads()
-                        }
-                    }
-                ]
-                break;
+                buttons = [{
+                    title: "Show classes", onClick: () => this.studentShowClasses(here)
+                }, {
+                    title: "Show course reports", onClick: () => this.studentShowCourseReports(here)
+                }]
+            }
+            case "Registrar": {
+                buttons = [{
+                    title: "Show users", onClick: () => this.registrarShowUsers(here)
+                }]
             }
         }
         return buttons.map(this.makeButton)
     }
 
-    async deleteDepartments() {
-        const departments = await this.showDepartments()
-        console.log('gonna delete, got these', departments)
-        for (let d of departments) {
-            API.graphql(graphqlOperation(deleteDepartment, {
-                input: {
-                    id: d.id
-                }
-            })).then(() => console.log('bye'))
-                .catch((error) => console.error('not bye', error))
-        }
-    }
-
-    async showDepartments() {
-        const data = await API.graphql(graphqlOperation(listDepartments))
-            .catch((error) => console.error('no departments', error))
-        let departments = data.data.listDepartments.items;
-        console.log('Departments', departments)
-        return departments
-    }
-
-    async showDepartmentHeads() {
-        const data = await API.graphql(graphqlOperation(listDepartmentHeads))
-        console.log('data', data)
-        const heads = data.data.listDepartmentHeads.items
-        console.log('heads', heads)
-        return heads
-    }
-
-    async deleteHeads() {
-        const heads = await this.showDepartmentHeads()
-        for (let h of heads) {
-            await API.graphql(graphqlOperation(deleteDepartmentHead, {
-                input: {
-                    id: h.id
-                }
-            }))
-        }
-        await this.showDepartmentHeads()
-    }
-
-    createDepartment() {
-        const here = this
-        API.graphql(graphqlOperation(createDepartment, {
-            input: {
-                name: "Math",
-            }
-        })).then(async function (data) {
-            // await here.deleteHeads()
-
-            const department = data.data.createDepartment
-            console.log('created department', department)
-            API.graphql(graphqlOperation(createDepartmentHead, {
-                input: {
-                    // department: department.id,
-                    // head: here.props.user.id
-                    departmentHeadDepartmentId: department.id,
-                    departmentHeadHeadId: here.props.user.id
-                }
-            })).then(function () {
-
+    registrarShowUsers(context) {
+        context.setState({registrarOptions: RegistrarOptions.EDIT_USERS, data: null})
+        API.graphql(graphqlOperation(listSchoolUsers))
+            .then(function (data) {
+                const users = data.data.listSchoolUsers.items
+                context.setState({data: users})
             })
-        })
-            .catch((error) => console.error('could not create department', error))
+            .catch(function (error) {
+                let m = "Can not load users";
+                toast.error(m)
+                console.error(m, error)
+            })
+    }
+
+    studentShowCourseReports(context) {
+        context.setState({studentOption: StudentOptions.SHOW_COURSE_REPORTS})
+    }
+
+    studentShowClasses(context) {
+        context.setState({studentOption: StudentOptions.SHOW_CLASSES})
     }
 
     makeButton(item, index) {
@@ -183,6 +183,7 @@ export default class DataPage extends Component {
                     <MaterialTable
                         columns={this.getColumnsForType()}
                         data={this.state.data}
+                        actions={this.getActionsForType()}
                         title="Results"
                     />
                 </div>

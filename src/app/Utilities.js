@@ -9,3 +9,7 @@ export function dataToStudents(data) {
 export function userFullName(user){
     return `${user.first_name} ${user.last_name}`
 }
+
+export function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
