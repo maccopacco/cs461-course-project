@@ -13,3 +13,12 @@ export function userFullName(user){
 export function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
+
+export function userType(u) {
+    if (u == null)
+        return null
+    const t = u.user_type
+    let s = t.toLocaleLowerCase()
+    s = s[0].toUpperCase() + s.slice(1)
+    return s
+}

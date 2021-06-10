@@ -9,10 +9,10 @@ import {
     createDepartment,
     createSchoolUser,
     deleteDepartment,
-    deleteSchoolUser,
+    deleteSchoolUser, updateDepartment,
     updateSchoolUser
 } from "../../graphql/mutations";
-import {getRandomInt} from "../Utilities";
+import {getRandomInt, userType} from "../Utilities";
 import Popup from "reactjs-popup";
 
 
@@ -26,7 +26,9 @@ const InstructorOptions = {
 }
 const RegistrarOptions = {
     EDIT_USERS: 0,
-    VIEW_DEPARTMENTS: 1
+    VIEW_DEPARTMENTS: 1,
+    ASSIGN_HEAD_STEP_1: 2,
+    ASSIGN_HEAD_STEP_2: 3,
 }
 
 export default class DataPage extends Component {
@@ -37,7 +39,8 @@ export default class DataPage extends Component {
             data: [{value: "yes"}],
             studentOption: StudentOptions.SHOW_CLASSES,
             instructorOptions: InstructorOptions.DEFAULT_OPTION,
-            registrarOptions: RegistrarOptions.EDIT_USERS
+            registrarOptions: RegistrarOptions.EDIT_USERS,
+            department_to_head: null,
         }
     }
 
@@ -55,6 +58,7 @@ export default class DataPage extends Component {
             }
             case "Registrar": {
                 switch (this.state.registrarOptions) {
+                    case RegistrarOptions.ASSIGN_HEAD_STEP_2:
                     case RegistrarOptions.EDIT_USERS: {
                         return [{title: 'User Type', field: 'user_type'},
                             {title: 'ID', field: 'id'},
@@ -64,6 +68,7 @@ export default class DataPage extends Component {
                             // {title: 'Password', field: 'passwrd'}
                         ]
                     }
+                    case RegistrarOptions.ASSIGN_HEAD_STEP_1: //intended fall through
                     case RegistrarOptions.VIEW_DEPARTMENTS: {
                         return [{title: 'Department name', field: 'name'}]
                     }
@@ -79,6 +84,7 @@ export default class DataPage extends Component {
      * @returns {{onClick: (function(*, *): void), icon: (function()), tooltip: string}[]|*[]}
      */
     getActionsForType() {
+        const here = this
         switch (this.userType()) {
             case "Student": {
                 switch (this.state.studentOption) {
@@ -106,6 +112,26 @@ export default class DataPage extends Component {
                             onClick: (event, rowData) => this.deleteDepartment(rowData, this)
                         }]
                     }
+                    case RegistrarOptions.ASSIGN_HEAD_STEP_1: {
+                        return [{
+                            icon: () => <ActionIcon text="Select"/>,
+                            tooltip: "Select department",
+                            onClick: function (e, row) {
+                                here.registrarShowUsers(here, false)
+                                here.setState({
+                                    registrarOptions: RegistrarOptions.ASSIGN_HEAD_STEP_2,
+                                    department_to_head: row
+                                })
+                            }
+                        }]
+                    }
+                    case RegistrarOptions.ASSIGN_HEAD_STEP_2: {
+                        return [{
+                            icon: () => <ActionIcon text="Select"/>,
+                            tooltip: "Select instructor",
+                            onClick: (e, row) => here.assignDepartmentHead(here, here.state.department_to_head, row)
+                        }]
+                    }
 
                 }
                 break;
@@ -119,6 +145,21 @@ export default class DataPage extends Component {
         }
         return []
     }
+
+    assignDepartmentHead(context, department, user) {
+        if (user.user_type === 'INSTRUCTOR') {
+            API.graphql(graphqlOperation(updateDepartment, {
+                input: {
+                    id: department.id,
+                    head: user
+                }
+            }))
+            context.registrarAssignDepartmentHead(context)
+        } else {
+            toast.error(`You can't make a ${userType(user)} a head instructor!`)
+        }
+    }
+
 
     deleteDepartment(rowData, context) {
         API.graphql(graphqlOperation(deleteDepartment, {
@@ -178,12 +219,7 @@ export default class DataPage extends Component {
      */
     userType() {
         const u = this.props.user
-        if (u == null)
-            return null
-        const t = u.user_type
-        let s = t.toLocaleLowerCase()
-        s = s[0].toUpperCase() + s.slice(1)
-        return s
+        return userType(u)
     }
 
     /**
@@ -220,7 +256,8 @@ export default class DataPage extends Component {
                     },
                     {
                         title: "Show departments", onClick: () => this.registrarShowDepartments(here)
-                    }]
+                    },
+                    {title: "Assign department head", onClick: () => this.registrarAssignDepartmentHead(here)}]
                 break;
             }
             case "Instructor" : {
@@ -242,6 +279,12 @@ export default class DataPage extends Component {
             }
         </Popup>
     }
+
+    registrarAssignDepartmentHead(context) {
+        context.setState({registrarOptions: RegistrarOptions.ASSIGN_HEAD_STEP_1})
+        context.registrarShowDepartments(context, false)
+    }
+
 
     createDepartmentPopup(context, popupRef) {
         const name = React.createRef()
@@ -377,8 +420,9 @@ export default class DataPage extends Component {
         return false
     }
 
-    registrarShowUsers(context) {
-        context.setState({registrarOptions: RegistrarOptions.EDIT_USERS, data: []})
+    registrarShowUsers(context, setOption = true) {
+        if (setOption)
+            context.setState({registrarOptions: RegistrarOptions.EDIT_USERS, data: []})
         API.graphql(graphqlOperation(listSchoolUsers))
             .then(function (data) {
                 const users = data.data.listSchoolUsers.items
@@ -391,12 +435,14 @@ export default class DataPage extends Component {
             })
     }
 
-    registrarShowDepartments(context) {
-        context.setState({registrarOptions: RegistrarOptions.VIEW_DEPARTMENTS, data: []})
+    registrarShowDepartments(context, setOption = true) {
+        if (setOption)
+            context.setState({registrarOptions: RegistrarOptions.VIEW_DEPARTMENTS, data: []})
 
         API.graphql(graphqlOperation(listDepartments))
             .then(function (data) {
                 const departments = data.data.listDepartments.items
+                console.log('departments', departments)
                 context.setState({data: departments})
             })
             .catch(function (error) {

@@ -24,7 +24,8 @@ export default class Signin extends Component {
 
     render() {
         return <>
-            <p>{this.hasUser() ? userFullName(this.props.user) : "Noone signed in"}</p>
+            <p>{this.hasUser() ? (userFullName(this.props.user)) : "Noone signed in"}</p>
+            <p>{this.hasUser() ? this.props.user.email : ""}</p>
             <div className='verticalGroup'>
                 <Popup className='vertical'
                        ref={this.closePopup} trigger={
