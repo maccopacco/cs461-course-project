@@ -5,8 +5,8 @@ import {graphqlOperation} from "@aws-amplify/api-graphql";
 import {API} from "@aws-amplify/api";
 import {dataToUsers, displayError, userFullName} from "../Utilities";
 import {toast} from "react-toastify";
-import {createSchoolUser, deleteSchoolUser} from "../../graphql/mutations";
-import {listSchoolUsers} from "../../graphql/queries";
+import {createSchoolUser, deleteSchoolUser, updateSchoolUser} from "../../graphql/mutations";
+import {getSchoolUser, listSchoolUsers} from "../../graphql/queries";
 
 
 export default class Signin extends Component {
@@ -36,11 +36,52 @@ export default class Signin extends Component {
                     {this.getSignInDialog()}
                 </Popup>
 
+                <Popup classname = 'passChange' ref={this.closePopup}  trigger={
+                    <button>Reset Password</button>
+                }position="right center"
+                    onOpen={e => this.onPassChange()}>
+                    {this.getPassChange()}
+                </Popup>
+
                 <button onClick={() => this.debugCreateUser()}>Create user</button>
                 <button onClick={() => this.debugDeleteUser()}>Delete user</button>
                 <button onClick={() => this.debugGetUsers()}>Get users</button>
             </div>
         </>
+    }
+
+    onPassChange(){
+        console.log('onPassChange')
+    }
+    getPassChange(){
+        if(this.hasUser()){
+            const npass = React.createRef()
+            return<>
+                <lable>New Password</lable>
+                <input ref={npass} id="npass"/>
+
+                <button onClick={() =>
+                this.resetPass(npass.current.value)}>Change</button>
+            </>
+        }else{
+            return null
+        }
+    }
+    resetPass(newp){
+        try{
+            if(newp.length > 4){
+                API.graphql(graphqlOperation(updateSchoolUser, {input: {passwrd: newp}}))//"Variable 'input' has coerced Null value for NonNull type 'ID!'"
+                console.log("password changed")
+                return true
+            }
+            this.closePopup.current.close()
+            return false
+        }catch(err){
+            const p = "password change unsuccessful"
+            toast.error(p)
+            console.error(p, err)
+        }
+        
     }
 
     onSigninClick() {
