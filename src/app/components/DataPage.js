@@ -12,6 +12,7 @@ import {
     registrarShowDepartments
 } from "../RegistrarDepartments";
 import {createCoursePopup, instructorCreateCourse} from "../InstructorCreateCourse";
+import {registrarDeleteCreateCourseRequest, registrarShowCreateCourseRequests} from "../RegistrarCreateCourse";
 
 
 export default class DataPage extends Component {
@@ -60,6 +61,11 @@ export default class DataPage extends Component {
                     case RegistrarOptions.VIEW_DEPARTMENTS: {
                         return [{title: 'Department name', field: 'name'},
                             {title: "Head instructor", field: 'head_name'}]
+                    }
+                    case RegistrarOptions.VIEW_CREATE_COURSE_REQUESTS: {
+                        return [{title: 'Course name', field: 'course_name'},
+                            {title: 'Section', field: 'course_section'},
+                            {title: 'Requestee', field: 'instructor_name'}]
                     }
                 }
                 break;
@@ -128,6 +134,13 @@ export default class DataPage extends Component {
                             onClick: (e, row) => assignDepartmentHead(here, here.state.department_to_head, row)
                         }]
                     }
+                    case RegistrarOptions.VIEW_CREATE_COURSE_REQUESTS: {
+                        return [{
+                            icon: () => <ActionIcon text="Delete"/>,
+                            tooltip: "Delete request",
+                            onClick: (e,row) => registrarDeleteCreateCourseRequest(here, row)
+                        }]
+                    }
 
                 }
                 break;
@@ -175,23 +188,21 @@ export default class DataPage extends Component {
                 break;
             }
             case "Registrar": {
-                buttons = [{
-                    title: "Show users", onClick: () => registrarShowUsers(here)
-                }, {
-                    popup: popupHelper('createUserPopup',
-                        'Create user',
-                        (ref) => createUserPopup(here, ref)
-                    )
-                },
+                buttons = [
+                    {title: "Show users", onClick: () => registrarShowUsers(here)},
+                    {
+                        popup: popupHelper('createUserPopup',
+                            'Create user',
+                            (ref) => createUserPopup(here, ref))
+                    },
                     {
                         popup: popupHelper('createDepartmentPopup',
                             'Create department',
                             (ref) => createDepartmentPopup(here, ref))
                     },
-                    {
-                        title: "Show departments", onClick: () => registrarShowDepartments(here)
-                    },
+                    {title: "Show departments", onClick: () => registrarShowDepartments(here)},
                     {title: "Assign department head", onClick: () => registrarAssignDepartmentHead(here)},
+                    {title: "View create course requests", onClick: () => registrarShowCreateCourseRequests(here)}
                 ]
                 if (this.state.registrarOptions === RegistrarOptions.ASSIGN_HEAD_STEP_2) {
                     buttons.push({

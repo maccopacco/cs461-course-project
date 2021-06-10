@@ -15,4 +15,5 @@ export const RegistrarOptions = {
     VIEW_DEPARTMENTS: 1,
     ASSIGN_HEAD_STEP_1: 2,
     ASSIGN_HEAD_STEP_2: 3,
+    VIEW_CREATE_COURSE_REQUESTS: 4,
 }
