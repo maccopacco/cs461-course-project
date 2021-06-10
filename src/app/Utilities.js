@@ -1,3 +1,5 @@
+import {toast} from "react-toastify";
+
 export function dataToUsers(data) {
     return data.data.listSchoolUsers.items
 }
@@ -12,6 +14,11 @@ export function userFullName(user){
 
 export function getRandomInt(max) {
   return Math.floor(Math.random() * max);
+}
+
+export function displayError(message, error) {
+    toast.error(message)
+    console.error(message, error)
 }
 
 export function userType(u) {

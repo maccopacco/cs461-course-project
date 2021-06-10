@@ -3,7 +3,7 @@ import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import {graphqlOperation} from "@aws-amplify/api-graphql";
 import {API} from "@aws-amplify/api";
-import {dataToUsers, userFullName} from "../Utilities";
+import {dataToUsers, displayError, userFullName} from "../Utilities";
 import {MINIMUM_EMAIL_LENGTH, MINIMUM_PASSWORD_LENGTH} from "../Constants";
 import {toast} from "react-toastify";
 import {createSchoolUser, deleteSchoolUser} from "../../graphql/mutations";
@@ -85,7 +85,7 @@ export default class Signin extends Component {
     onTrySignin(email, password, onSignin) {
         console.log('Calling onTrySignin')
 
-        const bad = () => toast.error("Cannot get users right now... try again later")
+        const bad = (error) => displayError("Cannot get users right now... try again later", error)
 
         if (this.checkTooShort(email, "Email", MINIMUM_EMAIL_LENGTH))
             return
@@ -104,7 +104,7 @@ export default class Signin extends Component {
             const l = users.length
             console.log(`Amount of users with email: ${l}`)
             if (l <= 0) {
-                toast.error("Invalid email")
+                displayError("Invalid email")
             } else if (l === 1) {
                 API.graphql(graphqlOperation(listSchoolUsers, {
                     filter: {
@@ -120,18 +120,16 @@ export default class Signin extends Component {
                     if (user) {
                         onSignin(user)
                     } else {
-                        toast.error("Invalid password")
+                        displayError("Invalid password")
                     }
                 }).catch(function (error) {
-                    bad()
-                    console.error("Inner query with passwrd", error)
+                    bad(error)
                 })
             } else if (l > 1) {
-                toast.error("Too many users for email!")
+                displayError("Too many users for email")
             }
         }).catch(function (err) {
-            bad()
-            console.error(`Could not get users: `, err)
+            bad(err)
         })
 
     }
@@ -180,10 +178,8 @@ export default class Signin extends Component {
             }
         })).then(function (data) {
             toast.info('New user saved')
+        }).catch(function (err) {
+            displayError("Could not save user", err)
         })
-            .catch(function (err) {
-                toast.error("Could not save user")
-                console.error("Could not save user", err)
-            })
     }
 }

@@ -1,18 +1,19 @@
 import React, {Component} from "react";
 import MaterialTable from "material-table";
-import {listDepartments, listSchoolUsers} from "../../graphql/queries";
+import {listCreateCourseRequests, listDepartments, listSchoolUsers} from "../../graphql/queries";
 import {graphqlOperation} from "@aws-amplify/api-graphql";
 import {API} from "@aws-amplify/api";
 import {toast} from "react-toastify";
 import {ActionIcon} from "./ActionIcon";
 import {
+    createCreateCourseRequest,
     createDepartment,
     createSchoolUser,
     deleteDepartment,
     deleteSchoolUser, updateDepartment,
     updateSchoolUser
 } from "../../graphql/mutations";
-import {getRandomInt, userType} from "../Utilities";
+import {displayError, getRandomInt, userType} from "../Utilities";
 import Popup from "reactjs-popup";
 
 
@@ -22,7 +23,9 @@ const StudentOptions = {
     SHOW_COURSE_REPORTS: 1,
 }
 const InstructorOptions = {
-    DEFAULT_OPTION: 0
+    DEFAULT_OPTION: 0,
+    CREATE_COURSE_STEP_1: 1,
+    CREATE_COURSE_STEP_2: 2,
 }
 const RegistrarOptions = {
     EDIT_USERS: 0,
@@ -41,6 +44,8 @@ export default class DataPage extends Component {
             instructorOptions: InstructorOptions.DEFAULT_OPTION,
             registrarOptions: RegistrarOptions.EDIT_USERS,
             department_to_head: null,
+            department_to_create_course_in: null,
+            my_departments: null,
         }
     }
 
@@ -48,16 +53,19 @@ export default class DataPage extends Component {
      * Coverts usertype and current option to list of column values
      * @returns {{field: string, title: string}[]|*[]}
      */
-    getColumnsForType() {
-        switch (this.userType()) {
+    getColumnsForType(userType = this.userType(),
+                      studentOption = this.state.studentOption,
+                      registrarOption = this.state.registrarOptions,
+                      instructorOption = this.state.instructorOptions) {
+        switch (userType) {
             case "Student": {
-                switch (this.state.studentOption) {
+                switch (studentOption) {
                     case StudentOptions.SHOW_CLASSES:
                 }
                 break;
             }
             case "Registrar": {
-                switch (this.state.registrarOptions) {
+                switch (registrarOption) {
                     case RegistrarOptions.ASSIGN_HEAD_STEP_2:
                     case RegistrarOptions.EDIT_USERS: {
                         return [{title: 'User Type', field: 'user_type'},
@@ -75,6 +83,13 @@ export default class DataPage extends Component {
                     }
                 }
                 break;
+            }
+            case "Instructor": {
+                switch (instructorOption) {
+                    case InstructorOptions.CREATE_COURSE_STEP_1: {
+                        return this.getColumnsForType("Registrar", null, RegistrarOptions.VIEW_DEPARTMENTS)
+                    }
+                }
             }
         }
         return []
@@ -139,7 +154,24 @@ export default class DataPage extends Component {
             }
             case "Instructor": {
                 switch (this.state.instructorOptions) {
-
+                    case InstructorOptions.CREATE_COURSE_STEP_1:
+                        return [{
+                            icon: () => <ActionIcon text='Select'/>,
+                            tooltip: "Select department to create course in",
+                            onClick: function (e, row) {
+                                const myDepartments = here.state.my_departments.map((v) => v.id)
+                                const thisDepartment = row.id
+                                if (myDepartments.includes(thisDepartment)) {
+                                    here.setState({
+                                        department_to_create_course_in: row,
+                                        instructorOptions: InstructorOptions.CREATE_COURSE_STEP_2
+                                    })
+                                } else {
+                                    displayError("You can't create a class in a department you're not a head of")
+                                    here.setState({instructorOptions: null})
+                                }
+                            }
+                        }]
                 }
             }
 
@@ -148,22 +180,21 @@ export default class DataPage extends Component {
     }
 
     assignDepartmentHead(context, department, user) {
-        if (user.user_type === 'INSTRUCTOR') {
+        const userPresent = user != null
+        if (!userPresent || user.user_type === 'INSTRUCTOR') {
             API.graphql(graphqlOperation(updateDepartment, {
                 input: {
                     id: department.id,
-                    departmentHeadId: user.id
+                    departmentHeadId: userPresent ? user.id : null
                 }
             })).then(function () {
                 toast.info("Updated")
                 context.registrarAssignDepartmentHead(context)
             }).catch(function (error) {
-                const m = "Cannot update head instructor"
-                toast.error(m)
-                console.error(m, error)
+                displayError("Cannot update head instructor", error)
             })
         } else {
-            toast.error(`You can't make a ${userType(user)} a head instructor!`)
+            displayError(`You can't make a ${userType(user)} a head instructor!`)
         }
     }
 
@@ -177,9 +208,7 @@ export default class DataPage extends Component {
             toast.info("Department deleted")
             context.registrarShowDepartments(context)
         }).catch(function (error) {
-            const m = "Could not delete department"
-            toast.error(m)
-            console.error(m, error)
+            displayError("Could not delete department", error)
         })
     }
 
@@ -192,9 +221,7 @@ export default class DataPage extends Component {
             toast.info("User deleted")
             context.registrarShowUsers(context)
         }).catch(function (error) {
-            const m = "Could not delete user"
-            toast.error(m)
-            console.error(m, error)
+            displayError("Could not delete user", error)
         })
     }
 
@@ -210,9 +237,7 @@ export default class DataPage extends Component {
             context.registrarShowUsers(context)
             alert(`Password updated: ${randomPassword}`)
         }).catch(function (error) {
-            let m = 'Cannot update password';
-            toast.error(m)
-            console.error(m, error)
+            displayError('Cannot update password', error)
         })
     }
 
@@ -248,7 +273,6 @@ export default class DataPage extends Component {
                 buttons = [{
                     title: "Show users", onClick: () => this.registrarShowUsers(here)
                 }, {
-                    title: "Create user",
                     popup: this.popupHelper('createUserPopup',
                         'Create user',
                         // here.createUserPopup
@@ -256,7 +280,6 @@ export default class DataPage extends Component {
                     )
                 },
                     {
-                        title: "Create department",
                         popup: this.popupHelper('createDepartmentPopup',
                             'Create department',
                             (ref) => this.createDepartmentPopup(here, ref))
@@ -264,25 +287,123 @@ export default class DataPage extends Component {
                     {
                         title: "Show departments", onClick: () => this.registrarShowDepartments(here)
                     },
-                    {title: "Assign department head", onClick: () => this.registrarAssignDepartmentHead(here)}]
+                    {title: "Assign department head", onClick: () => this.registrarAssignDepartmentHead(here)},
+                ]
+                if (this.state.registrarOptions === RegistrarOptions.ASSIGN_HEAD_STEP_2) {
+                    buttons.push({
+                        title: 'Clear head professor',
+                        onClick: () => this.assignDepartmentHead(here, this.state.department_to_head, null)
+                    })
+                }
                 break;
             }
             case "Instructor" : {
-                buttons = []
+                buttons = [{
+                    title: 'Create course',
+                    onClick: () => here.instructorCreateCourse(here)
+                }]
+                if (this.state.instructorOptions === InstructorOptions.CREATE_COURSE_STEP_2) {
+                    buttons.push({
+                        popup: this.popupHelper(
+                            'createCoursePopup', 'Define section',
+                            (ref) => here.createCoursePopup(ref, here)
+                        )
+                    })
+                }
                 break;
             }
         }
         return buttons.map(this.makeButton)
     }
 
-    popupHelper(key, text, method) {
+    createCoursePopup(popupRef, context) {
+        const section = React.createRef()
+        return <div>
+            <p>{`Course name: ${context.state.department_to_create_course_in.name}`}</p>
+
+            <label htmlFor="section">Section: </label>
+            <input ref={section} id="section" type='number'/>
+            <button onClick={async function () {
+                const current = popupRef.current
+                if (await context.createCourseRequest(context, parseInt(section.current.value))) {
+                    current.close()
+                    context.setState({instructorOptions: InstructorOptions.DEFAULT_OPTION, data: null})
+                }
+            }}>
+                Submit
+            </button>
+        </div>
+    }
+
+    async createCourseRequest(context, section) {
+        if (section === '') {
+            displayError("Must choose a section to continue")
+            return false
+        }
+        try {
+            let courseName = context.state.department_to_create_course_in.name;
+
+            const alreadyExisting = await API.graphql(graphqlOperation(listCreateCourseRequests, {
+                filter: {
+                    course_name: {
+                        eq: courseName
+                    },
+                    course_section: {
+                        eq: section
+                    }
+                }
+            }))
+            if (alreadyExisting.data.listCreateCourseRequests.items.length > 0){
+                displayError("Already exists")
+                return false
+            }
+
+            await API.graphql(graphqlOperation(createCreateCourseRequest, {
+                input: {
+                    course_name: courseName,
+                    course_section: section,
+                    createCourseRequestHead_instructorId: context.props.user.id
+                }
+            }))
+            toast.info("Course request saved")
+            return true
+        } catch (e) {
+            displayError("Could not save course request", e)
+            return false
+        }
+    }
+
+    instructorCreateCourse(context) {
+        API.graphql(graphqlOperation(listDepartments))
+            .then(function (data) {
+                const departments = data.data.listDepartments.items
+                const myDepartments = departments.filter(function (value) {
+                    const head = value.head
+                    if (head == null) return false
+                    return head.id === context.props.user.id
+                })
+                if (myDepartments.length > 0) {
+                    context.setState({my_departments: myDepartments})
+                    context.setState({instructorOptions: InstructorOptions.CREATE_COURSE_STEP_1})
+                    context.registrarShowDepartments(context, false)
+                } else {
+                    displayError("You're not the head of any department, no can do")
+                }
+            })
+            .catch(function (error) {
+                displayError("Could not check if you were the department head", error)
+            })
+    }
+
+    popupHelper(key, text, producePopup, onClick = function () {
+    }) {
         const ref = React.createRef()
         return <Popup ref={ref} className='vertical'
                       key={key} trigger={
             <button>{text}</button>
-        } position="right center">
+        } onOpen={(e) => onClick(ref)} position="right center">
             {
-                method(ref)
+                producePopup(ref)
             }
         </Popup>
     }
@@ -312,7 +433,7 @@ export default class DataPage extends Component {
     async createDepartment(context, name) {
         try {
             if (name === '') {
-                toast.error("Department name cannot be empty!")
+                displayError("Department name cannot be empty!")
                 return false
             }
             const response = await API.graphql(graphqlOperation(listDepartments, {
@@ -325,7 +446,7 @@ export default class DataPage extends Component {
             console.log('response', response)
 
             if (response.data.listDepartments.items.length > 0) {
-                toast.error("Department already exists with that name")
+                displayError("Department already exists with that name")
                 return false
             }
             await API.graphql(graphqlOperation(createDepartment, {
@@ -337,12 +458,9 @@ export default class DataPage extends Component {
             context.registrarShowDepartments(context)
             return true
         } catch (error) {
-            const m = "Could not create department"
-            toast.error(m)
-            console.error(m, error)
+            displayError("Could not create department", error)
             return false
         }
-        return false
     }
 
     createUserPopup(context, popupRef) {
@@ -391,7 +509,7 @@ export default class DataPage extends Component {
     async createUser(context, email, first, last, user_type) {
         try {
             if (email === '' || first === '' || last === '') {
-                toast.error("Field(s) too short!")
+                displayError("Field(s) too short!")
                 return false
             }
             const response = await API.graphql(graphqlOperation(listSchoolUsers, {
@@ -402,7 +520,7 @@ export default class DataPage extends Component {
                 }
             }))
             if (response.data.listSchoolUsers.items.length > 0) {
-                toast.error("User already exists with that email!")
+                displayError("User already exists with that email!")
                 return false
             }
             const data = await API.graphql(graphqlOperation(createSchoolUser, {
@@ -420,9 +538,7 @@ export default class DataPage extends Component {
             alert(`Password is ${user.passwrd}`)
             return true
         } catch (error) {
-            const m = "Could not generate user"
-            console.error(m, error)
-            toast.error(m)
+            displayError("Could not generate user", error)
         }
         return false
     }
@@ -436,9 +552,7 @@ export default class DataPage extends Component {
                 context.setState({data: users})
             })
             .catch(function (error) {
-                let m = "Cannot load users";
-                toast.error(m)
-                console.error(m, error)
+                displayError("Cannot load users", error)
             })
     }
 
@@ -460,9 +574,7 @@ export default class DataPage extends Component {
                 context.setState({data: departments})
             })
             .catch(function (error) {
-                const m = "Cannot load departments"
-                toast.error(m)
-                console.error(m, error)
+                displayError("Cannot load departments", error)
             })
     }
 
