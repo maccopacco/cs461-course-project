@@ -15,21 +15,32 @@ export function createUserPopup(context, popupRef) {
     const user_type = React.createRef()
     return <>
         <div>
-            <label htmlFor="email">Email: </label>
-            <input ref={email} id="email"/>
+            <div>
+                <label htmlFor="email">Email: </label>
+                <input ref={email} id="email"/>
+            </div>
 
-            <label htmlFor="fname">First name: </label>
-            <input ref={fname} id="fname"/>
+            <div>
+                <label htmlFor="fname">First name: </label>
+                <input ref={fname} id="fname"/>
+            </div>
 
-            <label htmlFor="lname">Last name: </label>
-            <input ref={lname} id="lname"/>
 
-            <label htmlFor="user_type">User type: </label>
-            <select ref={user_type} id="user_type">
-                <option value="REGISTRAR">Registrar</option>
-                <option value="STUDENT">Student</option>
-                <option value="INSTRUCTOR">Instructor</option>
-            </select>
+            <div>
+                <label htmlFor="lname">Last name: </label>
+                <input ref={lname} id="lname"/>
+
+            </div>
+
+            <div>
+
+                <label htmlFor="user_type">User type: </label>
+                <select ref={user_type} id="user_type">
+                    <option value="REGISTRAR">Registrar</option>
+                    <option value="STUDENT">Student</option>
+                    <option value="INSTRUCTOR">Instructor</option>
+                </select>
+            </div>
 
         </div>
         <button onClick={function () {
