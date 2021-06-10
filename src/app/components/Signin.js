@@ -43,9 +43,9 @@ export default class Signin extends Component {
                     {this.getPassChange()}
                 </Popup>
 
-                <button onClick={() => this.debugCreateUser()}>Create user</button>
-                <button onClick={() => this.debugDeleteUser()}>Delete user</button>
-                <button onClick={() => this.debugGetUsers()}>Get users</button>
+                {/*<button onClick={() => this.debugCreateUser()}>Create user</button>*/}
+                {/*<button onClick={() => this.debugDeleteUser()}>Delete user</button>*/}
+                {/*<button onClick={() => this.debugGetUsers()}>Get users</button>*/}
             </div>
         </>
     }
