@@ -7,8 +7,9 @@ import {displayError} from "./Utilities";
 import React from "react";
 import {createCreateCourseRequest} from "../graphql/mutations";
 import {toast} from "react-toastify";
+import {instructorViewCreateCourseRequest} from "./InstructorViewCreateCourseRequest";
 
-export function instructorCreateCourse(context) {
+export function checkIfDepartmentHead(context, ifDepartmentHead) {
     API.graphql(graphqlOperation(listDepartments))
         .then(function (data) {
             const departments = data.data.listDepartments.items
@@ -18,9 +19,7 @@ export function instructorCreateCourse(context) {
                 return head.id === context.props.user.id
             })
             if (myDepartments.length > 0) {
-                context.setState({my_departments: myDepartments})
-                context.setState({instructorOptions: InstructorOptions.CREATE_COURSE_STEP_1})
-                registrarShowDepartments(context, false)
+                ifDepartmentHead(myDepartments)
             } else {
                 displayError("You're not the head of any department, no can do")
             }
@@ -28,6 +27,14 @@ export function instructorCreateCourse(context) {
         .catch(function (error) {
             displayError("Could not check if you were the department head", error)
         })
+}
+
+export function instructorCreateCourseRequest(context) {
+    checkIfDepartmentHead(context, function (myDepartments) {
+        context.setState({my_departments: myDepartments})
+        context.setState({instructorOptions: InstructorOptions.CREATE_COURSE_STEP_1})
+        registrarShowDepartments(context, false)
+    });
 }
 
 export function createCoursePopup(popupRef, context) {
@@ -41,7 +48,7 @@ export function createCoursePopup(popupRef, context) {
             const current = popupRef.current
             if (await createCourseRequest(context, parseInt(section.current.value))) {
                 current.close()
-                context.setState({instructorOptions: InstructorOptions.DEFAULT_OPTION, data: []})
+                instructorViewCreateCourseRequest(context)
             }
         }}>
             Submit
@@ -55,13 +62,13 @@ export async function createCourseRequest(context, section) {
         return false
     }
     try {
-        let courseName = context.state.department_to_create_course_in.name;
+        let courseId = context.state.department_to_create_course_in.id;
 
         const alreadyExisting = await API.graphql(graphqlOperation(listCreateCourseRequests, {
             filter: {
-                course_name: {
-                    eq: courseName
-                },
+                // course_name: {
+                //     eq: courseName
+                // },
                 course_section: {
                     eq: section
                 }
@@ -74,7 +81,7 @@ export async function createCourseRequest(context, section) {
 
         await API.graphql(graphqlOperation(createCreateCourseRequest, {
             input: {
-                course_name: courseName,
+                // course_name: courseName,
                 course_section: section,
                 createCourseRequestHead_instructorId: context.props.user.id
             }

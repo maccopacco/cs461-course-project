@@ -740,7 +740,22 @@ export const createCreateCourseRequest = /* GraphQL */ `
   ) {
     createCreateCourseRequest(input: $input, condition: $condition) {
       id
-      course_name
+      course_department {
+        id
+        name
+        head {
+          id
+          first_name
+          last_name
+          email
+          passwrd
+          user_type
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+      }
       course_section
       head_instructor {
         id
@@ -764,7 +779,22 @@ export const updateCreateCourseRequest = /* GraphQL */ `
   ) {
     updateCreateCourseRequest(input: $input, condition: $condition) {
       id
-      course_name
+      course_department {
+        id
+        name
+        head {
+          id
+          first_name
+          last_name
+          email
+          passwrd
+          user_type
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+      }
       course_section
       head_instructor {
         id
@@ -788,7 +818,22 @@ export const deleteCreateCourseRequest = /* GraphQL */ `
   ) {
     deleteCreateCourseRequest(input: $input, condition: $condition) {
       id
-      course_name
+      course_department {
+        id
+        name
+        head {
+          id
+          first_name
+          last_name
+          email
+          passwrd
+          user_type
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+      }
       course_section
       head_instructor {
         id

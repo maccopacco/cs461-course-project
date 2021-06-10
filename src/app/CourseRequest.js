@@ -9,6 +9,7 @@ export function loadCourseRequests(context, filter = function () {
     API.graphql(graphqlOperation(listCreateCourseRequests))
         .then(function (data) {
             let requests = data.data.listCreateCourseRequests.items
+            console.log('requests', requests)
             requests = requests.filter(filter)
             requests = requests.map(function (value) {
                 if ('head_instructor' in value) {

@@ -58,7 +58,7 @@ type DeleteCourseRequest @model {
 
 type CreateCourseRequest @model {
     id: ID!
-    course_name: String!
+    course_department: Department! @connection
     course_section: Int!
     head_instructor: SchoolUser! @connection
 }

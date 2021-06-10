@@ -11,8 +11,10 @@ import {
     registrarAssignDepartmentHead,
     registrarShowDepartments
 } from "../RegistrarDepartments";
-import {createCoursePopup, instructorCreateCourse} from "../InstructorCreateCourse";
+import {createCoursePopup, instructorCreateCourseRequest} from "../InstructorCreateCourseRequest";
 import {registrarDeleteCreateCourseRequest, registrarShowCreateCourseRequests} from "../RegistrarCreateCourse";
+import {toast} from "react-toastify";
+import {instructorViewCreateCourseRequest} from "../InstructorViewCreateCourseRequest";
 
 
 export default class DataPage extends Component {
@@ -74,6 +76,9 @@ export default class DataPage extends Component {
                 switch (instructorOption) {
                     case InstructorOptions.CREATE_COURSE_STEP_1: {
                         return this.getColumnsForType("Registrar", null, RegistrarOptions.VIEW_DEPARTMENTS)
+                    }
+                    case InstructorOptions.VIEW_CREATE_COURSE_REQUESTS: {
+                        return this.getColumnsForType("Registrar", null, RegistrarOptions.VIEW_CREATE_COURSE_REQUESTS)
                     }
                 }
             }
@@ -138,7 +143,7 @@ export default class DataPage extends Component {
                         return [{
                             icon: () => <ActionIcon text="Delete"/>,
                             tooltip: "Delete request",
-                            onClick: (e,row) => registrarDeleteCreateCourseRequest(here, row)
+                            onClick: (e, row) => registrarDeleteCreateCourseRequest(here, row)
                         }]
                     }
 
@@ -213,10 +218,9 @@ export default class DataPage extends Component {
                 break;
             }
             case "Instructor" : {
-                buttons = [{
-                    title: 'Create course',
-                    onClick: () => instructorCreateCourse(here)
-                }]
+                buttons = [
+                    {title: 'Create course', onClick: () => instructorCreateCourseRequest(here)},
+                    {title: 'View create course requests', onClick: () => instructorViewCreateCourseRequest(here)}]
                 if (this.state.instructorOptions === InstructorOptions.CREATE_COURSE_STEP_2) {
                     buttons.push({
                         popup: popupHelper(

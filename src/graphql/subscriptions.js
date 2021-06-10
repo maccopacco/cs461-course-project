@@ -674,7 +674,22 @@ export const onCreateCreateCourseRequest = /* GraphQL */ `
   subscription OnCreateCreateCourseRequest {
     onCreateCreateCourseRequest {
       id
-      course_name
+      course_department {
+        id
+        name
+        head {
+          id
+          first_name
+          last_name
+          email
+          passwrd
+          user_type
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+      }
       course_section
       head_instructor {
         id
@@ -695,7 +710,22 @@ export const onUpdateCreateCourseRequest = /* GraphQL */ `
   subscription OnUpdateCreateCourseRequest {
     onUpdateCreateCourseRequest {
       id
-      course_name
+      course_department {
+        id
+        name
+        head {
+          id
+          first_name
+          last_name
+          email
+          passwrd
+          user_type
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+      }
       course_section
       head_instructor {
         id
@@ -716,7 +746,22 @@ export const onDeleteCreateCourseRequest = /* GraphQL */ `
   subscription OnDeleteCreateCourseRequest {
     onDeleteCreateCourseRequest {
       id
-      course_name
+      course_department {
+        id
+        name
+        head {
+          id
+          first_name
+          last_name
+          email
+          passwrd
+          user_type
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+      }
       course_section
       head_instructor {
         id

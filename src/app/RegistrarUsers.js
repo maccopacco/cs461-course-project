@@ -21,7 +21,6 @@ export function createUserPopup(context, popupRef) {
             <label htmlFor="fname">First name: </label>
             <input ref={fname} id="fname"/>
 
-
             <label htmlFor="lname">Last name: </label>
             <input ref={lname} id="lname"/>
 
