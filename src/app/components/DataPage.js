@@ -110,11 +110,11 @@ export default class DataPage extends Component {
                     case RegistrarOptions.ASSIGN_HEAD_STEP_2:
                     case RegistrarOptions.EDIT_USERS: {
                         return [{title: 'User Type', field: 'user_type'},
-                            {title: 'ID', field: 'id'},
+                            // {title: 'ID', field: 'id'},
                             {title: 'Email', field: 'email'},
                             {title: 'First Name', field: 'first_name'},
                             {title: 'Last Name', field: 'last_name'},
-                            // {title: 'Password', field: 'passwrd'}
+                            {title: 'Created', field: 'createdAt'}
                         ]
                     }
                     case RegistrarOptions.ASSIGN_HEAD_STEP_1: //intended fall through

@@ -43,9 +43,9 @@ export default class Signin extends Component {
                     {this.getPassChange()}
                 </Popup>
 
-                {/*<button onClick={() => this.debugCreateUser()}>Create user</button>*/}
-                {/*<button onClick={() => this.debugDeleteUser()}>Delete user</button>*/}
-                {/*<button onClick={() => this.debugGetUsers()}>Get users</button>*/}
+                <button onClick={() => this.props.toggleHelp()}>Show help</button>
+                <button onClick={() => this.refreshUsers()}>[DEBUG] Regenerate base users</button>
+
             </div>
         </>
     }
@@ -168,47 +168,53 @@ export default class Signin extends Component {
         this.closePopup.current.close()
     }
 
-    debugDeleteUser() {
-        API.graphql(graphqlOperation(listSchoolUsers))
-            .then(function (data) {
-                const users = dataToUsers(data)
-                console.log('users', users)
-                for (let user of users) {
-                    API.graphql(graphqlOperation(deleteSchoolUser, {
-                        input: {
-                            id: user.id
-                        }
-                    })).then(() => console.log('bye user'))
-                        .catch((err) => console.error('not bye user', err))
-                }
-            })
-            .catch(function (err) {
-                console.error('could not delete school users', err)
-            })
-    }
+    async refreshUsers() {
+        try {
+            const response = await API.graphql(graphqlOperation(listSchoolUsers))
+            const users = dataToUsers(response)
+            for (let user of users) {
+                await API.graphql(graphqlOperation(deleteSchoolUser, {
+                    input: {
+                        id: user.id
+                    }
+                }))
+            }
+        } catch (error) {
+            displayError("Could not delete all users", error)
+            return
+        }
 
-    debugGetUsers() {
-        API.graphql(graphqlOperation(listSchoolUsers))
-            .then(function (data) {
-                const users = dataToUsers(data)
-                console.log('got users', users)
-            })
-            .catch((error) => console.error('Could not get school users', error))
-    }
-
-    debugCreateUser() {
-        API.graphql(graphqlOperation(createSchoolUser, {
-            input: {
+        const users = [
+            {
+                first_name: "John",
+                last_name: "Smith",
+                email: "smit1234@kettering.edu",
+                passwrd: "password",
+                user_type: "REGISTRAR"
+            },
+            {
                 first_name: "Max",
                 last_name: "Dreher",
                 email: "dreh4899@kettering.edu",
-                passwrd: "not secure",
-                user_type: "REGISTRAR"
+                passwrd: "password",
+                user_type: "STUDENT"
+            },
+            {
+                first_name: "Prof",
+                last_name: "SQL",
+                email: "prof@kettering.edu",
+                passwrd: "password",
+                user_type: "INSTRUCTOR"
             }
-        })).then(function (data) {
-            toast.info('New user saved')
-        }).catch(function (err) {
-            displayError("Could not save user", err)
-        })
+        ]
+        try {
+            for (let user of users)
+                await API.graphql(graphqlOperation(createSchoolUser, {
+                    input: user
+                }))
+        } catch (error) {
+            displayError("Could not create new users", error)
+        }
+        toast.success("Users regenerated")
     }
 }

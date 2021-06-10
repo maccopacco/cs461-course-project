@@ -14,7 +14,7 @@ type SchoolUser @model {
     email: String!
     passwrd: String!
     user_type: UserType!
-    student_enrolled_in: [Course!]! @connection
+    student_enrolled_in: [Course] @connection
 }
 
 type Department @model {

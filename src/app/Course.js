@@ -152,16 +152,18 @@ export function approveCourseRequest(context, row) {
             }
         }
     } else if (user_type === "STUDENT") {
-        API.graphql(graphqlOperation(updateSchoolUser, {
-            input: {
-                id: user_id,
-                student_enrolled_in: course
-            }
-        })).then(function () {
-            toast.info("It worked???")
-        }).catch(function(e) {
-
-        })
+        toast.error("Sorry, no can do")
+        // API.graphql(graphqlOperation(updateSchoolUser, {
+        //     input: {
+        //         id: user_id,
+        //         student_enrolled_in: 5,
+        //     }
+        // })).then(function () {
+        //     toast.info("It worked???")
+        //     // delRequest()
+        // }).catch(function (e) {
+        //     displayError("Could not add course to student information", e)
+        // })
     } else {
         toast.error(`I'm sorry, you're trying to do what to ${user_type}???`)
     }

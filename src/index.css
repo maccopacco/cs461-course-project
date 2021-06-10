@@ -18,6 +18,10 @@ body {
     margin: 1%;
 }
 
+.rightDiv {
+    position: relative;
+    left: 10%;
+}
 
 .verticalGroup * {
     display: block;
@@ -27,6 +31,15 @@ body {
 .actionTextSize {
     font-size: 15px;
     color: RED;
+}
+
+.centeringDiv {
+    display: flex;
+    justify-content: center;
+}
+
+.helpDiv {
+    display: inline-block;
 }
 
 .mainItem > div {
