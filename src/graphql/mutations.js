@@ -52,6 +52,169 @@ export const createSchoolUser = /* GraphQL */ `
       email
       passwrd
       user_type
+      student_enrolled_in {
+        items {
+          id
+          name
+          section
+          credit_hours
+          department {
+            id
+            name
+            head {
+              id
+              first_name
+              last_name
+              email
+              passwrd
+              user_type
+              student_enrolled_in {
+                items {
+                  id
+                  name
+                  section
+                  credit_hours
+                  department {
+                    id
+                    name
+                    head {
+                      id
+                      first_name
+                      last_name
+                      email
+                      passwrd
+                      user_type
+                      student_enrolled_in {
+                        nextToken
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  instructor {
+                    id
+                    first_name
+                    last_name
+                    email
+                    passwrd
+                    user_type
+                    student_enrolled_in {
+                      items {
+                        id
+                        name
+                        section
+                        credit_hours
+                        createdAt
+                        updatedAt
+                      }
+                      nextToken
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  createdAt
+                  updatedAt
+                }
+                nextToken
+              }
+              createdAt
+              updatedAt
+            }
+            createdAt
+            updatedAt
+          }
+          instructor {
+            id
+            first_name
+            last_name
+            email
+            passwrd
+            user_type
+            student_enrolled_in {
+              items {
+                id
+                name
+                section
+                credit_hours
+                department {
+                  id
+                  name
+                  head {
+                    id
+                    first_name
+                    last_name
+                    email
+                    passwrd
+                    user_type
+                    student_enrolled_in {
+                      items {
+                        id
+                        name
+                        section
+                        credit_hours
+                        createdAt
+                        updatedAt
+                      }
+                      nextToken
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  createdAt
+                  updatedAt
+                }
+                instructor {
+                  id
+                  first_name
+                  last_name
+                  email
+                  passwrd
+                  user_type
+                  student_enrolled_in {
+                    items {
+                      id
+                      name
+                      section
+                      credit_hours
+                      department {
+                        id
+                        name
+                        createdAt
+                        updatedAt
+                      }
+                      instructor {
+                        id
+                        first_name
+                        last_name
+                        email
+                        passwrd
+                        user_type
+                        createdAt
+                        updatedAt
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    nextToken
+                  }
+                  createdAt
+                  updatedAt
+                }
+                createdAt
+                updatedAt
+              }
+              nextToken
+            }
+            createdAt
+            updatedAt
+          }
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       createdAt
       updatedAt
     }
@@ -69,6 +232,169 @@ export const updateSchoolUser = /* GraphQL */ `
       email
       passwrd
       user_type
+      student_enrolled_in {
+        items {
+          id
+          name
+          section
+          credit_hours
+          department {
+            id
+            name
+            head {
+              id
+              first_name
+              last_name
+              email
+              passwrd
+              user_type
+              student_enrolled_in {
+                items {
+                  id
+                  name
+                  section
+                  credit_hours
+                  department {
+                    id
+                    name
+                    head {
+                      id
+                      first_name
+                      last_name
+                      email
+                      passwrd
+                      user_type
+                      student_enrolled_in {
+                        nextToken
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  instructor {
+                    id
+                    first_name
+                    last_name
+                    email
+                    passwrd
+                    user_type
+                    student_enrolled_in {
+                      items {
+                        id
+                        name
+                        section
+                        credit_hours
+                        createdAt
+                        updatedAt
+                      }
+                      nextToken
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  createdAt
+                  updatedAt
+                }
+                nextToken
+              }
+              createdAt
+              updatedAt
+            }
+            createdAt
+            updatedAt
+          }
+          instructor {
+            id
+            first_name
+            last_name
+            email
+            passwrd
+            user_type
+            student_enrolled_in {
+              items {
+                id
+                name
+                section
+                credit_hours
+                department {
+                  id
+                  name
+                  head {
+                    id
+                    first_name
+                    last_name
+                    email
+                    passwrd
+                    user_type
+                    student_enrolled_in {
+                      items {
+                        id
+                        name
+                        section
+                        credit_hours
+                        createdAt
+                        updatedAt
+                      }
+                      nextToken
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  createdAt
+                  updatedAt
+                }
+                instructor {
+                  id
+                  first_name
+                  last_name
+                  email
+                  passwrd
+                  user_type
+                  student_enrolled_in {
+                    items {
+                      id
+                      name
+                      section
+                      credit_hours
+                      department {
+                        id
+                        name
+                        createdAt
+                        updatedAt
+                      }
+                      instructor {
+                        id
+                        first_name
+                        last_name
+                        email
+                        passwrd
+                        user_type
+                        createdAt
+                        updatedAt
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    nextToken
+                  }
+                  createdAt
+                  updatedAt
+                }
+                createdAt
+                updatedAt
+              }
+              nextToken
+            }
+            createdAt
+            updatedAt
+          }
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       createdAt
       updatedAt
     }
@@ -86,6 +412,169 @@ export const deleteSchoolUser = /* GraphQL */ `
       email
       passwrd
       user_type
+      student_enrolled_in {
+        items {
+          id
+          name
+          section
+          credit_hours
+          department {
+            id
+            name
+            head {
+              id
+              first_name
+              last_name
+              email
+              passwrd
+              user_type
+              student_enrolled_in {
+                items {
+                  id
+                  name
+                  section
+                  credit_hours
+                  department {
+                    id
+                    name
+                    head {
+                      id
+                      first_name
+                      last_name
+                      email
+                      passwrd
+                      user_type
+                      student_enrolled_in {
+                        nextToken
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  instructor {
+                    id
+                    first_name
+                    last_name
+                    email
+                    passwrd
+                    user_type
+                    student_enrolled_in {
+                      items {
+                        id
+                        name
+                        section
+                        credit_hours
+                        createdAt
+                        updatedAt
+                      }
+                      nextToken
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  createdAt
+                  updatedAt
+                }
+                nextToken
+              }
+              createdAt
+              updatedAt
+            }
+            createdAt
+            updatedAt
+          }
+          instructor {
+            id
+            first_name
+            last_name
+            email
+            passwrd
+            user_type
+            student_enrolled_in {
+              items {
+                id
+                name
+                section
+                credit_hours
+                department {
+                  id
+                  name
+                  head {
+                    id
+                    first_name
+                    last_name
+                    email
+                    passwrd
+                    user_type
+                    student_enrolled_in {
+                      items {
+                        id
+                        name
+                        section
+                        credit_hours
+                        createdAt
+                        updatedAt
+                      }
+                      nextToken
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  createdAt
+                  updatedAt
+                }
+                instructor {
+                  id
+                  first_name
+                  last_name
+                  email
+                  passwrd
+                  user_type
+                  student_enrolled_in {
+                    items {
+                      id
+                      name
+                      section
+                      credit_hours
+                      department {
+                        id
+                        name
+                        createdAt
+                        updatedAt
+                      }
+                      instructor {
+                        id
+                        first_name
+                        last_name
+                        email
+                        passwrd
+                        user_type
+                        createdAt
+                        updatedAt
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    nextToken
+                  }
+                  createdAt
+                  updatedAt
+                }
+                createdAt
+                updatedAt
+              }
+              nextToken
+            }
+            createdAt
+            updatedAt
+          }
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       createdAt
       updatedAt
     }
@@ -106,6 +595,134 @@ export const createDepartment = /* GraphQL */ `
         email
         passwrd
         user_type
+        student_enrolled_in {
+          items {
+            id
+            name
+            section
+            credit_hours
+            department {
+              id
+              name
+              head {
+                id
+                first_name
+                last_name
+                email
+                passwrd
+                user_type
+                student_enrolled_in {
+                  items {
+                    id
+                    name
+                    section
+                    credit_hours
+                    department {
+                      id
+                      name
+                      head {
+                        id
+                        first_name
+                        last_name
+                        email
+                        passwrd
+                        user_type
+                        createdAt
+                        updatedAt
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    instructor {
+                      id
+                      first_name
+                      last_name
+                      email
+                      passwrd
+                      user_type
+                      student_enrolled_in {
+                        nextToken
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  nextToken
+                }
+                createdAt
+                updatedAt
+              }
+              createdAt
+              updatedAt
+            }
+            instructor {
+              id
+              first_name
+              last_name
+              email
+              passwrd
+              user_type
+              student_enrolled_in {
+                items {
+                  id
+                  name
+                  section
+                  credit_hours
+                  department {
+                    id
+                    name
+                    head {
+                      id
+                      first_name
+                      last_name
+                      email
+                      passwrd
+                      user_type
+                      student_enrolled_in {
+                        nextToken
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  instructor {
+                    id
+                    first_name
+                    last_name
+                    email
+                    passwrd
+                    user_type
+                    student_enrolled_in {
+                      items {
+                        id
+                        name
+                        section
+                        credit_hours
+                        createdAt
+                        updatedAt
+                      }
+                      nextToken
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  createdAt
+                  updatedAt
+                }
+                nextToken
+              }
+              createdAt
+              updatedAt
+            }
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
         createdAt
         updatedAt
       }
@@ -129,6 +746,134 @@ export const updateDepartment = /* GraphQL */ `
         email
         passwrd
         user_type
+        student_enrolled_in {
+          items {
+            id
+            name
+            section
+            credit_hours
+            department {
+              id
+              name
+              head {
+                id
+                first_name
+                last_name
+                email
+                passwrd
+                user_type
+                student_enrolled_in {
+                  items {
+                    id
+                    name
+                    section
+                    credit_hours
+                    department {
+                      id
+                      name
+                      head {
+                        id
+                        first_name
+                        last_name
+                        email
+                        passwrd
+                        user_type
+                        createdAt
+                        updatedAt
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    instructor {
+                      id
+                      first_name
+                      last_name
+                      email
+                      passwrd
+                      user_type
+                      student_enrolled_in {
+                        nextToken
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  nextToken
+                }
+                createdAt
+                updatedAt
+              }
+              createdAt
+              updatedAt
+            }
+            instructor {
+              id
+              first_name
+              last_name
+              email
+              passwrd
+              user_type
+              student_enrolled_in {
+                items {
+                  id
+                  name
+                  section
+                  credit_hours
+                  department {
+                    id
+                    name
+                    head {
+                      id
+                      first_name
+                      last_name
+                      email
+                      passwrd
+                      user_type
+                      student_enrolled_in {
+                        nextToken
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  instructor {
+                    id
+                    first_name
+                    last_name
+                    email
+                    passwrd
+                    user_type
+                    student_enrolled_in {
+                      items {
+                        id
+                        name
+                        section
+                        credit_hours
+                        createdAt
+                        updatedAt
+                      }
+                      nextToken
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  createdAt
+                  updatedAt
+                }
+                nextToken
+              }
+              createdAt
+              updatedAt
+            }
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
         createdAt
         updatedAt
       }
@@ -152,6 +897,134 @@ export const deleteDepartment = /* GraphQL */ `
         email
         passwrd
         user_type
+        student_enrolled_in {
+          items {
+            id
+            name
+            section
+            credit_hours
+            department {
+              id
+              name
+              head {
+                id
+                first_name
+                last_name
+                email
+                passwrd
+                user_type
+                student_enrolled_in {
+                  items {
+                    id
+                    name
+                    section
+                    credit_hours
+                    department {
+                      id
+                      name
+                      head {
+                        id
+                        first_name
+                        last_name
+                        email
+                        passwrd
+                        user_type
+                        createdAt
+                        updatedAt
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    instructor {
+                      id
+                      first_name
+                      last_name
+                      email
+                      passwrd
+                      user_type
+                      student_enrolled_in {
+                        nextToken
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  nextToken
+                }
+                createdAt
+                updatedAt
+              }
+              createdAt
+              updatedAt
+            }
+            instructor {
+              id
+              first_name
+              last_name
+              email
+              passwrd
+              user_type
+              student_enrolled_in {
+                items {
+                  id
+                  name
+                  section
+                  credit_hours
+                  department {
+                    id
+                    name
+                    head {
+                      id
+                      first_name
+                      last_name
+                      email
+                      passwrd
+                      user_type
+                      student_enrolled_in {
+                        nextToken
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  instructor {
+                    id
+                    first_name
+                    last_name
+                    email
+                    passwrd
+                    user_type
+                    student_enrolled_in {
+                      items {
+                        id
+                        name
+                        section
+                        credit_hours
+                        createdAt
+                        updatedAt
+                      }
+                      nextToken
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  createdAt
+                  updatedAt
+                }
+                nextToken
+              }
+              createdAt
+              updatedAt
+            }
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
         createdAt
         updatedAt
       }
@@ -180,6 +1053,110 @@ export const createCourse = /* GraphQL */ `
           email
           passwrd
           user_type
+          student_enrolled_in {
+            items {
+              id
+              name
+              section
+              credit_hours
+              department {
+                id
+                name
+                head {
+                  id
+                  first_name
+                  last_name
+                  email
+                  passwrd
+                  user_type
+                  student_enrolled_in {
+                    items {
+                      id
+                      name
+                      section
+                      credit_hours
+                      department {
+                        id
+                        name
+                        createdAt
+                        updatedAt
+                      }
+                      instructor {
+                        id
+                        first_name
+                        last_name
+                        email
+                        passwrd
+                        user_type
+                        createdAt
+                        updatedAt
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    nextToken
+                  }
+                  createdAt
+                  updatedAt
+                }
+                createdAt
+                updatedAt
+              }
+              instructor {
+                id
+                first_name
+                last_name
+                email
+                passwrd
+                user_type
+                student_enrolled_in {
+                  items {
+                    id
+                    name
+                    section
+                    credit_hours
+                    department {
+                      id
+                      name
+                      head {
+                        id
+                        first_name
+                        last_name
+                        email
+                        passwrd
+                        user_type
+                        createdAt
+                        updatedAt
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    instructor {
+                      id
+                      first_name
+                      last_name
+                      email
+                      passwrd
+                      user_type
+                      student_enrolled_in {
+                        nextToken
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  nextToken
+                }
+                createdAt
+                updatedAt
+              }
+              createdAt
+              updatedAt
+            }
+            nextToken
+          }
           createdAt
           updatedAt
         }
@@ -193,6 +1170,134 @@ export const createCourse = /* GraphQL */ `
         email
         passwrd
         user_type
+        student_enrolled_in {
+          items {
+            id
+            name
+            section
+            credit_hours
+            department {
+              id
+              name
+              head {
+                id
+                first_name
+                last_name
+                email
+                passwrd
+                user_type
+                student_enrolled_in {
+                  items {
+                    id
+                    name
+                    section
+                    credit_hours
+                    department {
+                      id
+                      name
+                      head {
+                        id
+                        first_name
+                        last_name
+                        email
+                        passwrd
+                        user_type
+                        createdAt
+                        updatedAt
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    instructor {
+                      id
+                      first_name
+                      last_name
+                      email
+                      passwrd
+                      user_type
+                      student_enrolled_in {
+                        nextToken
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  nextToken
+                }
+                createdAt
+                updatedAt
+              }
+              createdAt
+              updatedAt
+            }
+            instructor {
+              id
+              first_name
+              last_name
+              email
+              passwrd
+              user_type
+              student_enrolled_in {
+                items {
+                  id
+                  name
+                  section
+                  credit_hours
+                  department {
+                    id
+                    name
+                    head {
+                      id
+                      first_name
+                      last_name
+                      email
+                      passwrd
+                      user_type
+                      student_enrolled_in {
+                        nextToken
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  instructor {
+                    id
+                    first_name
+                    last_name
+                    email
+                    passwrd
+                    user_type
+                    student_enrolled_in {
+                      items {
+                        id
+                        name
+                        section
+                        credit_hours
+                        createdAt
+                        updatedAt
+                      }
+                      nextToken
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  createdAt
+                  updatedAt
+                }
+                nextToken
+              }
+              createdAt
+              updatedAt
+            }
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
         createdAt
         updatedAt
       }
@@ -221,6 +1326,110 @@ export const updateCourse = /* GraphQL */ `
           email
           passwrd
           user_type
+          student_enrolled_in {
+            items {
+              id
+              name
+              section
+              credit_hours
+              department {
+                id
+                name
+                head {
+                  id
+                  first_name
+                  last_name
+                  email
+                  passwrd
+                  user_type
+                  student_enrolled_in {
+                    items {
+                      id
+                      name
+                      section
+                      credit_hours
+                      department {
+                        id
+                        name
+                        createdAt
+                        updatedAt
+                      }
+                      instructor {
+                        id
+                        first_name
+                        last_name
+                        email
+                        passwrd
+                        user_type
+                        createdAt
+                        updatedAt
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    nextToken
+                  }
+                  createdAt
+                  updatedAt
+                }
+                createdAt
+                updatedAt
+              }
+              instructor {
+                id
+                first_name
+                last_name
+                email
+                passwrd
+                user_type
+                student_enrolled_in {
+                  items {
+                    id
+                    name
+                    section
+                    credit_hours
+                    department {
+                      id
+                      name
+                      head {
+                        id
+                        first_name
+                        last_name
+                        email
+                        passwrd
+                        user_type
+                        createdAt
+                        updatedAt
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    instructor {
+                      id
+                      first_name
+                      last_name
+                      email
+                      passwrd
+                      user_type
+                      student_enrolled_in {
+                        nextToken
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  nextToken
+                }
+                createdAt
+                updatedAt
+              }
+              createdAt
+              updatedAt
+            }
+            nextToken
+          }
           createdAt
           updatedAt
         }
@@ -234,6 +1443,134 @@ export const updateCourse = /* GraphQL */ `
         email
         passwrd
         user_type
+        student_enrolled_in {
+          items {
+            id
+            name
+            section
+            credit_hours
+            department {
+              id
+              name
+              head {
+                id
+                first_name
+                last_name
+                email
+                passwrd
+                user_type
+                student_enrolled_in {
+                  items {
+                    id
+                    name
+                    section
+                    credit_hours
+                    department {
+                      id
+                      name
+                      head {
+                        id
+                        first_name
+                        last_name
+                        email
+                        passwrd
+                        user_type
+                        createdAt
+                        updatedAt
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    instructor {
+                      id
+                      first_name
+                      last_name
+                      email
+                      passwrd
+                      user_type
+                      student_enrolled_in {
+                        nextToken
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  nextToken
+                }
+                createdAt
+                updatedAt
+              }
+              createdAt
+              updatedAt
+            }
+            instructor {
+              id
+              first_name
+              last_name
+              email
+              passwrd
+              user_type
+              student_enrolled_in {
+                items {
+                  id
+                  name
+                  section
+                  credit_hours
+                  department {
+                    id
+                    name
+                    head {
+                      id
+                      first_name
+                      last_name
+                      email
+                      passwrd
+                      user_type
+                      student_enrolled_in {
+                        nextToken
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  instructor {
+                    id
+                    first_name
+                    last_name
+                    email
+                    passwrd
+                    user_type
+                    student_enrolled_in {
+                      items {
+                        id
+                        name
+                        section
+                        credit_hours
+                        createdAt
+                        updatedAt
+                      }
+                      nextToken
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  createdAt
+                  updatedAt
+                }
+                nextToken
+              }
+              createdAt
+              updatedAt
+            }
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
         createdAt
         updatedAt
       }
@@ -262,6 +1599,110 @@ export const deleteCourse = /* GraphQL */ `
           email
           passwrd
           user_type
+          student_enrolled_in {
+            items {
+              id
+              name
+              section
+              credit_hours
+              department {
+                id
+                name
+                head {
+                  id
+                  first_name
+                  last_name
+                  email
+                  passwrd
+                  user_type
+                  student_enrolled_in {
+                    items {
+                      id
+                      name
+                      section
+                      credit_hours
+                      department {
+                        id
+                        name
+                        createdAt
+                        updatedAt
+                      }
+                      instructor {
+                        id
+                        first_name
+                        last_name
+                        email
+                        passwrd
+                        user_type
+                        createdAt
+                        updatedAt
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    nextToken
+                  }
+                  createdAt
+                  updatedAt
+                }
+                createdAt
+                updatedAt
+              }
+              instructor {
+                id
+                first_name
+                last_name
+                email
+                passwrd
+                user_type
+                student_enrolled_in {
+                  items {
+                    id
+                    name
+                    section
+                    credit_hours
+                    department {
+                      id
+                      name
+                      head {
+                        id
+                        first_name
+                        last_name
+                        email
+                        passwrd
+                        user_type
+                        createdAt
+                        updatedAt
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    instructor {
+                      id
+                      first_name
+                      last_name
+                      email
+                      passwrd
+                      user_type
+                      student_enrolled_in {
+                        nextToken
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  nextToken
+                }
+                createdAt
+                updatedAt
+              }
+              createdAt
+              updatedAt
+            }
+            nextToken
+          }
           createdAt
           updatedAt
         }
@@ -275,6 +1716,134 @@ export const deleteCourse = /* GraphQL */ `
         email
         passwrd
         user_type
+        student_enrolled_in {
+          items {
+            id
+            name
+            section
+            credit_hours
+            department {
+              id
+              name
+              head {
+                id
+                first_name
+                last_name
+                email
+                passwrd
+                user_type
+                student_enrolled_in {
+                  items {
+                    id
+                    name
+                    section
+                    credit_hours
+                    department {
+                      id
+                      name
+                      head {
+                        id
+                        first_name
+                        last_name
+                        email
+                        passwrd
+                        user_type
+                        createdAt
+                        updatedAt
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    instructor {
+                      id
+                      first_name
+                      last_name
+                      email
+                      passwrd
+                      user_type
+                      student_enrolled_in {
+                        nextToken
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  nextToken
+                }
+                createdAt
+                updatedAt
+              }
+              createdAt
+              updatedAt
+            }
+            instructor {
+              id
+              first_name
+              last_name
+              email
+              passwrd
+              user_type
+              student_enrolled_in {
+                items {
+                  id
+                  name
+                  section
+                  credit_hours
+                  department {
+                    id
+                    name
+                    head {
+                      id
+                      first_name
+                      last_name
+                      email
+                      passwrd
+                      user_type
+                      student_enrolled_in {
+                        nextToken
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  instructor {
+                    id
+                    first_name
+                    last_name
+                    email
+                    passwrd
+                    user_type
+                    student_enrolled_in {
+                      items {
+                        id
+                        name
+                        section
+                        credit_hours
+                        createdAt
+                        updatedAt
+                      }
+                      nextToken
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  createdAt
+                  updatedAt
+                }
+                nextToken
+              }
+              createdAt
+              updatedAt
+            }
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
         createdAt
         updatedAt
       }
@@ -297,6 +1866,134 @@ export const createCourseReport = /* GraphQL */ `
         email
         passwrd
         user_type
+        student_enrolled_in {
+          items {
+            id
+            name
+            section
+            credit_hours
+            department {
+              id
+              name
+              head {
+                id
+                first_name
+                last_name
+                email
+                passwrd
+                user_type
+                student_enrolled_in {
+                  items {
+                    id
+                    name
+                    section
+                    credit_hours
+                    department {
+                      id
+                      name
+                      head {
+                        id
+                        first_name
+                        last_name
+                        email
+                        passwrd
+                        user_type
+                        createdAt
+                        updatedAt
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    instructor {
+                      id
+                      first_name
+                      last_name
+                      email
+                      passwrd
+                      user_type
+                      student_enrolled_in {
+                        nextToken
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  nextToken
+                }
+                createdAt
+                updatedAt
+              }
+              createdAt
+              updatedAt
+            }
+            instructor {
+              id
+              first_name
+              last_name
+              email
+              passwrd
+              user_type
+              student_enrolled_in {
+                items {
+                  id
+                  name
+                  section
+                  credit_hours
+                  department {
+                    id
+                    name
+                    head {
+                      id
+                      first_name
+                      last_name
+                      email
+                      passwrd
+                      user_type
+                      student_enrolled_in {
+                        nextToken
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  instructor {
+                    id
+                    first_name
+                    last_name
+                    email
+                    passwrd
+                    user_type
+                    student_enrolled_in {
+                      items {
+                        id
+                        name
+                        section
+                        credit_hours
+                        createdAt
+                        updatedAt
+                      }
+                      nextToken
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  createdAt
+                  updatedAt
+                }
+                nextToken
+              }
+              createdAt
+              updatedAt
+            }
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
         createdAt
         updatedAt
       }
@@ -315,6 +2012,81 @@ export const createCourseReport = /* GraphQL */ `
             email
             passwrd
             user_type
+            student_enrolled_in {
+              items {
+                id
+                name
+                section
+                credit_hours
+                department {
+                  id
+                  name
+                  head {
+                    id
+                    first_name
+                    last_name
+                    email
+                    passwrd
+                    user_type
+                    student_enrolled_in {
+                      items {
+                        id
+                        name
+                        section
+                        credit_hours
+                        createdAt
+                        updatedAt
+                      }
+                      nextToken
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  createdAt
+                  updatedAt
+                }
+                instructor {
+                  id
+                  first_name
+                  last_name
+                  email
+                  passwrd
+                  user_type
+                  student_enrolled_in {
+                    items {
+                      id
+                      name
+                      section
+                      credit_hours
+                      department {
+                        id
+                        name
+                        createdAt
+                        updatedAt
+                      }
+                      instructor {
+                        id
+                        first_name
+                        last_name
+                        email
+                        passwrd
+                        user_type
+                        createdAt
+                        updatedAt
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    nextToken
+                  }
+                  createdAt
+                  updatedAt
+                }
+                createdAt
+                updatedAt
+              }
+              nextToken
+            }
             createdAt
             updatedAt
           }
@@ -328,6 +2100,110 @@ export const createCourseReport = /* GraphQL */ `
           email
           passwrd
           user_type
+          student_enrolled_in {
+            items {
+              id
+              name
+              section
+              credit_hours
+              department {
+                id
+                name
+                head {
+                  id
+                  first_name
+                  last_name
+                  email
+                  passwrd
+                  user_type
+                  student_enrolled_in {
+                    items {
+                      id
+                      name
+                      section
+                      credit_hours
+                      department {
+                        id
+                        name
+                        createdAt
+                        updatedAt
+                      }
+                      instructor {
+                        id
+                        first_name
+                        last_name
+                        email
+                        passwrd
+                        user_type
+                        createdAt
+                        updatedAt
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    nextToken
+                  }
+                  createdAt
+                  updatedAt
+                }
+                createdAt
+                updatedAt
+              }
+              instructor {
+                id
+                first_name
+                last_name
+                email
+                passwrd
+                user_type
+                student_enrolled_in {
+                  items {
+                    id
+                    name
+                    section
+                    credit_hours
+                    department {
+                      id
+                      name
+                      head {
+                        id
+                        first_name
+                        last_name
+                        email
+                        passwrd
+                        user_type
+                        createdAt
+                        updatedAt
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    instructor {
+                      id
+                      first_name
+                      last_name
+                      email
+                      passwrd
+                      user_type
+                      student_enrolled_in {
+                        nextToken
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  nextToken
+                }
+                createdAt
+                updatedAt
+              }
+              createdAt
+              updatedAt
+            }
+            nextToken
+          }
           createdAt
           updatedAt
         }
@@ -341,6 +2217,134 @@ export const createCourseReport = /* GraphQL */ `
         email
         passwrd
         user_type
+        student_enrolled_in {
+          items {
+            id
+            name
+            section
+            credit_hours
+            department {
+              id
+              name
+              head {
+                id
+                first_name
+                last_name
+                email
+                passwrd
+                user_type
+                student_enrolled_in {
+                  items {
+                    id
+                    name
+                    section
+                    credit_hours
+                    department {
+                      id
+                      name
+                      head {
+                        id
+                        first_name
+                        last_name
+                        email
+                        passwrd
+                        user_type
+                        createdAt
+                        updatedAt
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    instructor {
+                      id
+                      first_name
+                      last_name
+                      email
+                      passwrd
+                      user_type
+                      student_enrolled_in {
+                        nextToken
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  nextToken
+                }
+                createdAt
+                updatedAt
+              }
+              createdAt
+              updatedAt
+            }
+            instructor {
+              id
+              first_name
+              last_name
+              email
+              passwrd
+              user_type
+              student_enrolled_in {
+                items {
+                  id
+                  name
+                  section
+                  credit_hours
+                  department {
+                    id
+                    name
+                    head {
+                      id
+                      first_name
+                      last_name
+                      email
+                      passwrd
+                      user_type
+                      student_enrolled_in {
+                        nextToken
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  instructor {
+                    id
+                    first_name
+                    last_name
+                    email
+                    passwrd
+                    user_type
+                    student_enrolled_in {
+                      items {
+                        id
+                        name
+                        section
+                        credit_hours
+                        createdAt
+                        updatedAt
+                      }
+                      nextToken
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  createdAt
+                  updatedAt
+                }
+                nextToken
+              }
+              createdAt
+              updatedAt
+            }
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
         createdAt
         updatedAt
       }
@@ -366,6 +2370,134 @@ export const updateCourseReport = /* GraphQL */ `
         email
         passwrd
         user_type
+        student_enrolled_in {
+          items {
+            id
+            name
+            section
+            credit_hours
+            department {
+              id
+              name
+              head {
+                id
+                first_name
+                last_name
+                email
+                passwrd
+                user_type
+                student_enrolled_in {
+                  items {
+                    id
+                    name
+                    section
+                    credit_hours
+                    department {
+                      id
+                      name
+                      head {
+                        id
+                        first_name
+                        last_name
+                        email
+                        passwrd
+                        user_type
+                        createdAt
+                        updatedAt
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    instructor {
+                      id
+                      first_name
+                      last_name
+                      email
+                      passwrd
+                      user_type
+                      student_enrolled_in {
+                        nextToken
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  nextToken
+                }
+                createdAt
+                updatedAt
+              }
+              createdAt
+              updatedAt
+            }
+            instructor {
+              id
+              first_name
+              last_name
+              email
+              passwrd
+              user_type
+              student_enrolled_in {
+                items {
+                  id
+                  name
+                  section
+                  credit_hours
+                  department {
+                    id
+                    name
+                    head {
+                      id
+                      first_name
+                      last_name
+                      email
+                      passwrd
+                      user_type
+                      student_enrolled_in {
+                        nextToken
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  instructor {
+                    id
+                    first_name
+                    last_name
+                    email
+                    passwrd
+                    user_type
+                    student_enrolled_in {
+                      items {
+                        id
+                        name
+                        section
+                        credit_hours
+                        createdAt
+                        updatedAt
+                      }
+                      nextToken
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  createdAt
+                  updatedAt
+                }
+                nextToken
+              }
+              createdAt
+              updatedAt
+            }
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
         createdAt
         updatedAt
       }
@@ -384,6 +2516,81 @@ export const updateCourseReport = /* GraphQL */ `
             email
             passwrd
             user_type
+            student_enrolled_in {
+              items {
+                id
+                name
+                section
+                credit_hours
+                department {
+                  id
+                  name
+                  head {
+                    id
+                    first_name
+                    last_name
+                    email
+                    passwrd
+                    user_type
+                    student_enrolled_in {
+                      items {
+                        id
+                        name
+                        section
+                        credit_hours
+                        createdAt
+                        updatedAt
+                      }
+                      nextToken
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  createdAt
+                  updatedAt
+                }
+                instructor {
+                  id
+                  first_name
+                  last_name
+                  email
+                  passwrd
+                  user_type
+                  student_enrolled_in {
+                    items {
+                      id
+                      name
+                      section
+                      credit_hours
+                      department {
+                        id
+                        name
+                        createdAt
+                        updatedAt
+                      }
+                      instructor {
+                        id
+                        first_name
+                        last_name
+                        email
+                        passwrd
+                        user_type
+                        createdAt
+                        updatedAt
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    nextToken
+                  }
+                  createdAt
+                  updatedAt
+                }
+                createdAt
+                updatedAt
+              }
+              nextToken
+            }
             createdAt
             updatedAt
           }
@@ -397,6 +2604,110 @@ export const updateCourseReport = /* GraphQL */ `
           email
           passwrd
           user_type
+          student_enrolled_in {
+            items {
+              id
+              name
+              section
+              credit_hours
+              department {
+                id
+                name
+                head {
+                  id
+                  first_name
+                  last_name
+                  email
+                  passwrd
+                  user_type
+                  student_enrolled_in {
+                    items {
+                      id
+                      name
+                      section
+                      credit_hours
+                      department {
+                        id
+                        name
+                        createdAt
+                        updatedAt
+                      }
+                      instructor {
+                        id
+                        first_name
+                        last_name
+                        email
+                        passwrd
+                        user_type
+                        createdAt
+                        updatedAt
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    nextToken
+                  }
+                  createdAt
+                  updatedAt
+                }
+                createdAt
+                updatedAt
+              }
+              instructor {
+                id
+                first_name
+                last_name
+                email
+                passwrd
+                user_type
+                student_enrolled_in {
+                  items {
+                    id
+                    name
+                    section
+                    credit_hours
+                    department {
+                      id
+                      name
+                      head {
+                        id
+                        first_name
+                        last_name
+                        email
+                        passwrd
+                        user_type
+                        createdAt
+                        updatedAt
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    instructor {
+                      id
+                      first_name
+                      last_name
+                      email
+                      passwrd
+                      user_type
+                      student_enrolled_in {
+                        nextToken
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  nextToken
+                }
+                createdAt
+                updatedAt
+              }
+              createdAt
+              updatedAt
+            }
+            nextToken
+          }
           createdAt
           updatedAt
         }
@@ -410,6 +2721,134 @@ export const updateCourseReport = /* GraphQL */ `
         email
         passwrd
         user_type
+        student_enrolled_in {
+          items {
+            id
+            name
+            section
+            credit_hours
+            department {
+              id
+              name
+              head {
+                id
+                first_name
+                last_name
+                email
+                passwrd
+                user_type
+                student_enrolled_in {
+                  items {
+                    id
+                    name
+                    section
+                    credit_hours
+                    department {
+                      id
+                      name
+                      head {
+                        id
+                        first_name
+                        last_name
+                        email
+                        passwrd
+                        user_type
+                        createdAt
+                        updatedAt
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    instructor {
+                      id
+                      first_name
+                      last_name
+                      email
+                      passwrd
+                      user_type
+                      student_enrolled_in {
+                        nextToken
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  nextToken
+                }
+                createdAt
+                updatedAt
+              }
+              createdAt
+              updatedAt
+            }
+            instructor {
+              id
+              first_name
+              last_name
+              email
+              passwrd
+              user_type
+              student_enrolled_in {
+                items {
+                  id
+                  name
+                  section
+                  credit_hours
+                  department {
+                    id
+                    name
+                    head {
+                      id
+                      first_name
+                      last_name
+                      email
+                      passwrd
+                      user_type
+                      student_enrolled_in {
+                        nextToken
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  instructor {
+                    id
+                    first_name
+                    last_name
+                    email
+                    passwrd
+                    user_type
+                    student_enrolled_in {
+                      items {
+                        id
+                        name
+                        section
+                        credit_hours
+                        createdAt
+                        updatedAt
+                      }
+                      nextToken
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  createdAt
+                  updatedAt
+                }
+                nextToken
+              }
+              createdAt
+              updatedAt
+            }
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
         createdAt
         updatedAt
       }
@@ -435,6 +2874,134 @@ export const deleteCourseReport = /* GraphQL */ `
         email
         passwrd
         user_type
+        student_enrolled_in {
+          items {
+            id
+            name
+            section
+            credit_hours
+            department {
+              id
+              name
+              head {
+                id
+                first_name
+                last_name
+                email
+                passwrd
+                user_type
+                student_enrolled_in {
+                  items {
+                    id
+                    name
+                    section
+                    credit_hours
+                    department {
+                      id
+                      name
+                      head {
+                        id
+                        first_name
+                        last_name
+                        email
+                        passwrd
+                        user_type
+                        createdAt
+                        updatedAt
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    instructor {
+                      id
+                      first_name
+                      last_name
+                      email
+                      passwrd
+                      user_type
+                      student_enrolled_in {
+                        nextToken
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  nextToken
+                }
+                createdAt
+                updatedAt
+              }
+              createdAt
+              updatedAt
+            }
+            instructor {
+              id
+              first_name
+              last_name
+              email
+              passwrd
+              user_type
+              student_enrolled_in {
+                items {
+                  id
+                  name
+                  section
+                  credit_hours
+                  department {
+                    id
+                    name
+                    head {
+                      id
+                      first_name
+                      last_name
+                      email
+                      passwrd
+                      user_type
+                      student_enrolled_in {
+                        nextToken
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  instructor {
+                    id
+                    first_name
+                    last_name
+                    email
+                    passwrd
+                    user_type
+                    student_enrolled_in {
+                      items {
+                        id
+                        name
+                        section
+                        credit_hours
+                        createdAt
+                        updatedAt
+                      }
+                      nextToken
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  createdAt
+                  updatedAt
+                }
+                nextToken
+              }
+              createdAt
+              updatedAt
+            }
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
         createdAt
         updatedAt
       }
@@ -453,6 +3020,81 @@ export const deleteCourseReport = /* GraphQL */ `
             email
             passwrd
             user_type
+            student_enrolled_in {
+              items {
+                id
+                name
+                section
+                credit_hours
+                department {
+                  id
+                  name
+                  head {
+                    id
+                    first_name
+                    last_name
+                    email
+                    passwrd
+                    user_type
+                    student_enrolled_in {
+                      items {
+                        id
+                        name
+                        section
+                        credit_hours
+                        createdAt
+                        updatedAt
+                      }
+                      nextToken
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  createdAt
+                  updatedAt
+                }
+                instructor {
+                  id
+                  first_name
+                  last_name
+                  email
+                  passwrd
+                  user_type
+                  student_enrolled_in {
+                    items {
+                      id
+                      name
+                      section
+                      credit_hours
+                      department {
+                        id
+                        name
+                        createdAt
+                        updatedAt
+                      }
+                      instructor {
+                        id
+                        first_name
+                        last_name
+                        email
+                        passwrd
+                        user_type
+                        createdAt
+                        updatedAt
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    nextToken
+                  }
+                  createdAt
+                  updatedAt
+                }
+                createdAt
+                updatedAt
+              }
+              nextToken
+            }
             createdAt
             updatedAt
           }
@@ -466,6 +3108,110 @@ export const deleteCourseReport = /* GraphQL */ `
           email
           passwrd
           user_type
+          student_enrolled_in {
+            items {
+              id
+              name
+              section
+              credit_hours
+              department {
+                id
+                name
+                head {
+                  id
+                  first_name
+                  last_name
+                  email
+                  passwrd
+                  user_type
+                  student_enrolled_in {
+                    items {
+                      id
+                      name
+                      section
+                      credit_hours
+                      department {
+                        id
+                        name
+                        createdAt
+                        updatedAt
+                      }
+                      instructor {
+                        id
+                        first_name
+                        last_name
+                        email
+                        passwrd
+                        user_type
+                        createdAt
+                        updatedAt
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    nextToken
+                  }
+                  createdAt
+                  updatedAt
+                }
+                createdAt
+                updatedAt
+              }
+              instructor {
+                id
+                first_name
+                last_name
+                email
+                passwrd
+                user_type
+                student_enrolled_in {
+                  items {
+                    id
+                    name
+                    section
+                    credit_hours
+                    department {
+                      id
+                      name
+                      head {
+                        id
+                        first_name
+                        last_name
+                        email
+                        passwrd
+                        user_type
+                        createdAt
+                        updatedAt
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    instructor {
+                      id
+                      first_name
+                      last_name
+                      email
+                      passwrd
+                      user_type
+                      student_enrolled_in {
+                        nextToken
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  nextToken
+                }
+                createdAt
+                updatedAt
+              }
+              createdAt
+              updatedAt
+            }
+            nextToken
+          }
           createdAt
           updatedAt
         }
@@ -479,6 +3225,134 @@ export const deleteCourseReport = /* GraphQL */ `
         email
         passwrd
         user_type
+        student_enrolled_in {
+          items {
+            id
+            name
+            section
+            credit_hours
+            department {
+              id
+              name
+              head {
+                id
+                first_name
+                last_name
+                email
+                passwrd
+                user_type
+                student_enrolled_in {
+                  items {
+                    id
+                    name
+                    section
+                    credit_hours
+                    department {
+                      id
+                      name
+                      head {
+                        id
+                        first_name
+                        last_name
+                        email
+                        passwrd
+                        user_type
+                        createdAt
+                        updatedAt
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    instructor {
+                      id
+                      first_name
+                      last_name
+                      email
+                      passwrd
+                      user_type
+                      student_enrolled_in {
+                        nextToken
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  nextToken
+                }
+                createdAt
+                updatedAt
+              }
+              createdAt
+              updatedAt
+            }
+            instructor {
+              id
+              first_name
+              last_name
+              email
+              passwrd
+              user_type
+              student_enrolled_in {
+                items {
+                  id
+                  name
+                  section
+                  credit_hours
+                  department {
+                    id
+                    name
+                    head {
+                      id
+                      first_name
+                      last_name
+                      email
+                      passwrd
+                      user_type
+                      student_enrolled_in {
+                        nextToken
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  instructor {
+                    id
+                    first_name
+                    last_name
+                    email
+                    passwrd
+                    user_type
+                    student_enrolled_in {
+                      items {
+                        id
+                        name
+                        section
+                        credit_hours
+                        createdAt
+                        updatedAt
+                      }
+                      nextToken
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  createdAt
+                  updatedAt
+                }
+                nextToken
+              }
+              createdAt
+              updatedAt
+            }
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
         createdAt
         updatedAt
       }
@@ -512,6 +3386,81 @@ export const createEnrollRequest = /* GraphQL */ `
             email
             passwrd
             user_type
+            student_enrolled_in {
+              items {
+                id
+                name
+                section
+                credit_hours
+                department {
+                  id
+                  name
+                  head {
+                    id
+                    first_name
+                    last_name
+                    email
+                    passwrd
+                    user_type
+                    student_enrolled_in {
+                      items {
+                        id
+                        name
+                        section
+                        credit_hours
+                        createdAt
+                        updatedAt
+                      }
+                      nextToken
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  createdAt
+                  updatedAt
+                }
+                instructor {
+                  id
+                  first_name
+                  last_name
+                  email
+                  passwrd
+                  user_type
+                  student_enrolled_in {
+                    items {
+                      id
+                      name
+                      section
+                      credit_hours
+                      department {
+                        id
+                        name
+                        createdAt
+                        updatedAt
+                      }
+                      instructor {
+                        id
+                        first_name
+                        last_name
+                        email
+                        passwrd
+                        user_type
+                        createdAt
+                        updatedAt
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    nextToken
+                  }
+                  createdAt
+                  updatedAt
+                }
+                createdAt
+                updatedAt
+              }
+              nextToken
+            }
             createdAt
             updatedAt
           }
@@ -525,6 +3474,110 @@ export const createEnrollRequest = /* GraphQL */ `
           email
           passwrd
           user_type
+          student_enrolled_in {
+            items {
+              id
+              name
+              section
+              credit_hours
+              department {
+                id
+                name
+                head {
+                  id
+                  first_name
+                  last_name
+                  email
+                  passwrd
+                  user_type
+                  student_enrolled_in {
+                    items {
+                      id
+                      name
+                      section
+                      credit_hours
+                      department {
+                        id
+                        name
+                        createdAt
+                        updatedAt
+                      }
+                      instructor {
+                        id
+                        first_name
+                        last_name
+                        email
+                        passwrd
+                        user_type
+                        createdAt
+                        updatedAt
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    nextToken
+                  }
+                  createdAt
+                  updatedAt
+                }
+                createdAt
+                updatedAt
+              }
+              instructor {
+                id
+                first_name
+                last_name
+                email
+                passwrd
+                user_type
+                student_enrolled_in {
+                  items {
+                    id
+                    name
+                    section
+                    credit_hours
+                    department {
+                      id
+                      name
+                      head {
+                        id
+                        first_name
+                        last_name
+                        email
+                        passwrd
+                        user_type
+                        createdAt
+                        updatedAt
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    instructor {
+                      id
+                      first_name
+                      last_name
+                      email
+                      passwrd
+                      user_type
+                      student_enrolled_in {
+                        nextToken
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  nextToken
+                }
+                createdAt
+                updatedAt
+              }
+              createdAt
+              updatedAt
+            }
+            nextToken
+          }
           createdAt
           updatedAt
         }
@@ -538,6 +3591,134 @@ export const createEnrollRequest = /* GraphQL */ `
         email
         passwrd
         user_type
+        student_enrolled_in {
+          items {
+            id
+            name
+            section
+            credit_hours
+            department {
+              id
+              name
+              head {
+                id
+                first_name
+                last_name
+                email
+                passwrd
+                user_type
+                student_enrolled_in {
+                  items {
+                    id
+                    name
+                    section
+                    credit_hours
+                    department {
+                      id
+                      name
+                      head {
+                        id
+                        first_name
+                        last_name
+                        email
+                        passwrd
+                        user_type
+                        createdAt
+                        updatedAt
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    instructor {
+                      id
+                      first_name
+                      last_name
+                      email
+                      passwrd
+                      user_type
+                      student_enrolled_in {
+                        nextToken
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  nextToken
+                }
+                createdAt
+                updatedAt
+              }
+              createdAt
+              updatedAt
+            }
+            instructor {
+              id
+              first_name
+              last_name
+              email
+              passwrd
+              user_type
+              student_enrolled_in {
+                items {
+                  id
+                  name
+                  section
+                  credit_hours
+                  department {
+                    id
+                    name
+                    head {
+                      id
+                      first_name
+                      last_name
+                      email
+                      passwrd
+                      user_type
+                      student_enrolled_in {
+                        nextToken
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  instructor {
+                    id
+                    first_name
+                    last_name
+                    email
+                    passwrd
+                    user_type
+                    student_enrolled_in {
+                      items {
+                        id
+                        name
+                        section
+                        credit_hours
+                        createdAt
+                        updatedAt
+                      }
+                      nextToken
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  createdAt
+                  updatedAt
+                }
+                nextToken
+              }
+              createdAt
+              updatedAt
+            }
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
         createdAt
         updatedAt
       }
@@ -569,6 +3750,81 @@ export const updateEnrollRequest = /* GraphQL */ `
             email
             passwrd
             user_type
+            student_enrolled_in {
+              items {
+                id
+                name
+                section
+                credit_hours
+                department {
+                  id
+                  name
+                  head {
+                    id
+                    first_name
+                    last_name
+                    email
+                    passwrd
+                    user_type
+                    student_enrolled_in {
+                      items {
+                        id
+                        name
+                        section
+                        credit_hours
+                        createdAt
+                        updatedAt
+                      }
+                      nextToken
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  createdAt
+                  updatedAt
+                }
+                instructor {
+                  id
+                  first_name
+                  last_name
+                  email
+                  passwrd
+                  user_type
+                  student_enrolled_in {
+                    items {
+                      id
+                      name
+                      section
+                      credit_hours
+                      department {
+                        id
+                        name
+                        createdAt
+                        updatedAt
+                      }
+                      instructor {
+                        id
+                        first_name
+                        last_name
+                        email
+                        passwrd
+                        user_type
+                        createdAt
+                        updatedAt
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    nextToken
+                  }
+                  createdAt
+                  updatedAt
+                }
+                createdAt
+                updatedAt
+              }
+              nextToken
+            }
             createdAt
             updatedAt
           }
@@ -582,6 +3838,110 @@ export const updateEnrollRequest = /* GraphQL */ `
           email
           passwrd
           user_type
+          student_enrolled_in {
+            items {
+              id
+              name
+              section
+              credit_hours
+              department {
+                id
+                name
+                head {
+                  id
+                  first_name
+                  last_name
+                  email
+                  passwrd
+                  user_type
+                  student_enrolled_in {
+                    items {
+                      id
+                      name
+                      section
+                      credit_hours
+                      department {
+                        id
+                        name
+                        createdAt
+                        updatedAt
+                      }
+                      instructor {
+                        id
+                        first_name
+                        last_name
+                        email
+                        passwrd
+                        user_type
+                        createdAt
+                        updatedAt
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    nextToken
+                  }
+                  createdAt
+                  updatedAt
+                }
+                createdAt
+                updatedAt
+              }
+              instructor {
+                id
+                first_name
+                last_name
+                email
+                passwrd
+                user_type
+                student_enrolled_in {
+                  items {
+                    id
+                    name
+                    section
+                    credit_hours
+                    department {
+                      id
+                      name
+                      head {
+                        id
+                        first_name
+                        last_name
+                        email
+                        passwrd
+                        user_type
+                        createdAt
+                        updatedAt
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    instructor {
+                      id
+                      first_name
+                      last_name
+                      email
+                      passwrd
+                      user_type
+                      student_enrolled_in {
+                        nextToken
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  nextToken
+                }
+                createdAt
+                updatedAt
+              }
+              createdAt
+              updatedAt
+            }
+            nextToken
+          }
           createdAt
           updatedAt
         }
@@ -595,6 +3955,134 @@ export const updateEnrollRequest = /* GraphQL */ `
         email
         passwrd
         user_type
+        student_enrolled_in {
+          items {
+            id
+            name
+            section
+            credit_hours
+            department {
+              id
+              name
+              head {
+                id
+                first_name
+                last_name
+                email
+                passwrd
+                user_type
+                student_enrolled_in {
+                  items {
+                    id
+                    name
+                    section
+                    credit_hours
+                    department {
+                      id
+                      name
+                      head {
+                        id
+                        first_name
+                        last_name
+                        email
+                        passwrd
+                        user_type
+                        createdAt
+                        updatedAt
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    instructor {
+                      id
+                      first_name
+                      last_name
+                      email
+                      passwrd
+                      user_type
+                      student_enrolled_in {
+                        nextToken
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  nextToken
+                }
+                createdAt
+                updatedAt
+              }
+              createdAt
+              updatedAt
+            }
+            instructor {
+              id
+              first_name
+              last_name
+              email
+              passwrd
+              user_type
+              student_enrolled_in {
+                items {
+                  id
+                  name
+                  section
+                  credit_hours
+                  department {
+                    id
+                    name
+                    head {
+                      id
+                      first_name
+                      last_name
+                      email
+                      passwrd
+                      user_type
+                      student_enrolled_in {
+                        nextToken
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  instructor {
+                    id
+                    first_name
+                    last_name
+                    email
+                    passwrd
+                    user_type
+                    student_enrolled_in {
+                      items {
+                        id
+                        name
+                        section
+                        credit_hours
+                        createdAt
+                        updatedAt
+                      }
+                      nextToken
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  createdAt
+                  updatedAt
+                }
+                nextToken
+              }
+              createdAt
+              updatedAt
+            }
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
         createdAt
         updatedAt
       }
@@ -626,6 +4114,81 @@ export const deleteEnrollRequest = /* GraphQL */ `
             email
             passwrd
             user_type
+            student_enrolled_in {
+              items {
+                id
+                name
+                section
+                credit_hours
+                department {
+                  id
+                  name
+                  head {
+                    id
+                    first_name
+                    last_name
+                    email
+                    passwrd
+                    user_type
+                    student_enrolled_in {
+                      items {
+                        id
+                        name
+                        section
+                        credit_hours
+                        createdAt
+                        updatedAt
+                      }
+                      nextToken
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  createdAt
+                  updatedAt
+                }
+                instructor {
+                  id
+                  first_name
+                  last_name
+                  email
+                  passwrd
+                  user_type
+                  student_enrolled_in {
+                    items {
+                      id
+                      name
+                      section
+                      credit_hours
+                      department {
+                        id
+                        name
+                        createdAt
+                        updatedAt
+                      }
+                      instructor {
+                        id
+                        first_name
+                        last_name
+                        email
+                        passwrd
+                        user_type
+                        createdAt
+                        updatedAt
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    nextToken
+                  }
+                  createdAt
+                  updatedAt
+                }
+                createdAt
+                updatedAt
+              }
+              nextToken
+            }
             createdAt
             updatedAt
           }
@@ -639,6 +4202,110 @@ export const deleteEnrollRequest = /* GraphQL */ `
           email
           passwrd
           user_type
+          student_enrolled_in {
+            items {
+              id
+              name
+              section
+              credit_hours
+              department {
+                id
+                name
+                head {
+                  id
+                  first_name
+                  last_name
+                  email
+                  passwrd
+                  user_type
+                  student_enrolled_in {
+                    items {
+                      id
+                      name
+                      section
+                      credit_hours
+                      department {
+                        id
+                        name
+                        createdAt
+                        updatedAt
+                      }
+                      instructor {
+                        id
+                        first_name
+                        last_name
+                        email
+                        passwrd
+                        user_type
+                        createdAt
+                        updatedAt
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    nextToken
+                  }
+                  createdAt
+                  updatedAt
+                }
+                createdAt
+                updatedAt
+              }
+              instructor {
+                id
+                first_name
+                last_name
+                email
+                passwrd
+                user_type
+                student_enrolled_in {
+                  items {
+                    id
+                    name
+                    section
+                    credit_hours
+                    department {
+                      id
+                      name
+                      head {
+                        id
+                        first_name
+                        last_name
+                        email
+                        passwrd
+                        user_type
+                        createdAt
+                        updatedAt
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    instructor {
+                      id
+                      first_name
+                      last_name
+                      email
+                      passwrd
+                      user_type
+                      student_enrolled_in {
+                        nextToken
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  nextToken
+                }
+                createdAt
+                updatedAt
+              }
+              createdAt
+              updatedAt
+            }
+            nextToken
+          }
           createdAt
           updatedAt
         }
@@ -652,6 +4319,134 @@ export const deleteEnrollRequest = /* GraphQL */ `
         email
         passwrd
         user_type
+        student_enrolled_in {
+          items {
+            id
+            name
+            section
+            credit_hours
+            department {
+              id
+              name
+              head {
+                id
+                first_name
+                last_name
+                email
+                passwrd
+                user_type
+                student_enrolled_in {
+                  items {
+                    id
+                    name
+                    section
+                    credit_hours
+                    department {
+                      id
+                      name
+                      head {
+                        id
+                        first_name
+                        last_name
+                        email
+                        passwrd
+                        user_type
+                        createdAt
+                        updatedAt
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    instructor {
+                      id
+                      first_name
+                      last_name
+                      email
+                      passwrd
+                      user_type
+                      student_enrolled_in {
+                        nextToken
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  nextToken
+                }
+                createdAt
+                updatedAt
+              }
+              createdAt
+              updatedAt
+            }
+            instructor {
+              id
+              first_name
+              last_name
+              email
+              passwrd
+              user_type
+              student_enrolled_in {
+                items {
+                  id
+                  name
+                  section
+                  credit_hours
+                  department {
+                    id
+                    name
+                    head {
+                      id
+                      first_name
+                      last_name
+                      email
+                      passwrd
+                      user_type
+                      student_enrolled_in {
+                        nextToken
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  instructor {
+                    id
+                    first_name
+                    last_name
+                    email
+                    passwrd
+                    user_type
+                    student_enrolled_in {
+                      items {
+                        id
+                        name
+                        section
+                        credit_hours
+                        createdAt
+                        updatedAt
+                      }
+                      nextToken
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  createdAt
+                  updatedAt
+                }
+                nextToken
+              }
+              createdAt
+              updatedAt
+            }
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
         createdAt
         updatedAt
       }
@@ -683,6 +4478,81 @@ export const createDeleteCourseRequest = /* GraphQL */ `
             email
             passwrd
             user_type
+            student_enrolled_in {
+              items {
+                id
+                name
+                section
+                credit_hours
+                department {
+                  id
+                  name
+                  head {
+                    id
+                    first_name
+                    last_name
+                    email
+                    passwrd
+                    user_type
+                    student_enrolled_in {
+                      items {
+                        id
+                        name
+                        section
+                        credit_hours
+                        createdAt
+                        updatedAt
+                      }
+                      nextToken
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  createdAt
+                  updatedAt
+                }
+                instructor {
+                  id
+                  first_name
+                  last_name
+                  email
+                  passwrd
+                  user_type
+                  student_enrolled_in {
+                    items {
+                      id
+                      name
+                      section
+                      credit_hours
+                      department {
+                        id
+                        name
+                        createdAt
+                        updatedAt
+                      }
+                      instructor {
+                        id
+                        first_name
+                        last_name
+                        email
+                        passwrd
+                        user_type
+                        createdAt
+                        updatedAt
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    nextToken
+                  }
+                  createdAt
+                  updatedAt
+                }
+                createdAt
+                updatedAt
+              }
+              nextToken
+            }
             createdAt
             updatedAt
           }
@@ -696,6 +4566,110 @@ export const createDeleteCourseRequest = /* GraphQL */ `
           email
           passwrd
           user_type
+          student_enrolled_in {
+            items {
+              id
+              name
+              section
+              credit_hours
+              department {
+                id
+                name
+                head {
+                  id
+                  first_name
+                  last_name
+                  email
+                  passwrd
+                  user_type
+                  student_enrolled_in {
+                    items {
+                      id
+                      name
+                      section
+                      credit_hours
+                      department {
+                        id
+                        name
+                        createdAt
+                        updatedAt
+                      }
+                      instructor {
+                        id
+                        first_name
+                        last_name
+                        email
+                        passwrd
+                        user_type
+                        createdAt
+                        updatedAt
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    nextToken
+                  }
+                  createdAt
+                  updatedAt
+                }
+                createdAt
+                updatedAt
+              }
+              instructor {
+                id
+                first_name
+                last_name
+                email
+                passwrd
+                user_type
+                student_enrolled_in {
+                  items {
+                    id
+                    name
+                    section
+                    credit_hours
+                    department {
+                      id
+                      name
+                      head {
+                        id
+                        first_name
+                        last_name
+                        email
+                        passwrd
+                        user_type
+                        createdAt
+                        updatedAt
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    instructor {
+                      id
+                      first_name
+                      last_name
+                      email
+                      passwrd
+                      user_type
+                      student_enrolled_in {
+                        nextToken
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  nextToken
+                }
+                createdAt
+                updatedAt
+              }
+              createdAt
+              updatedAt
+            }
+            nextToken
+          }
           createdAt
           updatedAt
         }
@@ -709,6 +4683,134 @@ export const createDeleteCourseRequest = /* GraphQL */ `
         email
         passwrd
         user_type
+        student_enrolled_in {
+          items {
+            id
+            name
+            section
+            credit_hours
+            department {
+              id
+              name
+              head {
+                id
+                first_name
+                last_name
+                email
+                passwrd
+                user_type
+                student_enrolled_in {
+                  items {
+                    id
+                    name
+                    section
+                    credit_hours
+                    department {
+                      id
+                      name
+                      head {
+                        id
+                        first_name
+                        last_name
+                        email
+                        passwrd
+                        user_type
+                        createdAt
+                        updatedAt
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    instructor {
+                      id
+                      first_name
+                      last_name
+                      email
+                      passwrd
+                      user_type
+                      student_enrolled_in {
+                        nextToken
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  nextToken
+                }
+                createdAt
+                updatedAt
+              }
+              createdAt
+              updatedAt
+            }
+            instructor {
+              id
+              first_name
+              last_name
+              email
+              passwrd
+              user_type
+              student_enrolled_in {
+                items {
+                  id
+                  name
+                  section
+                  credit_hours
+                  department {
+                    id
+                    name
+                    head {
+                      id
+                      first_name
+                      last_name
+                      email
+                      passwrd
+                      user_type
+                      student_enrolled_in {
+                        nextToken
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  instructor {
+                    id
+                    first_name
+                    last_name
+                    email
+                    passwrd
+                    user_type
+                    student_enrolled_in {
+                      items {
+                        id
+                        name
+                        section
+                        credit_hours
+                        createdAt
+                        updatedAt
+                      }
+                      nextToken
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  createdAt
+                  updatedAt
+                }
+                nextToken
+              }
+              createdAt
+              updatedAt
+            }
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
         createdAt
         updatedAt
       }
@@ -739,6 +4841,81 @@ export const updateDeleteCourseRequest = /* GraphQL */ `
             email
             passwrd
             user_type
+            student_enrolled_in {
+              items {
+                id
+                name
+                section
+                credit_hours
+                department {
+                  id
+                  name
+                  head {
+                    id
+                    first_name
+                    last_name
+                    email
+                    passwrd
+                    user_type
+                    student_enrolled_in {
+                      items {
+                        id
+                        name
+                        section
+                        credit_hours
+                        createdAt
+                        updatedAt
+                      }
+                      nextToken
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  createdAt
+                  updatedAt
+                }
+                instructor {
+                  id
+                  first_name
+                  last_name
+                  email
+                  passwrd
+                  user_type
+                  student_enrolled_in {
+                    items {
+                      id
+                      name
+                      section
+                      credit_hours
+                      department {
+                        id
+                        name
+                        createdAt
+                        updatedAt
+                      }
+                      instructor {
+                        id
+                        first_name
+                        last_name
+                        email
+                        passwrd
+                        user_type
+                        createdAt
+                        updatedAt
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    nextToken
+                  }
+                  createdAt
+                  updatedAt
+                }
+                createdAt
+                updatedAt
+              }
+              nextToken
+            }
             createdAt
             updatedAt
           }
@@ -752,6 +4929,110 @@ export const updateDeleteCourseRequest = /* GraphQL */ `
           email
           passwrd
           user_type
+          student_enrolled_in {
+            items {
+              id
+              name
+              section
+              credit_hours
+              department {
+                id
+                name
+                head {
+                  id
+                  first_name
+                  last_name
+                  email
+                  passwrd
+                  user_type
+                  student_enrolled_in {
+                    items {
+                      id
+                      name
+                      section
+                      credit_hours
+                      department {
+                        id
+                        name
+                        createdAt
+                        updatedAt
+                      }
+                      instructor {
+                        id
+                        first_name
+                        last_name
+                        email
+                        passwrd
+                        user_type
+                        createdAt
+                        updatedAt
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    nextToken
+                  }
+                  createdAt
+                  updatedAt
+                }
+                createdAt
+                updatedAt
+              }
+              instructor {
+                id
+                first_name
+                last_name
+                email
+                passwrd
+                user_type
+                student_enrolled_in {
+                  items {
+                    id
+                    name
+                    section
+                    credit_hours
+                    department {
+                      id
+                      name
+                      head {
+                        id
+                        first_name
+                        last_name
+                        email
+                        passwrd
+                        user_type
+                        createdAt
+                        updatedAt
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    instructor {
+                      id
+                      first_name
+                      last_name
+                      email
+                      passwrd
+                      user_type
+                      student_enrolled_in {
+                        nextToken
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  nextToken
+                }
+                createdAt
+                updatedAt
+              }
+              createdAt
+              updatedAt
+            }
+            nextToken
+          }
           createdAt
           updatedAt
         }
@@ -765,6 +5046,134 @@ export const updateDeleteCourseRequest = /* GraphQL */ `
         email
         passwrd
         user_type
+        student_enrolled_in {
+          items {
+            id
+            name
+            section
+            credit_hours
+            department {
+              id
+              name
+              head {
+                id
+                first_name
+                last_name
+                email
+                passwrd
+                user_type
+                student_enrolled_in {
+                  items {
+                    id
+                    name
+                    section
+                    credit_hours
+                    department {
+                      id
+                      name
+                      head {
+                        id
+                        first_name
+                        last_name
+                        email
+                        passwrd
+                        user_type
+                        createdAt
+                        updatedAt
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    instructor {
+                      id
+                      first_name
+                      last_name
+                      email
+                      passwrd
+                      user_type
+                      student_enrolled_in {
+                        nextToken
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  nextToken
+                }
+                createdAt
+                updatedAt
+              }
+              createdAt
+              updatedAt
+            }
+            instructor {
+              id
+              first_name
+              last_name
+              email
+              passwrd
+              user_type
+              student_enrolled_in {
+                items {
+                  id
+                  name
+                  section
+                  credit_hours
+                  department {
+                    id
+                    name
+                    head {
+                      id
+                      first_name
+                      last_name
+                      email
+                      passwrd
+                      user_type
+                      student_enrolled_in {
+                        nextToken
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  instructor {
+                    id
+                    first_name
+                    last_name
+                    email
+                    passwrd
+                    user_type
+                    student_enrolled_in {
+                      items {
+                        id
+                        name
+                        section
+                        credit_hours
+                        createdAt
+                        updatedAt
+                      }
+                      nextToken
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  createdAt
+                  updatedAt
+                }
+                nextToken
+              }
+              createdAt
+              updatedAt
+            }
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
         createdAt
         updatedAt
       }
@@ -795,6 +5204,81 @@ export const deleteDeleteCourseRequest = /* GraphQL */ `
             email
             passwrd
             user_type
+            student_enrolled_in {
+              items {
+                id
+                name
+                section
+                credit_hours
+                department {
+                  id
+                  name
+                  head {
+                    id
+                    first_name
+                    last_name
+                    email
+                    passwrd
+                    user_type
+                    student_enrolled_in {
+                      items {
+                        id
+                        name
+                        section
+                        credit_hours
+                        createdAt
+                        updatedAt
+                      }
+                      nextToken
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  createdAt
+                  updatedAt
+                }
+                instructor {
+                  id
+                  first_name
+                  last_name
+                  email
+                  passwrd
+                  user_type
+                  student_enrolled_in {
+                    items {
+                      id
+                      name
+                      section
+                      credit_hours
+                      department {
+                        id
+                        name
+                        createdAt
+                        updatedAt
+                      }
+                      instructor {
+                        id
+                        first_name
+                        last_name
+                        email
+                        passwrd
+                        user_type
+                        createdAt
+                        updatedAt
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    nextToken
+                  }
+                  createdAt
+                  updatedAt
+                }
+                createdAt
+                updatedAt
+              }
+              nextToken
+            }
             createdAt
             updatedAt
           }
@@ -808,6 +5292,110 @@ export const deleteDeleteCourseRequest = /* GraphQL */ `
           email
           passwrd
           user_type
+          student_enrolled_in {
+            items {
+              id
+              name
+              section
+              credit_hours
+              department {
+                id
+                name
+                head {
+                  id
+                  first_name
+                  last_name
+                  email
+                  passwrd
+                  user_type
+                  student_enrolled_in {
+                    items {
+                      id
+                      name
+                      section
+                      credit_hours
+                      department {
+                        id
+                        name
+                        createdAt
+                        updatedAt
+                      }
+                      instructor {
+                        id
+                        first_name
+                        last_name
+                        email
+                        passwrd
+                        user_type
+                        createdAt
+                        updatedAt
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    nextToken
+                  }
+                  createdAt
+                  updatedAt
+                }
+                createdAt
+                updatedAt
+              }
+              instructor {
+                id
+                first_name
+                last_name
+                email
+                passwrd
+                user_type
+                student_enrolled_in {
+                  items {
+                    id
+                    name
+                    section
+                    credit_hours
+                    department {
+                      id
+                      name
+                      head {
+                        id
+                        first_name
+                        last_name
+                        email
+                        passwrd
+                        user_type
+                        createdAt
+                        updatedAt
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    instructor {
+                      id
+                      first_name
+                      last_name
+                      email
+                      passwrd
+                      user_type
+                      student_enrolled_in {
+                        nextToken
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  nextToken
+                }
+                createdAt
+                updatedAt
+              }
+              createdAt
+              updatedAt
+            }
+            nextToken
+          }
           createdAt
           updatedAt
         }
@@ -821,6 +5409,134 @@ export const deleteDeleteCourseRequest = /* GraphQL */ `
         email
         passwrd
         user_type
+        student_enrolled_in {
+          items {
+            id
+            name
+            section
+            credit_hours
+            department {
+              id
+              name
+              head {
+                id
+                first_name
+                last_name
+                email
+                passwrd
+                user_type
+                student_enrolled_in {
+                  items {
+                    id
+                    name
+                    section
+                    credit_hours
+                    department {
+                      id
+                      name
+                      head {
+                        id
+                        first_name
+                        last_name
+                        email
+                        passwrd
+                        user_type
+                        createdAt
+                        updatedAt
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    instructor {
+                      id
+                      first_name
+                      last_name
+                      email
+                      passwrd
+                      user_type
+                      student_enrolled_in {
+                        nextToken
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  nextToken
+                }
+                createdAt
+                updatedAt
+              }
+              createdAt
+              updatedAt
+            }
+            instructor {
+              id
+              first_name
+              last_name
+              email
+              passwrd
+              user_type
+              student_enrolled_in {
+                items {
+                  id
+                  name
+                  section
+                  credit_hours
+                  department {
+                    id
+                    name
+                    head {
+                      id
+                      first_name
+                      last_name
+                      email
+                      passwrd
+                      user_type
+                      student_enrolled_in {
+                        nextToken
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  instructor {
+                    id
+                    first_name
+                    last_name
+                    email
+                    passwrd
+                    user_type
+                    student_enrolled_in {
+                      items {
+                        id
+                        name
+                        section
+                        credit_hours
+                        createdAt
+                        updatedAt
+                      }
+                      nextToken
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  createdAt
+                  updatedAt
+                }
+                nextToken
+              }
+              createdAt
+              updatedAt
+            }
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
         createdAt
         updatedAt
       }
@@ -846,6 +5562,110 @@ export const createCreateCourseRequest = /* GraphQL */ `
           email
           passwrd
           user_type
+          student_enrolled_in {
+            items {
+              id
+              name
+              section
+              credit_hours
+              department {
+                id
+                name
+                head {
+                  id
+                  first_name
+                  last_name
+                  email
+                  passwrd
+                  user_type
+                  student_enrolled_in {
+                    items {
+                      id
+                      name
+                      section
+                      credit_hours
+                      department {
+                        id
+                        name
+                        createdAt
+                        updatedAt
+                      }
+                      instructor {
+                        id
+                        first_name
+                        last_name
+                        email
+                        passwrd
+                        user_type
+                        createdAt
+                        updatedAt
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    nextToken
+                  }
+                  createdAt
+                  updatedAt
+                }
+                createdAt
+                updatedAt
+              }
+              instructor {
+                id
+                first_name
+                last_name
+                email
+                passwrd
+                user_type
+                student_enrolled_in {
+                  items {
+                    id
+                    name
+                    section
+                    credit_hours
+                    department {
+                      id
+                      name
+                      head {
+                        id
+                        first_name
+                        last_name
+                        email
+                        passwrd
+                        user_type
+                        createdAt
+                        updatedAt
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    instructor {
+                      id
+                      first_name
+                      last_name
+                      email
+                      passwrd
+                      user_type
+                      student_enrolled_in {
+                        nextToken
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  nextToken
+                }
+                createdAt
+                updatedAt
+              }
+              createdAt
+              updatedAt
+            }
+            nextToken
+          }
           createdAt
           updatedAt
         }
@@ -862,6 +5682,134 @@ export const createCreateCourseRequest = /* GraphQL */ `
         email
         passwrd
         user_type
+        student_enrolled_in {
+          items {
+            id
+            name
+            section
+            credit_hours
+            department {
+              id
+              name
+              head {
+                id
+                first_name
+                last_name
+                email
+                passwrd
+                user_type
+                student_enrolled_in {
+                  items {
+                    id
+                    name
+                    section
+                    credit_hours
+                    department {
+                      id
+                      name
+                      head {
+                        id
+                        first_name
+                        last_name
+                        email
+                        passwrd
+                        user_type
+                        createdAt
+                        updatedAt
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    instructor {
+                      id
+                      first_name
+                      last_name
+                      email
+                      passwrd
+                      user_type
+                      student_enrolled_in {
+                        nextToken
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  nextToken
+                }
+                createdAt
+                updatedAt
+              }
+              createdAt
+              updatedAt
+            }
+            instructor {
+              id
+              first_name
+              last_name
+              email
+              passwrd
+              user_type
+              student_enrolled_in {
+                items {
+                  id
+                  name
+                  section
+                  credit_hours
+                  department {
+                    id
+                    name
+                    head {
+                      id
+                      first_name
+                      last_name
+                      email
+                      passwrd
+                      user_type
+                      student_enrolled_in {
+                        nextToken
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  instructor {
+                    id
+                    first_name
+                    last_name
+                    email
+                    passwrd
+                    user_type
+                    student_enrolled_in {
+                      items {
+                        id
+                        name
+                        section
+                        credit_hours
+                        createdAt
+                        updatedAt
+                      }
+                      nextToken
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  createdAt
+                  updatedAt
+                }
+                nextToken
+              }
+              createdAt
+              updatedAt
+            }
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
         createdAt
         updatedAt
       }
@@ -887,6 +5835,110 @@ export const updateCreateCourseRequest = /* GraphQL */ `
           email
           passwrd
           user_type
+          student_enrolled_in {
+            items {
+              id
+              name
+              section
+              credit_hours
+              department {
+                id
+                name
+                head {
+                  id
+                  first_name
+                  last_name
+                  email
+                  passwrd
+                  user_type
+                  student_enrolled_in {
+                    items {
+                      id
+                      name
+                      section
+                      credit_hours
+                      department {
+                        id
+                        name
+                        createdAt
+                        updatedAt
+                      }
+                      instructor {
+                        id
+                        first_name
+                        last_name
+                        email
+                        passwrd
+                        user_type
+                        createdAt
+                        updatedAt
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    nextToken
+                  }
+                  createdAt
+                  updatedAt
+                }
+                createdAt
+                updatedAt
+              }
+              instructor {
+                id
+                first_name
+                last_name
+                email
+                passwrd
+                user_type
+                student_enrolled_in {
+                  items {
+                    id
+                    name
+                    section
+                    credit_hours
+                    department {
+                      id
+                      name
+                      head {
+                        id
+                        first_name
+                        last_name
+                        email
+                        passwrd
+                        user_type
+                        createdAt
+                        updatedAt
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    instructor {
+                      id
+                      first_name
+                      last_name
+                      email
+                      passwrd
+                      user_type
+                      student_enrolled_in {
+                        nextToken
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  nextToken
+                }
+                createdAt
+                updatedAt
+              }
+              createdAt
+              updatedAt
+            }
+            nextToken
+          }
           createdAt
           updatedAt
         }
@@ -903,6 +5955,134 @@ export const updateCreateCourseRequest = /* GraphQL */ `
         email
         passwrd
         user_type
+        student_enrolled_in {
+          items {
+            id
+            name
+            section
+            credit_hours
+            department {
+              id
+              name
+              head {
+                id
+                first_name
+                last_name
+                email
+                passwrd
+                user_type
+                student_enrolled_in {
+                  items {
+                    id
+                    name
+                    section
+                    credit_hours
+                    department {
+                      id
+                      name
+                      head {
+                        id
+                        first_name
+                        last_name
+                        email
+                        passwrd
+                        user_type
+                        createdAt
+                        updatedAt
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    instructor {
+                      id
+                      first_name
+                      last_name
+                      email
+                      passwrd
+                      user_type
+                      student_enrolled_in {
+                        nextToken
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  nextToken
+                }
+                createdAt
+                updatedAt
+              }
+              createdAt
+              updatedAt
+            }
+            instructor {
+              id
+              first_name
+              last_name
+              email
+              passwrd
+              user_type
+              student_enrolled_in {
+                items {
+                  id
+                  name
+                  section
+                  credit_hours
+                  department {
+                    id
+                    name
+                    head {
+                      id
+                      first_name
+                      last_name
+                      email
+                      passwrd
+                      user_type
+                      student_enrolled_in {
+                        nextToken
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  instructor {
+                    id
+                    first_name
+                    last_name
+                    email
+                    passwrd
+                    user_type
+                    student_enrolled_in {
+                      items {
+                        id
+                        name
+                        section
+                        credit_hours
+                        createdAt
+                        updatedAt
+                      }
+                      nextToken
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  createdAt
+                  updatedAt
+                }
+                nextToken
+              }
+              createdAt
+              updatedAt
+            }
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
         createdAt
         updatedAt
       }
@@ -928,6 +6108,110 @@ export const deleteCreateCourseRequest = /* GraphQL */ `
           email
           passwrd
           user_type
+          student_enrolled_in {
+            items {
+              id
+              name
+              section
+              credit_hours
+              department {
+                id
+                name
+                head {
+                  id
+                  first_name
+                  last_name
+                  email
+                  passwrd
+                  user_type
+                  student_enrolled_in {
+                    items {
+                      id
+                      name
+                      section
+                      credit_hours
+                      department {
+                        id
+                        name
+                        createdAt
+                        updatedAt
+                      }
+                      instructor {
+                        id
+                        first_name
+                        last_name
+                        email
+                        passwrd
+                        user_type
+                        createdAt
+                        updatedAt
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    nextToken
+                  }
+                  createdAt
+                  updatedAt
+                }
+                createdAt
+                updatedAt
+              }
+              instructor {
+                id
+                first_name
+                last_name
+                email
+                passwrd
+                user_type
+                student_enrolled_in {
+                  items {
+                    id
+                    name
+                    section
+                    credit_hours
+                    department {
+                      id
+                      name
+                      head {
+                        id
+                        first_name
+                        last_name
+                        email
+                        passwrd
+                        user_type
+                        createdAt
+                        updatedAt
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    instructor {
+                      id
+                      first_name
+                      last_name
+                      email
+                      passwrd
+                      user_type
+                      student_enrolled_in {
+                        nextToken
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  nextToken
+                }
+                createdAt
+                updatedAt
+              }
+              createdAt
+              updatedAt
+            }
+            nextToken
+          }
           createdAt
           updatedAt
         }
@@ -944,6 +6228,134 @@ export const deleteCreateCourseRequest = /* GraphQL */ `
         email
         passwrd
         user_type
+        student_enrolled_in {
+          items {
+            id
+            name
+            section
+            credit_hours
+            department {
+              id
+              name
+              head {
+                id
+                first_name
+                last_name
+                email
+                passwrd
+                user_type
+                student_enrolled_in {
+                  items {
+                    id
+                    name
+                    section
+                    credit_hours
+                    department {
+                      id
+                      name
+                      head {
+                        id
+                        first_name
+                        last_name
+                        email
+                        passwrd
+                        user_type
+                        createdAt
+                        updatedAt
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    instructor {
+                      id
+                      first_name
+                      last_name
+                      email
+                      passwrd
+                      user_type
+                      student_enrolled_in {
+                        nextToken
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  nextToken
+                }
+                createdAt
+                updatedAt
+              }
+              createdAt
+              updatedAt
+            }
+            instructor {
+              id
+              first_name
+              last_name
+              email
+              passwrd
+              user_type
+              student_enrolled_in {
+                items {
+                  id
+                  name
+                  section
+                  credit_hours
+                  department {
+                    id
+                    name
+                    head {
+                      id
+                      first_name
+                      last_name
+                      email
+                      passwrd
+                      user_type
+                      student_enrolled_in {
+                        nextToken
+                      }
+                      createdAt
+                      updatedAt
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  instructor {
+                    id
+                    first_name
+                    last_name
+                    email
+                    passwrd
+                    user_type
+                    student_enrolled_in {
+                      items {
+                        id
+                        name
+                        section
+                        credit_hours
+                        createdAt
+                        updatedAt
+                      }
+                      nextToken
+                    }
+                    createdAt
+                    updatedAt
+                  }
+                  createdAt
+                  updatedAt
+                }
+                nextToken
+              }
+              createdAt
+              updatedAt
+            }
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
         createdAt
         updatedAt
       }

@@ -1,8 +1,8 @@
 import {API} from "@aws-amplify/api";
 import {graphqlOperation} from "@aws-amplify/api-graphql";
-import {listCourses, listEnrollRequests} from "../graphql/queries";
+import {getCourse, listCourses, listEnrollRequests} from "../graphql/queries";
 import {displayError, userFullName} from "./Utilities";
-import {createEnrollRequest, deleteEnrollRequest} from "../graphql/mutations";
+import {createEnrollRequest, deleteEnrollRequest, updateCourse, updateSchoolUser} from "../graphql/mutations";
 import {toast} from "react-toastify";
 import {InstructorOptions, RegistrarOptions, StudentOptions} from "./Options";
 import {checkIfDepartmentHead} from "./InstructorCreateCourseRequest";
@@ -110,4 +110,59 @@ function del(context, row, redraw) {
         toast.info("Deleted")
         redraw()
     }).catch(e => displayError("Could not delete request", e))
+}
+
+export function approveCourseRequest(context, row) {
+    function delRequest() {
+        deleteCourseEnrollRequest(context, row, () => loadCourseEnrollRequestsRegistrar(context))
+    }
+
+    const user = row.school_user
+    const user_id = user.id
+    const user_type = user.user_type
+    const join = row.is_enrolling
+    const course = row.course
+    const course_id = course.id
+    const course_instructor = course.instructor
+    if (user_type === "INSTRUCTOR") {
+        if (join) {
+            API.graphql(graphqlOperation(updateCourse, {
+                input: {
+                    id: course_id,
+                    courseInstructorId: user_id
+                }
+            })).then(function () {
+                toast.info("Class updated")
+                delRequest()
+            }).catch(e => displayError("Could not update course", e))
+        } else {
+            if (course_instructor.id === user.id) {
+                API.graphql(graphqlOperation(updateCourse, {
+                    input: {
+                        id: course_id,
+                        courseInstructorId: null
+                    }
+                })).then(function () {
+                    toast.info("Class updated")
+                    delRequest()
+                }).catch(e => displayError("Could not update course", e))
+            } else {
+                toast.error("Cannot leave a class the instructor isn't teaching....")
+                delRequest()
+            }
+        }
+    } else if (user_type === "STUDENT") {
+        API.graphql(graphqlOperation(updateSchoolUser, {
+            input: {
+                id: user_id,
+                student_enrolled_in: course
+            }
+        })).then(function () {
+            toast.info("It worked???")
+        }).catch(function(e) {
+
+        })
+    } else {
+        toast.error(`I'm sorry, you're trying to do what to ${user_type}???`)
+    }
 }

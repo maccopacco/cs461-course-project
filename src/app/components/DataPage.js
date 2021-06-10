@@ -18,6 +18,7 @@ import {
     registrarShowCreateCourseRequests
 } from "../RegistrarCreateCourse";
 import {
+    approveCourseRequest,
     deleteCourseEnrollRequest,
     enrollInCourse,
     loadCourseEnrollRequestsInstructor,
@@ -254,8 +255,7 @@ export default class DataPage extends Component {
                         }, {
                             icon: () => <ActionIcon text="Approve"/>,
                             tooltip: "Approve request",
-                            onClick: (e, row) => {
-                            }
+                            onClick: (e, row) => approveCourseRequest(here, row)
                         }]
                     }
                 }
