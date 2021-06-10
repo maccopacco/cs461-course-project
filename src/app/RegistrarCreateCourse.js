@@ -5,7 +5,7 @@ import {displayError} from "./Utilities";
 import {API} from "@aws-amplify/api";
 import {createCourse, deleteCreateCourseRequest} from "../graphql/mutations";
 import {toast} from "react-toastify"
-import {loadCourseCreateRequests, loadCourseDeleteRequests} from "./CourseRequests";
+import {loadCourseCreateRequests, loadCourseDeleteRequests} from "./CourseRequestsLoading";
 
 export function registrarShowCreateCourseRequests(context) {
     context.setState({registrarOptions: RegistrarOptions.VIEW_CREATE_COURSE_REQUESTS, data: []})

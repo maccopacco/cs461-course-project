@@ -9,6 +9,7 @@ export const InstructorOptions = {
     CREATE_COURSE_STEP_1: 1,
     CREATE_COURSE_STEP_2: 2,
     VIEW_CREATE_COURSE_REQUESTS: 3,
+    VIEW_DELETE_COURSE_REQUESTS: 4,
 }
 
 export const RegistrarOptions = {

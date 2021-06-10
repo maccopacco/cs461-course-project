@@ -7,7 +7,7 @@ import {displayError} from "./Utilities";
 import React from "react";
 import {createCreateCourseRequest} from "../graphql/mutations";
 import {toast} from "react-toastify";
-import {instructorViewCreateCourseRequest} from "./InstructorViewCreateCourseRequest";
+import {instructorViewCourseCreateRequest} from "./InstructorCourseRequest";
 
 export function checkIfDepartmentHead(context, ifDepartmentHead) {
     API.graphql(graphqlOperation(listDepartments))
@@ -65,7 +65,7 @@ export function createCoursePopup(popupRef, context) {
                 parseInt(section.current.value),
                 parseInt(credits.current.value))) {
                 current.close()
-                instructorViewCreateCourseRequest(context)
+                instructorViewCourseCreateRequest(context)
             }
         }}>
             Submit

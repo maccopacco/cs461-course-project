@@ -17,13 +17,17 @@ import {
     registrarDeleteCreateCourseRequest,
     registrarShowCreateCourseRequests
 } from "../RegistrarCreateCourse";
-import {instructorViewCreateCourseRequest} from "../InstructorViewCreateCourseRequest";
 import {loadCourses} from "../Course";
 import {
     instructorAttemptDeleteCourse,
-    registarShowDeleteCourseRequests, registrarApproveDeleteCourseRequest,
-    registrarDeleteDeleteCourseRequest
-} from "../DeleteCourse";
+    instructorCancelCreateCourse,
+    instructorCancelDeleteCourse, instructorViewCourseCreateRequest, instructorViewCourseDeleteRequest,
+} from "../InstructorCourseRequest";
+import {
+    registrarApproveDeleteCourseRequest,
+    registrarDeleteDeleteCourseRequest,
+    registrarShowDeleteCourseRequests
+} from "../RegistrarDeleteCourse";
 
 
 export default class DataPage extends Component {
@@ -108,6 +112,7 @@ export default class DataPage extends Component {
                     case InstructorOptions.CREATE_COURSE_STEP_1: {
                         return this.getColumnsForType("Registrar", null, RegistrarOptions.VIEW_DEPARTMENTS)
                     }
+                    case InstructorOptions.VIEW_DELETE_COURSE_REQUESTS:
                     case InstructorOptions.VIEW_CREATE_COURSE_REQUESTS: {
                         return this.getColumnsForType("Registrar", null, RegistrarOptions.VIEW_CREATE_COURSE_REQUESTS)
                     }
@@ -198,6 +203,21 @@ export default class DataPage extends Component {
             }
             case "Instructor": {
                 switch (this.state.instructorOptions) {
+                    case InstructorOptions.VIEW_CREATE_COURSE_REQUESTS: {
+                        return [{
+                            icon: () => <ActionIcon text="Delete"/>,
+                            tooltip: "Delete request",
+                            onClick: (e, row) => instructorCancelCreateCourse(here, row)
+                        },]
+                    }
+                    case InstructorOptions.VIEW_DELETE_COURSE_REQUESTS: {
+                        return [{
+                            icon: () => <ActionIcon text="Delete"/>,
+                            tooltip: "Delete request",
+                            onClick: (e, row) => instructorCancelDeleteCourse(here, row)
+                        },]
+                    }
+
                     case InstructorOptions.SHOW_COURSES: {
                         return [{
                             icon: () => <ActionIcon text='Rq Del'/>,
@@ -262,7 +282,7 @@ export default class DataPage extends Component {
                     {title: "Show departments", onClick: () => registrarShowDepartments(here)},
                     {title: "Assign department head", onClick: () => registrarAssignDepartmentHead(here)},
                     {title: "View create course requests", onClick: () => registrarShowCreateCourseRequests(here)},
-                    {title: "View delete course requests", onClick: () => registarShowDeleteCourseRequests(here)}
+                    {title: "View delete course requests", onClick: () => registrarShowDeleteCourseRequests(here)}
                 )
                 if (this.state.registrarOptions === RegistrarOptions.ASSIGN_HEAD_STEP_2) {
                     buttons.push({
@@ -275,7 +295,8 @@ export default class DataPage extends Component {
             case "Instructor" : {
                 buttons.push(
                     {title: 'Create course', onClick: () => instructorCreateCourseRequest(here)},
-                    {title: 'View create course requests', onClick: () => instructorViewCreateCourseRequest(here)})
+                    {title: 'View create course requests', onClick: () => instructorViewCourseCreateRequest(here)},
+                    {title: 'View delete course requests', onClick: () => instructorViewCourseDeleteRequest(here)})
                 if (this.state.instructorOptions === InstructorOptions.CREATE_COURSE_STEP_2) {
                     buttons.push({
                         popup: popupHelper(

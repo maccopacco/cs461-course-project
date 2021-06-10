@@ -2,6 +2,10 @@ import {API} from "@aws-amplify/api";
 import {graphqlOperation} from "@aws-amplify/api-graphql";
 import {listCreateCourseRequests, listDeleteCourseRequests} from "../graphql/queries";
 import {displayError, userFullName} from "./Utilities";
+import {checkIfDepartmentHead} from "./InstructorCreateCourseRequest";
+import {InstructorOptions} from "./Options";
+
+
 
 export function loadCourseCreateRequests(context, filter = function () {
     return true
