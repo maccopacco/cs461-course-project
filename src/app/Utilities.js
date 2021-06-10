@@ -1,4 +1,6 @@
 import {toast} from "react-toastify";
+import React from "react";
+import Popup from "reactjs-popup";
 
 export function dataToUsers(data) {
     return data.data.listSchoolUsers.items
@@ -19,6 +21,23 @@ export function getRandomInt(max) {
 export function displayError(message, error) {
     toast.error(message)
     console.error(message, error)
+}
+
+export function popupHelper(key, text, producePopup, onClick = function () {
+}) {
+    const ref = React.createRef()
+    return <Popup ref={ref} className='vertical'
+                  key={key} trigger={
+        <button>{text}</button>
+    } onOpen={(e) => onClick(ref)} position="right center">
+        {
+            producePopup(ref)
+        }
+    </Popup>
+}
+
+export function createPassword() {
+    return getRandomInt(100_000_000).toString();
 }
 
 export function userType(u) {
