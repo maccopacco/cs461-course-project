@@ -2,6 +2,7 @@
 export const StudentOptions = {
     SHOW_COURSES: 0,
     SHOW_COURSE_REPORTS: 1,
+    SHOW_COURSE_REQUESTS: 2,
 }
 
 export const InstructorOptions = {
@@ -10,6 +11,7 @@ export const InstructorOptions = {
     CREATE_COURSE_STEP_2: 2,
     VIEW_CREATE_COURSE_REQUESTS: 3,
     VIEW_DELETE_COURSE_REQUESTS: 4,
+    SHOW_COURSE_REQUESTS: 5,
 }
 
 export const RegistrarOptions = {
@@ -20,4 +22,5 @@ export const RegistrarOptions = {
     ASSIGN_HEAD_STEP_2: 4,
     VIEW_CREATE_COURSE_REQUESTS: 5,
     VIEW_DELETE_COURSE_REQUESTS: 6,
+    SHOW_COURSE_REQUESTS: 7,
 }

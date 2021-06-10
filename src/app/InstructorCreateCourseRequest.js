@@ -9,7 +9,7 @@ import {createCreateCourseRequest} from "../graphql/mutations";
 import {toast} from "react-toastify";
 import {instructorViewCourseCreateRequest} from "./InstructorCourseRequest";
 
-export function checkIfDepartmentHead(context, ifDepartmentHead) {
+export function checkIfDepartmentHead(context, ifDepartmentHead, ifNot = null) {
     API.graphql(graphqlOperation(listDepartments))
         .then(function (data) {
             const departments = data.data.listDepartments.items
@@ -21,7 +21,11 @@ export function checkIfDepartmentHead(context, ifDepartmentHead) {
             if (myDepartments.length > 0) {
                 ifDepartmentHead(myDepartments)
             } else {
-                displayError("You're not the head of any department, no can do")
+                if (ifNot == null){
+                    displayError("You're not the head of any department, no can do")
+                } else {
+                    ifNot()
+                }
             }
         })
         .catch(function (error) {

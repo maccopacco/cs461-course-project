@@ -5,7 +5,12 @@ import {toast} from "react-toastify";
 import {API} from "@aws-amplify/api";
 import {graphqlOperation} from "@aws-amplify/api-graphql";
 import {listDeleteCourseRequests} from "../graphql/queries";
-import {createDeleteCourseRequest, deleteCreateCourseRequest, deleteDeleteCourseRequest} from "../graphql/mutations";
+import {
+    createDeleteCourseRequest,
+    createEnrollRequest,
+    deleteCreateCourseRequest,
+    deleteDeleteCourseRequest
+} from "../graphql/mutations";
 import {displayError} from "./Utilities";
 
 

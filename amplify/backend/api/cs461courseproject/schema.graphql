@@ -29,7 +29,7 @@ type Course @model {
     section: Int!
     credit_hours: Int!
     department: Department! @connection
-    instructor: SchoolUser! @connection
+    instructor: SchoolUser @connection
 }
 
 type CourseReport @model {
