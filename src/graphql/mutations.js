@@ -99,6 +99,16 @@ export const createDepartment = /* GraphQL */ `
     createDepartment(input: $input, condition: $condition) {
       id
       name
+      head {
+        id
+        first_name
+        last_name
+        email
+        passwrd
+        user_type
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
     }
@@ -112,6 +122,16 @@ export const updateDepartment = /* GraphQL */ `
     updateDepartment(input: $input, condition: $condition) {
       id
       name
+      head {
+        id
+        first_name
+        last_name
+        email
+        passwrd
+        user_type
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
     }
@@ -125,80 +145,6 @@ export const deleteDepartment = /* GraphQL */ `
     deleteDepartment(input: $input, condition: $condition) {
       id
       name
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const createDepartmentHead = /* GraphQL */ `
-  mutation CreateDepartmentHead(
-    $input: CreateDepartmentHeadInput!
-    $condition: ModelDepartmentHeadConditionInput
-  ) {
-    createDepartmentHead(input: $input, condition: $condition) {
-      id
-      department {
-        id
-        name
-        createdAt
-        updatedAt
-      }
-      head {
-        id
-        first_name
-        last_name
-        email
-        passwrd
-        user_type
-        createdAt
-        updatedAt
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const updateDepartmentHead = /* GraphQL */ `
-  mutation UpdateDepartmentHead(
-    $input: UpdateDepartmentHeadInput!
-    $condition: ModelDepartmentHeadConditionInput
-  ) {
-    updateDepartmentHead(input: $input, condition: $condition) {
-      id
-      department {
-        id
-        name
-        createdAt
-        updatedAt
-      }
-      head {
-        id
-        first_name
-        last_name
-        email
-        passwrd
-        user_type
-        createdAt
-        updatedAt
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const deleteDepartmentHead = /* GraphQL */ `
-  mutation DeleteDepartmentHead(
-    $input: DeleteDepartmentHeadInput!
-    $condition: ModelDepartmentHeadConditionInput
-  ) {
-    deleteDepartmentHead(input: $input, condition: $condition) {
-      id
-      department {
-        id
-        name
-        createdAt
-        updatedAt
-      }
       head {
         id
         first_name
@@ -227,6 +173,16 @@ export const createCourse = /* GraphQL */ `
       department {
         id
         name
+        head {
+          id
+          first_name
+          last_name
+          email
+          passwrd
+          user_type
+          createdAt
+          updatedAt
+        }
         createdAt
         updatedAt
       }
@@ -258,6 +214,16 @@ export const updateCourse = /* GraphQL */ `
       department {
         id
         name
+        head {
+          id
+          first_name
+          last_name
+          email
+          passwrd
+          user_type
+          createdAt
+          updatedAt
+        }
         createdAt
         updatedAt
       }
@@ -289,6 +255,16 @@ export const deleteCourse = /* GraphQL */ `
       department {
         id
         name
+        head {
+          id
+          first_name
+          last_name
+          email
+          passwrd
+          user_type
+          createdAt
+          updatedAt
+        }
         createdAt
         updatedAt
       }
@@ -433,6 +409,16 @@ export const createEnrollRequest = /* GraphQL */ `
         department {
           id
           name
+          head {
+            id
+            first_name
+            last_name
+            email
+            passwrd
+            user_type
+            createdAt
+            updatedAt
+          }
           createdAt
           updatedAt
         }
@@ -480,6 +466,16 @@ export const updateEnrollRequest = /* GraphQL */ `
         department {
           id
           name
+          head {
+            id
+            first_name
+            last_name
+            email
+            passwrd
+            user_type
+            createdAt
+            updatedAt
+          }
           createdAt
           updatedAt
         }
@@ -527,6 +523,16 @@ export const deleteEnrollRequest = /* GraphQL */ `
         department {
           id
           name
+          head {
+            id
+            first_name
+            last_name
+            email
+            passwrd
+            user_type
+            createdAt
+            updatedAt
+          }
           createdAt
           updatedAt
         }
@@ -574,6 +580,16 @@ export const createDeleteCourseRequest = /* GraphQL */ `
         department {
           id
           name
+          head {
+            id
+            first_name
+            last_name
+            email
+            passwrd
+            user_type
+            createdAt
+            updatedAt
+          }
           createdAt
           updatedAt
         }
@@ -620,6 +636,16 @@ export const updateDeleteCourseRequest = /* GraphQL */ `
         department {
           id
           name
+          head {
+            id
+            first_name
+            last_name
+            email
+            passwrd
+            user_type
+            createdAt
+            updatedAt
+          }
           createdAt
           updatedAt
         }
@@ -666,6 +692,16 @@ export const deleteDeleteCourseRequest = /* GraphQL */ `
         department {
           id
           name
+          head {
+            id
+            first_name
+            last_name
+            email
+            passwrd
+            user_type
+            createdAt
+            updatedAt
+          }
           createdAt
           updatedAt
         }

@@ -1,11 +1,17 @@
 import React, {Component} from "react";
 import MaterialTable from "material-table";
-import {listSchoolUsers} from "../../graphql/queries";
+import {listDepartments, listSchoolUsers} from "../../graphql/queries";
 import {graphqlOperation} from "@aws-amplify/api-graphql";
 import {API} from "@aws-amplify/api";
 import {toast} from "react-toastify";
 import {ActionIcon} from "./ActionIcon";
-import {createSchoolUser, deleteSchoolUser, updateSchoolUser} from "../../graphql/mutations";
+import {
+    createDepartment,
+    createSchoolUser,
+    deleteDepartment,
+    deleteSchoolUser,
+    updateSchoolUser
+} from "../../graphql/mutations";
 import {getRandomInt} from "../Utilities";
 import Popup from "reactjs-popup";
 
@@ -19,7 +25,8 @@ const InstructorOptions = {
     DEFAULT_OPTION: 0
 }
 const RegistrarOptions = {
-    EDIT_USERS: 0
+    EDIT_USERS: 0,
+    VIEW_DEPARTMENTS: 1
 }
 
 export default class DataPage extends Component {
@@ -29,7 +36,7 @@ export default class DataPage extends Component {
         this.state = {
             data: [{value: "yes"}],
             studentOption: StudentOptions.SHOW_CLASSES,
-            instructorOption: InstructorOptions.DEFAULT_OPTION,
+            instructorOptions: InstructorOptions.DEFAULT_OPTION,
             registrarOptions: RegistrarOptions.EDIT_USERS
         }
     }
@@ -48,7 +55,7 @@ export default class DataPage extends Component {
             }
             case "Registrar": {
                 switch (this.state.registrarOptions) {
-                    case RegistrarOptions.EDIT_USERS:
+                    case RegistrarOptions.EDIT_USERS: {
                         return [{title: 'User Type', field: 'user_type'},
                             {title: 'ID', field: 'id'},
                             {title: 'Email', field: 'email'},
@@ -56,6 +63,10 @@ export default class DataPage extends Component {
                             {title: 'Last Name', field: 'last_name'},
                             // {title: 'Password', field: 'passwrd'}
                         ]
+                    }
+                    case RegistrarOptions.VIEW_DEPARTMENTS: {
+                        return [{title: 'Department name', field: 'name'}]
+                    }
                 }
                 break;
             }
@@ -86,14 +97,42 @@ export default class DataPage extends Component {
                         }, {
                             icon: () => <ActionIcon text="Del"/>,
                             tooltip: "Delete user",
-                            onClick: (event, rowData) => this.deleteUser(rowData,this)
+                            onClick: (event, rowData) => this.deleteUser(rowData, this)
                         }]
+                    case RegistrarOptions.VIEW_DEPARTMENTS: {
+                        return [{
+                            icon: () => <ActionIcon text="Del"/>,
+                            tooltip: "Delete department",
+                            onClick: (event, rowData) => this.deleteDepartment(rowData, this)
+                        }]
+                    }
+
                 }
                 break;
+            }
+            case "Instructor": {
+                switch (this.state.instructorOptions) {
+
+                }
             }
 
         }
         return []
+    }
+
+    deleteDepartment(rowData, context) {
+        API.graphql(graphqlOperation(deleteDepartment, {
+            input: {
+                id: rowData.id
+            }
+        })).then(function () {
+            toast.info("Department deleted")
+            context.registrarShowDepartments(context)
+        }).catch(function (error) {
+            const m = "Could not delete department"
+            toast.error(m)
+            console.error(m, error)
+        })
     }
 
     deleteUser(rowData, context) {
@@ -101,10 +140,10 @@ export default class DataPage extends Component {
             input: {
                 id: rowData.id
             }
-        })).then(function(){
+        })).then(function () {
             toast.info("User deleted")
             context.registrarShowUsers(context)
-        }).catch(function(error) {
+        }).catch(function (error) {
             const m = "Could not delete user"
             toast.error(m)
             console.error(m, error)
@@ -160,28 +199,103 @@ export default class DataPage extends Component {
                 }, {
                     title: "Show course reports", onClick: () => this.studentShowCourseReports(here)
                 }]
+                break;
             }
             case "Registrar": {
                 buttons = [{
                     title: "Show users", onClick: () => this.registrarShowUsers(here)
-                }, {title: "Create user", popup: this.registarCreateUserPopup()}]
+                }, {
+                    title: "Create user",
+                    popup: this.popupHelper('createUserPopup',
+                        'Create user',
+                        // here.createUserPopup
+                        (ref) => here.createUserPopup(here, ref)
+                    )
+                },
+                    {
+                        title: "Create department",
+                        popup: this.popupHelper('createDepartmentPopup',
+                            'Create department',
+                            (ref) => this.createDepartmentPopup(here, ref))
+                    },
+                    {
+                        title: "Show departments", onClick: () => this.registrarShowDepartments(here)
+                    }]
+                break;
+            }
+            case "Instructor" : {
+                buttons = []
+                break;
             }
         }
         return buttons.map(this.makeButton)
     }
 
-    registarCreateUserPopup() {
+    popupHelper(key, text, method) {
         const ref = React.createRef()
         return <Popup ref={ref} className='vertical'
-                      key='createUserPopup' trigger={
-            <button>Create user</button>
+                      key={key} trigger={
+            <button>{text}</button>
         } position="right center">
-            {this.getPopup(ref)}
+            {
+                method(ref)
+            }
         </Popup>
     }
 
-    getPopup(popupRef) {
-        const here = this
+    createDepartmentPopup(context, popupRef) {
+        const name = React.createRef()
+        return <div>
+            <label htmlFor="name">Department name: </label>
+            <input ref={name} id="name"/>
+            <button onClick={async function () {
+                const current = popupRef.current
+                if (await context.createDepartment(context, name.current.value) === true) {
+                    current.close()
+                }
+            }}
+            >Submit
+            </button>
+        </div>
+    }
+
+    async createDepartment(context, name) {
+        try {
+            if (name === '') {
+                toast.error("Department name cannot be empty!")
+                return false
+            }
+            const response = await API.graphql(graphqlOperation(listDepartments, {
+                filter: {
+                    name: {
+                        eq: name
+                    }
+                }
+            }))
+            console.log('response', response)
+
+            if (response.data.listDepartments.items.length > 0) {
+                toast.error("Department already exists with that name")
+                return false
+            }
+            await API.graphql(graphqlOperation(createDepartment, {
+                input: {
+                    name: name
+                }
+            }))
+            toast.info(`${name} department created`)
+            context.registrarShowDepartments(context)
+            return true
+        } catch (error) {
+            const m = "Could not create department"
+            toast.error(m)
+            console.error(m, error)
+            return false
+        }
+        return false
+    }
+
+    createUserPopup(context, popupRef) {
         const email = React.createRef()
         const fname = React.createRef()
         const lname = React.createRef()
@@ -204,49 +318,89 @@ export default class DataPage extends Component {
                     <option value="STUDENT">Student</option>
                     <option value="INSTRUCTOR">Instructor</option>
                 </select>
+
             </div>
             <button onClick={function () {
-                popupRef.current.close()
-                here.createUser(here, email.current.value,
+                const current = popupRef.current
+                context.createUser(context, email.current.value,
                     fname.current.value,
                     lname.current.value,
-                    user_type.current.value)
-            }}
+                    user_type.current.value).then(function (result) {
+                    if (result === true) {
+                        //for whatever reason, popup null in here
+                        current.close()
+                    }
+                })
+            }
+            }
             >Submit
             </button>
         </>
     }
 
-    createUser(context, email, first, last, user_type) {
-        API.graphql(graphqlOperation(createSchoolUser, {
-            input: {
-                email: email,
-                first_name: first,
-                last_name: last,
-                user_type: user_type,
-                passwrd: this.createPassword()
+    async createUser(context, email, first, last, user_type) {
+        try {
+            if (email === '' || first === '' || last === '') {
+                toast.error("Field(s) too short!")
+                return false
             }
-        })).then(function (data) {
+            const response = await API.graphql(graphqlOperation(listSchoolUsers, {
+                filter: {
+                    email: {
+                        eq: email
+                    }
+                }
+            }))
+            if (response.data.listSchoolUsers.items.length > 0) {
+                toast.error("User already exists with that email!")
+                return false
+            }
+            const data = await API.graphql(graphqlOperation(createSchoolUser, {
+                input: {
+                    email: email,
+                    first_name: first,
+                    last_name: last,
+                    user_type: user_type,
+                    passwrd: this.createPassword()
+                }
+            }))
             const user = data.data.createSchoolUser
             console.log('New user:', user)
             context.registrarShowUsers(context)
             alert(`Password is ${user.passwrd}`)
-        }).catch(function (error) {
+            return true
+        } catch (error) {
             const m = "Could not generate user"
             console.error(m, error)
             toast.error(m)
-        })
+        }
+        return false
     }
 
     registrarShowUsers(context) {
-        context.setState({registrarOptions: RegistrarOptions.EDIT_USERS, data: null})
+        context.setState({registrarOptions: RegistrarOptions.EDIT_USERS, data: []})
         API.graphql(graphqlOperation(listSchoolUsers))
             .then(function (data) {
                 const users = data.data.listSchoolUsers.items
                 context.setState({data: users})
             })
             .catch(function (error) {
-                let m = "Can not load users";
+                let m = "Cannot load users";
+                toast.error(m)
+                console.error(m, error)
+            })
+    }
+
+    registrarShowDepartments(context) {
+        context.setState({registrarOptions: RegistrarOptions.VIEW_DEPARTMENTS, data: []})
+
+        API.graphql(graphqlOperation(listDepartments))
+            .then(function (data) {
+                const departments = data.data.listDepartments.items
+                context.setState({data: departments})
+            })
+            .catch(function (error) {
+                const m = "Cannot load departments"
                 toast.error(m)
                 console.error(m, error)
             })

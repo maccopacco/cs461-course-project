@@ -78,6 +78,16 @@ export const onCreateDepartment = /* GraphQL */ `
     onCreateDepartment {
       id
       name
+      head {
+        id
+        first_name
+        last_name
+        email
+        passwrd
+        user_type
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
     }
@@ -88,6 +98,16 @@ export const onUpdateDepartment = /* GraphQL */ `
     onUpdateDepartment {
       id
       name
+      head {
+        id
+        first_name
+        last_name
+        email
+        passwrd
+        user_type
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
     }
@@ -98,71 +118,6 @@ export const onDeleteDepartment = /* GraphQL */ `
     onDeleteDepartment {
       id
       name
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onCreateDepartmentHead = /* GraphQL */ `
-  subscription OnCreateDepartmentHead {
-    onCreateDepartmentHead {
-      id
-      department {
-        id
-        name
-        createdAt
-        updatedAt
-      }
-      head {
-        id
-        first_name
-        last_name
-        email
-        passwrd
-        user_type
-        createdAt
-        updatedAt
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onUpdateDepartmentHead = /* GraphQL */ `
-  subscription OnUpdateDepartmentHead {
-    onUpdateDepartmentHead {
-      id
-      department {
-        id
-        name
-        createdAt
-        updatedAt
-      }
-      head {
-        id
-        first_name
-        last_name
-        email
-        passwrd
-        user_type
-        createdAt
-        updatedAt
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onDeleteDepartmentHead = /* GraphQL */ `
-  subscription OnDeleteDepartmentHead {
-    onDeleteDepartmentHead {
-      id
-      department {
-        id
-        name
-        createdAt
-        updatedAt
-      }
       head {
         id
         first_name
@@ -188,6 +143,16 @@ export const onCreateCourse = /* GraphQL */ `
       department {
         id
         name
+        head {
+          id
+          first_name
+          last_name
+          email
+          passwrd
+          user_type
+          createdAt
+          updatedAt
+        }
         createdAt
         updatedAt
       }
@@ -216,6 +181,16 @@ export const onUpdateCourse = /* GraphQL */ `
       department {
         id
         name
+        head {
+          id
+          first_name
+          last_name
+          email
+          passwrd
+          user_type
+          createdAt
+          updatedAt
+        }
         createdAt
         updatedAt
       }
@@ -244,6 +219,16 @@ export const onDeleteCourse = /* GraphQL */ `
       department {
         id
         name
+        head {
+          id
+          first_name
+          last_name
+          email
+          passwrd
+          user_type
+          createdAt
+          updatedAt
+        }
         createdAt
         updatedAt
       }
@@ -376,6 +361,16 @@ export const onCreateEnrollRequest = /* GraphQL */ `
         department {
           id
           name
+          head {
+            id
+            first_name
+            last_name
+            email
+            passwrd
+            user_type
+            createdAt
+            updatedAt
+          }
           createdAt
           updatedAt
         }
@@ -420,6 +415,16 @@ export const onUpdateEnrollRequest = /* GraphQL */ `
         department {
           id
           name
+          head {
+            id
+            first_name
+            last_name
+            email
+            passwrd
+            user_type
+            createdAt
+            updatedAt
+          }
           createdAt
           updatedAt
         }
@@ -464,6 +469,16 @@ export const onDeleteEnrollRequest = /* GraphQL */ `
         department {
           id
           name
+          head {
+            id
+            first_name
+            last_name
+            email
+            passwrd
+            user_type
+            createdAt
+            updatedAt
+          }
           createdAt
           updatedAt
         }
@@ -508,6 +523,16 @@ export const onCreateDeleteCourseRequest = /* GraphQL */ `
         department {
           id
           name
+          head {
+            id
+            first_name
+            last_name
+            email
+            passwrd
+            user_type
+            createdAt
+            updatedAt
+          }
           createdAt
           updatedAt
         }
@@ -551,6 +576,16 @@ export const onUpdateDeleteCourseRequest = /* GraphQL */ `
         department {
           id
           name
+          head {
+            id
+            first_name
+            last_name
+            email
+            passwrd
+            user_type
+            createdAt
+            updatedAt
+          }
           createdAt
           updatedAt
         }
@@ -594,6 +629,16 @@ export const onDeleteDeleteCourseRequest = /* GraphQL */ `
         department {
           id
           name
+          head {
+            id
+            first_name
+            last_name
+            email
+            passwrd
+            user_type
+            createdAt
+            updatedAt
+          }
           createdAt
           updatedAt
         }
