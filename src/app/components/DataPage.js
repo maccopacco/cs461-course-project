@@ -17,8 +17,13 @@ import {
     registrarDeleteCreateCourseRequest,
     registrarShowCreateCourseRequests
 } from "../RegistrarCreateCourse";
-import {toast} from "react-toastify";
 import {instructorViewCreateCourseRequest} from "../InstructorViewCreateCourseRequest";
+import {loadCourses} from "../Course";
+import {
+    instructorAttemptDeleteCourse,
+    registarShowDeleteCourseRequests, registrarApproveDeleteCourseRequest,
+    registrarDeleteDeleteCourseRequest
+} from "../DeleteCourse";
 
 
 export default class DataPage extends Component {
@@ -27,8 +32,8 @@ export default class DataPage extends Component {
         super(props);
         this.state = {
             data: [],
-            studentOption: StudentOptions.SHOW_CLASSES,
-            instructorOptions: InstructorOptions.DEFAULT_OPTION,
+            studentOption: StudentOptions.SHOW_COURSES,
+            instructorOptions: InstructorOptions.SHOW_COURSES,
             registrarOptions: RegistrarOptions.EDIT_USERS,
             department_to_head: null,
             department_to_create_course_in: null,
@@ -44,10 +49,29 @@ export default class DataPage extends Component {
                       studentOption = this.state.studentOption,
                       registrarOption = this.state.registrarOptions,
                       instructorOption = this.state.instructorOptions) {
+        let opt
+        switch (userType) {
+            case "Student":
+                opt = studentOption
+                break;
+            case "Registrar":
+                opt = registrarOption
+                break;
+            case "Instructor":
+                opt = instructorOption
+                break;
+        }
+
+        if (opt === 0) {
+            return [{title: 'Course', field: 'combined_name'},
+                {title: 'Section', field: 'section'},
+                {title: 'Credit hours', field: 'credit_hours'},
+                {title: 'Instructor', field: 'instructor_name'}]
+        }
+
         switch (userType) {
             case "Student": {
                 switch (studentOption) {
-                    case StudentOptions.SHOW_CLASSES:
                 }
                 break;
             }
@@ -68,6 +92,7 @@ export default class DataPage extends Component {
                         return [{title: 'Department name', field: 'name'},
                             {title: "Head instructor", field: 'head_name'}]
                     }
+                    case RegistrarOptions.VIEW_DELETE_COURSE_REQUESTS:
                     case RegistrarOptions.VIEW_CREATE_COURSE_REQUESTS: {
                         return [{title: 'Department', field: 'department'},
                             {title: 'Name', field: 'course_name'},
@@ -101,7 +126,7 @@ export default class DataPage extends Component {
         switch (this.userType()) {
             case "Student": {
                 switch (this.state.studentOption) {
-                    case StudentOptions.SHOW_CLASSES:
+                    case StudentOptions.SHOW_COURSES:
                         return []
                 }
                 break;
@@ -150,10 +175,21 @@ export default class DataPage extends Component {
                             icon: () => <ActionIcon text="Delete"/>,
                             tooltip: "Delete request",
                             onClick: (e, row) => registrarDeleteCreateCourseRequest(here, row)
-                        },{
+                        }, {
                             icon: () => <ActionIcon text="Approve"/>,
                             tooltip: "Approve request",
-                            onClick: (e,row) => registrarApproveCreateCourseRequest(here, row)
+                            onClick: (e, row) => registrarApproveCreateCourseRequest(here, row)
+                        }]
+                    }
+                    case RegistrarOptions.VIEW_DELETE_COURSE_REQUESTS: {
+                        return [{
+                            icon: () => <ActionIcon text="Delete"/>,
+                            tooltip: "Delete request",
+                            onClick: (e, row) => registrarDeleteDeleteCourseRequest(here, row)
+                        }, {
+                            icon: () => <ActionIcon text="Approve"/>,
+                            tooltip: "Approve request",
+                            onClick: (e, row) => registrarApproveDeleteCourseRequest(here, row)
                         }]
                     }
 
@@ -162,6 +198,13 @@ export default class DataPage extends Component {
             }
             case "Instructor": {
                 switch (this.state.instructorOptions) {
+                    case InstructorOptions.SHOW_COURSES: {
+                        return [{
+                            icon: () => <ActionIcon text='Rq Del'/>,
+                            tooltip: "Delete course",
+                            onClick: (e, row) => instructorAttemptDeleteCourse(here, row)
+                        }]
+                    }
                     case InstructorOptions.CREATE_COURSE_STEP_1:
                         return [{
                             icon: () => <ActionIcon text='Select'/>,
@@ -191,19 +234,20 @@ export default class DataPage extends Component {
      * Gets buttons that are shown for each user type
      */
     buttonsForType() {
-        let buttons = []
         const here = this
+        let buttons = []
+        if (this.userType() != null) {
+            buttons.push({title: "Show classes", onClick: () => loadCourses(here)})
+        }
         switch (this.userType()) {
             case "Student": {
-                buttons = [{
-                    title: "Show classes", onClick: () => this.studentShowClasses(here)
-                }, {
+                buttons.push({
                     title: "Show course reports", onClick: () => this.studentShowCourseReports(here)
-                }]
+                })
                 break;
             }
             case "Registrar": {
-                buttons = [
+                buttons.push(
                     {title: "Show users", onClick: () => registrarShowUsers(here)},
                     {
                         popup: popupHelper('createUserPopup',
@@ -217,8 +261,9 @@ export default class DataPage extends Component {
                     },
                     {title: "Show departments", onClick: () => registrarShowDepartments(here)},
                     {title: "Assign department head", onClick: () => registrarAssignDepartmentHead(here)},
-                    {title: "View create course requests", onClick: () => registrarShowCreateCourseRequests(here)}
-                ]
+                    {title: "View create course requests", onClick: () => registrarShowCreateCourseRequests(here)},
+                    {title: "View delete course requests", onClick: () => registarShowDeleteCourseRequests(here)}
+                )
                 if (this.state.registrarOptions === RegistrarOptions.ASSIGN_HEAD_STEP_2) {
                     buttons.push({
                         title: 'Clear head professor',
@@ -228,9 +273,9 @@ export default class DataPage extends Component {
                 break;
             }
             case "Instructor" : {
-                buttons = [
+                buttons.push(
                     {title: 'Create course', onClick: () => instructorCreateCourseRequest(here)},
-                    {title: 'View create course requests', onClick: () => instructorViewCreateCourseRequest(here)}]
+                    {title: 'View create course requests', onClick: () => instructorViewCreateCourseRequest(here)})
                 if (this.state.instructorOptions === InstructorOptions.CREATE_COURSE_STEP_2) {
                     buttons.push({
                         popup: popupHelper(
@@ -264,7 +309,7 @@ export default class DataPage extends Component {
     }
 
     studentShowClasses(context) {
-        context.setState({studentOption: StudentOptions.SHOW_CLASSES})
+        context.setState({studentOption: StudentOptions.SHOW_COURSES})
     }
 
 

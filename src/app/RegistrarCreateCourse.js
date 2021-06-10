@@ -5,11 +5,11 @@ import {displayError} from "./Utilities";
 import {API} from "@aws-amplify/api";
 import {createCourse, deleteCreateCourseRequest} from "../graphql/mutations";
 import {toast} from "react-toastify"
-import {loadCourseRequests} from "./CourseRequest";
+import {loadCourseCreateRequests, loadCourseDeleteRequests} from "./CourseRequests";
 
 export function registrarShowCreateCourseRequests(context) {
     context.setState({registrarOptions: RegistrarOptions.VIEW_CREATE_COURSE_REQUESTS, data: []})
-    loadCourseRequests(context)
+    loadCourseCreateRequests(context)
 }
 
 export function registrarDeleteCreateCourseRequest(context, row) {
@@ -32,12 +32,12 @@ export function registrarApproveCreateCourseRequest(context, row) {
             section: row.course_section,
             courseDepartmentId: row.course_department.id,
             credit_hours: row.credit_hours,
-            courseInstructorId: context.props.user.id
+            courseInstructorId: row.head_instructor.id
         }
     })).then(function () {
         toast.info("Course created")
         registrarDeleteCreateCourseRequest(context, row)
     }).catch(function (e) {
-        displayError("Could not approve request",e)
+        displayError("Could not approve request", e)
     })
 }

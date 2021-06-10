@@ -51,7 +51,7 @@ type EnrollRequest @model {
 
 type DeleteCourseRequest @model {
     id: ID!
-    course: Course! @connection
+    course: Course @connection
     head_instructor: SchoolUser! @connection
 }
 

@@ -4,7 +4,6 @@ import 'reactjs-popup/dist/index.css';
 import {graphqlOperation} from "@aws-amplify/api-graphql";
 import {API} from "@aws-amplify/api";
 import {dataToUsers, displayError, userFullName} from "../Utilities";
-import {MINIMUM_EMAIL_LENGTH, MINIMUM_PASSWORD_LENGTH} from "../Constants";
 import {toast} from "react-toastify";
 import {createSchoolUser, deleteSchoolUser} from "../../graphql/mutations";
 import {listSchoolUsers} from "../../graphql/queries";
@@ -73,24 +72,10 @@ export default class Signin extends Component {
         </div>
     }
 
-
-    checkTooShort(value, title, exp) {
-        if (value.length < exp) {
-            toast.info(`${title} too short, must be ${exp} characters long, was ${value.length}`)
-            return true
-        }
-        return false
-    }
-
     onTrySignin(email, password, onSignin) {
         console.log('Calling onTrySignin')
 
         const bad = (error) => displayError("Cannot get users right now... try again later", error)
-
-        if (this.checkTooShort(email, "Email", MINIMUM_EMAIL_LENGTH))
-            return
-        if (this.checkTooShort(password, "Password", MINIMUM_PASSWORD_LENGTH))
-            return
 
         //listSchoolUsersNoPassword
         API.graphql(graphqlOperation(listSchoolUsers, {
