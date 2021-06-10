@@ -38,15 +38,32 @@ export function instructorCreateCourseRequest(context) {
 }
 
 export function createCoursePopup(popupRef, context) {
+    const name = React.createRef()
     const section = React.createRef()
+    const credits = React.createRef()
     return <div>
         <p>{`Course name: ${context.state.department_to_create_course_in.name}`}</p>
+        <div>
+            <label htmlFor="name">Name: </label>
+            <input ref={name} id="name" type='number'/>
+        </div>
 
-        <label htmlFor="section">Section: </label>
-        <input ref={section} id="section" type='number'/>
+        <div>
+            <label htmlFor="section">Section: </label>
+            <input ref={section} id="section" type='number'/>
+        </div>
+
+        <div>
+            <label htmlFor="credits">Credit hrs: </label>
+            <input ref={credits} id="credits" type='number'/>
+        </div>
+
         <button onClick={async function () {
             const current = popupRef.current
-            if (await createCourseRequest(context, parseInt(section.current.value))) {
+            if (await createCourseRequest(context,
+                parseInt(name.current.value),
+                parseInt(section.current.value),
+                parseInt(credits.current.value))) {
                 current.close()
                 instructorViewCreateCourseRequest(context)
             }
@@ -56,7 +73,7 @@ export function createCoursePopup(popupRef, context) {
     </div>
 }
 
-export async function createCourseRequest(context, section) {
+export async function createCourseRequest(context, name, section, credit_hours) {
     if (section === '') {
         displayError("Must choose a section to continue")
         return false
@@ -68,6 +85,9 @@ export async function createCourseRequest(context, section) {
             filter: {
                 course_section: {
                     eq: section
+                },
+                course_name: {
+                    eq: name
                 }
             }
         }))
@@ -82,7 +102,9 @@ export async function createCourseRequest(context, section) {
         await API.graphql(graphqlOperation(createCreateCourseRequest, {
             input: {
                 createCourseRequestCourse_departmentId: departmentId,
+                course_name: name,
                 course_section: section,
+                credit_hours: credit_hours,
                 createCourseRequestHead_instructorId: context.props.user.id
             }
         }))

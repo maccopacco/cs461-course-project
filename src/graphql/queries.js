@@ -114,8 +114,8 @@ export const getCourse = /* GraphQL */ `
   query GetCourse($id: ID!) {
     getCourse(id: $id) {
       id
-      section
       name
+      section
       credit_hours
       department {
         id
@@ -157,8 +157,8 @@ export const listCourses = /* GraphQL */ `
     listCourses(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        section
         name
+        section
         credit_hours
         department {
           id
@@ -207,8 +207,40 @@ export const getCourseReport = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      course_name
-      course_section
+      course {
+        id
+        name
+        section
+        credit_hours
+        department {
+          id
+          name
+          head {
+            id
+            first_name
+            last_name
+            email
+            passwrd
+            user_type
+            createdAt
+            updatedAt
+          }
+          createdAt
+          updatedAt
+        }
+        instructor {
+          id
+          first_name
+          last_name
+          email
+          passwrd
+          user_type
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+      }
       instructor {
         id
         first_name
@@ -246,8 +278,40 @@ export const listCourseReports = /* GraphQL */ `
           createdAt
           updatedAt
         }
-        course_name
-        course_section
+        course {
+          id
+          name
+          section
+          credit_hours
+          department {
+            id
+            name
+            head {
+              id
+              first_name
+              last_name
+              email
+              passwrd
+              user_type
+              createdAt
+              updatedAt
+            }
+            createdAt
+            updatedAt
+          }
+          instructor {
+            id
+            first_name
+            last_name
+            email
+            passwrd
+            user_type
+            createdAt
+            updatedAt
+          }
+          createdAt
+          updatedAt
+        }
         instructor {
           id
           first_name
@@ -274,8 +338,8 @@ export const getEnrollRequest = /* GraphQL */ `
       id
       course {
         id
-        section
         name
+        section
         credit_hours
         department {
           id
@@ -333,8 +397,8 @@ export const listEnrollRequests = /* GraphQL */ `
         id
         course {
           id
-          section
           name
+          section
           credit_hours
           department {
             id
@@ -389,8 +453,8 @@ export const getDeleteCourseRequest = /* GraphQL */ `
       id
       course {
         id
-        section
         name
+        section
         credit_hours
         department {
           id
@@ -451,8 +515,8 @@ export const listDeleteCourseRequests = /* GraphQL */ `
         id
         course {
           id
-          section
           name
+          section
           credit_hours
           department {
             id
@@ -520,7 +584,9 @@ export const getCreateCourseRequest = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      course_name
       course_section
+      credit_hours
       head_instructor {
         id
         first_name
@@ -565,7 +631,9 @@ export const listCreateCourseRequests = /* GraphQL */ `
           createdAt
           updatedAt
         }
+        course_name
         course_section
+        credit_hours
         head_instructor {
           id
           first_name

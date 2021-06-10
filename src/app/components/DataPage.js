@@ -12,7 +12,11 @@ import {
     registrarShowDepartments
 } from "../RegistrarDepartments";
 import {createCoursePopup, instructorCreateCourseRequest} from "../InstructorCreateCourseRequest";
-import {registrarDeleteCreateCourseRequest, registrarShowCreateCourseRequests} from "../RegistrarCreateCourse";
+import {
+    registrarApproveCreateCourseRequest,
+    registrarDeleteCreateCourseRequest,
+    registrarShowCreateCourseRequests
+} from "../RegistrarCreateCourse";
 import {toast} from "react-toastify";
 import {instructorViewCreateCourseRequest} from "../InstructorViewCreateCourseRequest";
 
@@ -65,9 +69,11 @@ export default class DataPage extends Component {
                             {title: "Head instructor", field: 'head_name'}]
                     }
                     case RegistrarOptions.VIEW_CREATE_COURSE_REQUESTS: {
-                        return [{title: 'Course name', field: 'course_name'},
+                        return [{title: 'Department', field: 'department'},
+                            {title: 'Name', field: 'course_name'},
                             {title: 'Section', field: 'course_section'},
-                            {title: 'Requestee', field: 'instructor_name'}]
+                            {title: 'Requestee', field: 'instructor_name'},
+                            {title: 'CH', field: 'credit_hours'}]
                     }
                 }
                 break;
@@ -144,6 +150,10 @@ export default class DataPage extends Component {
                             icon: () => <ActionIcon text="Delete"/>,
                             tooltip: "Delete request",
                             onClick: (e, row) => registrarDeleteCreateCourseRequest(here, row)
+                        },{
+                            icon: () => <ActionIcon text="Approve"/>,
+                            tooltip: "Approve request",
+                            onClick: (e,row) => registrarApproveCreateCourseRequest(here, row)
                         }]
                     }
 

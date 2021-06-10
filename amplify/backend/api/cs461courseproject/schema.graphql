@@ -25,18 +25,17 @@ type Department @model {
 
 type Course @model {
     id: ID!
+    name: Int!
     section: Int!
-    name: String!
     credit_hours: Int!
-    department: Department!
-    instructor: SchoolUser!
+    department: Department! @connection
+    instructor: SchoolUser! @connection
 }
 
 type CourseReport @model {
     id: ID!
     student: SchoolUser! @connection
-    course_name: String!
-    course_section: Int!
+    course: Course! @connection
     instructor: SchoolUser! @connection
     year: Int!
     attempts: Int!
@@ -59,6 +58,8 @@ type DeleteCourseRequest @model {
 type CreateCourseRequest @model {
     id: ID!
     course_department: Department! @connection
+    course_name: Int!
     course_section: Int!
+    credit_hours: Int!
     head_instructor: SchoolUser! @connection
 }
