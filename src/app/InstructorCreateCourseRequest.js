@@ -62,26 +62,26 @@ export async function createCourseRequest(context, section) {
         return false
     }
     try {
-        let courseId = context.state.department_to_create_course_in.id;
+        let departmentId = context.state.department_to_create_course_in.id;
 
-        const alreadyExisting = await API.graphql(graphqlOperation(listCreateCourseRequests, {
+        const data = await API.graphql(graphqlOperation(listCreateCourseRequests, {
             filter: {
-                // course_name: {
-                //     eq: courseName
-                // },
                 course_section: {
                     eq: section
                 }
             }
         }))
-        if (alreadyExisting.data.listCreateCourseRequests.items.length > 0) {
+        const courseRequests = data.data.listCreateCourseRequests.items
+        if (courseRequests.some(function (value) {
+            return value.course_department.id === departmentId
+        })) {
             displayError("Already exists")
             return false
         }
 
         await API.graphql(graphqlOperation(createCreateCourseRequest, {
             input: {
-                // course_name: courseName,
+                createCourseRequestCourse_departmentId: departmentId,
                 course_section: section,
                 createCourseRequestHead_instructorId: context.props.user.id
             }
