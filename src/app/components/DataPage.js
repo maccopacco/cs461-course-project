@@ -70,7 +70,8 @@ export default class DataPage extends Component {
                     }
                     case RegistrarOptions.ASSIGN_HEAD_STEP_1: //intended fall through
                     case RegistrarOptions.VIEW_DEPARTMENTS: {
-                        return [{title: 'Department name', field: 'name'}]
+                        return [{title: 'Department name', field: 'name'},
+                            {title: "Head instructor", field: 'head_name'}]
                     }
                 }
                 break;
@@ -151,10 +152,16 @@ export default class DataPage extends Component {
             API.graphql(graphqlOperation(updateDepartment, {
                 input: {
                     id: department.id,
-                    head: user
+                    departmentHeadId: user.id
                 }
-            }))
-            context.registrarAssignDepartmentHead(context)
+            })).then(function () {
+                toast.info("Updated")
+                context.registrarAssignDepartmentHead(context)
+            }).catch(function (error) {
+                const m = "Cannot update head instructor"
+                toast.error(m)
+                console.error(m, error)
+            })
         } else {
             toast.error(`You can't make a ${userType(user)} a head instructor!`)
         }
@@ -441,7 +448,14 @@ export default class DataPage extends Component {
 
         API.graphql(graphqlOperation(listDepartments))
             .then(function (data) {
-                const departments = data.data.listDepartments.items
+                let departments = data.data.listDepartments.items
+                departments = departments.map(function (value) {
+                    let head = value.head;
+                    if (head != null) {
+                        value.head_name = `${head.first_name} ${head.last_name}`
+                    }
+                    return value
+                })
                 console.log('departments', departments)
                 context.setState({data: departments})
             })
