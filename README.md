@@ -4,6 +4,11 @@ Was vaguely following [this tutorial](https://www.youtube.com/watch?v=hQAHSlTtcm
 
 ## To run
 <details><summary>Click to expand</summary>
+
+Run\
+`npm install -g @aws-amplify/cli`\
+`npm install`
+
 Run `amplify pull`
 
 Select `AWS access keys`\
@@ -32,7 +37,13 @@ Then, run `amplify pull` one more time
 
 ### Available Scripts
 
-In the project directory, you can run:
+In the project directory, you can run:  
+
+#### `amplify mock api`
+This runs the API locally for testing  
+
+### `amplify push`  
+Force pushes to the backend  
 
 #### `npm start`
 
