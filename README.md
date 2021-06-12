@@ -2,6 +2,41 @@
 KU - CS461 - Course Proj - Brichan &amp; Dreher\
 Was vaguely following [this tutorial](https://www.youtube.com/watch?v=hQAHSlTtcmY)
 
+## Features
+
+</br>
+
+### Users
+`Registrar`s can create, delete, and assign new passwords to users
+
+</br>
+
+### Departments
+`Registrar`s create (`Instructor`/`Create department`) and delete departments (`Del` while viewing departments) and assign department heads
+
+</br>
+
+### Head Instructors
+Head instructors can request to create / delete courses under their department
+#### Request Create Course
+Click `Instructor`/`Create course`
+#### Request Delete Course
+As `Instructor`, click `Rq Del` while viewing courses (from `Show courses`)
+#### View requests
+`Instructor`s can view requests made about their department with `Instructor`/`View create course requests` and `Instructor`/`View delete course requests`
+
+</br>
+
+### Course requests
+`Course request`s refer to 'enrolling' in a class.\
+As an `Instructor`, this means you're requesting to either stop teaching or start teaching the class. \
+As a `Student`, this means to either enroll or drop the class.\
+Both can request to 'enroll' in a class by clicking `Join` or `Leave` on the class while viewing courses (`Show courses`)\
+Both can cancel their requests by going to `Show Course Requests`
+
+`Registrar`s can approve / deny course requests.
+
+
 ## To run
 <details><summary>Click to expand</summary>
 

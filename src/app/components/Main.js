@@ -48,10 +48,7 @@ export default class Main extends Component {
                 <p>or by knowing they are all 'password' by default</p>
             </div>
             <div className='helpDiv'>
-                <p>Create a department, then assign a head to that department with Registrar/assign department head</p>
-                <p>Once an instructor is a Head instructor, they can create 'Create class requests'</p>
-                <p>Click Instructor/Create course, the department you desire, then 'Define section'</p>
-                <p>Instructors can cancel this is too much move it to the readme and link itex</p>
+                <a href="https://www.github.com/maccopacco/cs461-course-project/blob/develop/README.md">Read the README to learn about more features</a>
             </div>
         </div>
     }
