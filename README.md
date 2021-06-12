@@ -36,6 +36,10 @@ Both can cancel their requests by going to `Show Course Requests`
 
 `Registrar`s can approve / deny course requests.
 
+## What didn't get done / what did in this extra time
+We wrote up the help (on website) / documentation (here) to help explain how to use the app.\
+What didn't get done was all the features we wanted (students joining classes, showing what classes their in, instructors assigning grades).\
+It's all more of the same UI/database code, and we've well shown that we can connect out DB to our application and read/write data, so for the scope of the project this seems okay.
 
 ## To run
 <details><summary>Click to expand</summary>
