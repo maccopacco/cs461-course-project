@@ -11,7 +11,7 @@ export default class Main extends Component {
 
 
     async setUser(newUser) {
-        this.setState({user: newUser})
+        this.setState({user: newUser, help: false})
     }
 
     toggleHelp() {
@@ -48,7 +48,8 @@ export default class Main extends Component {
                 <p>or by knowing they are all 'password' by default</p>
             </div>
             <div className='helpDiv'>
-                <a href="https://www.github.com/maccopacco/cs461-course-project/blob/develop/README.md">Read the README to learn about more features</a>
+                <a href="https://www.github.com/maccopacco/cs461-course-project/blob/develop/README.md">Read the README
+                    to learn about more features</a>
             </div>
         </div>
     }

@@ -3,9 +3,6 @@ KU - CS461 - Course Proj - Brichan &amp; Dreher\
 Was vaguely following [this tutorial](https://www.youtube.com/watch?v=hQAHSlTtcmY)
 
 ## Features
-
-</br>
-
 ### Users
 `Registrar`s can create, delete, and assign new passwords to users
 
@@ -18,10 +15,13 @@ Was vaguely following [this tutorial](https://www.youtube.com/watch?v=hQAHSlTtcm
 
 ### Head Instructors
 Head instructors can request to create / delete courses under their department
+
 #### Request Create Course
 Click `Instructor`/`Create course`
+
 #### Request Delete Course
 As `Instructor`, click `Rq Del` while viewing courses (from `Show courses`)
+
 #### View requests
 `Instructor`s can view requests made about their department with `Instructor`/`View create course requests` and `Instructor`/`View delete course requests`
 

@@ -43,8 +43,13 @@ export default class Signin extends Component {
                     {this.getPassChange()}
                 </Popup>
 
-                <button onClick={() => this.props.toggleHelp()}>Show help</button>
-                <button onClick={() => this.refreshUsers()}>[DEBUG] Regenerate base users</button>
+
+                <div>
+                    {this.hasUser() ? <div>
+                        <button onClick={() => this.props.toggleHelp()}>Show help</button>
+                        <button onClick={() => this.refreshUsers()}>[DEBUG] Regenerate base users</button>
+                    </div> : null}
+                </div>
 
             </div>
         </>
