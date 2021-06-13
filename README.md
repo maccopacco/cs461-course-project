@@ -34,7 +34,7 @@ As a `Student`, this means to either enroll or drop the class.\
 Both can request to 'enroll' in a class by clicking `Join` or `Leave` on the class while viewing courses (`Show courses`)\
 Both can cancel their requests by going to `Show Course Requests`
 
-`Registrar`s can approve / deny course requests.
+`Registrar`s can approve / deny course requests (but not for `Student`s, this was a WIP before submission)
 
 ## What didn't get done / what did in this extra time
 We wrote up the help (on website) / documentation (here) to help explain how to use the app.\
