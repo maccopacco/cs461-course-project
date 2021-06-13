@@ -48,7 +48,7 @@ export default class Main extends Component {
                 <p>or by knowing they are all 'password' by default</p>
             </div>
             <div className='helpDiv'>
-                <a href="https://www.github.com/maccopacco/cs461-course-project/blob/develop/README.md">Read the README
+                <a href="https://www.github.com/maccopacco/cs461-course-project/blob/main/README.md">Read the README
                     to learn about more features</a>
             </div>
         </div>
